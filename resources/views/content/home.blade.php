@@ -1,8 +1,9 @@
 @extends('layout.main')
 @section('container')
 
+<div class="row">
 
-ini adalah halaman home
-
+    <header> ini adalah home</header>
+</div>
 
 @endsection

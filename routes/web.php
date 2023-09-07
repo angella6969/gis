@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ Route::get('/', function () {
 
 Route::get('/login', [UserController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [UserController::class, 'authenticate']);
+Route::get('/map', [MapController::class, 'showMap']);
 
 
 
