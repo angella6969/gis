@@ -25,7 +25,7 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/#');
+            return redirect('/dashbord');
         } else {
             return redirect('/login')->with('loginError', 'Email atau Password invalid');
         }
@@ -35,6 +35,6 @@ class UserController extends Controller
         auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/newhome');
     }
 }

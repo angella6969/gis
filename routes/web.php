@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,19 +18,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('content/home');
+    return view('content/newhome');
+});
+Route::get('/newhome', function () {
+    return view('content/newhome');
 });
 
 Route::get('/login', [UserController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [UserController::class, 'authenticate']);
+Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/map', [MapController::class, 'showMap']);
 
 Route::get('/qgis2webmap', function () {
     return view('content.qgis2webmap');
 });
 
+Route::get('/map-preview', [MapController::class, 'preview'])->name('map.preview');
+
+
 
 //=================== Perlu Login =============================
 
 Route::middleware(['auth'])->group(function () {
+
+
+Route::get('/dashbord', [DashboardController::class, 'index']);
+
 });

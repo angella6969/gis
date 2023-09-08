@@ -14,14 +14,19 @@
 </head>
 <script src="https://unpkg.com/feather-icons"></script>
 
-<body>
-    
-    {{-- @include('layout.header') --}}
-    <div class="container">
-        @yield('container')
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <div class="container">
+                @include('layout.header')
+                <div class="row">
+                    @yield('container')
+                </div>
+                @include('layout.footer')
+            </div>
+        </div>
     </div>
-
-    @include('layout.script')
 </body>
+
 
 </html>

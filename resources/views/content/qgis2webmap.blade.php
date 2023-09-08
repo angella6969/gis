@@ -37,7 +37,7 @@
 
     <div id="map-container">
         <!-- Sertakan konten HTML peta qgis2web di sini -->
-        <iframe src="{{ asset('qgis2web/qgis2web_2023_09_07-14_44_34_115129/index.html') }}" frameborder="0"></iframe>
+        <iframe src="{{ asset('qgis2web/qgis2web_2023_09_08-11_14_50_809512/index.html') }}" frameborder="0"></iframe>
     </div>
 </body>
 
