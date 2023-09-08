@@ -46,14 +46,14 @@ https://templatemo.com/tm-569-edu-meeting
             <div class="row">
                 <div class="col-lg-8 col-sm-8">
                     <div class="left-content">
-                        {{-- <p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p> --}}
+
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-4">
                     <div class="right-icons">
                         <ul>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            {{-- <li><a href="#"><i class="fa fa-instagram"></i></a></li> --}}
+                            {{-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> --}}
                         </ul>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ https://templatemo.com/tm-569-edu-meeting
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="/newhome" class="logo">
-                            WEBGIS P3-TGAI
+                            WEBGIS P3-TGAI BBWS Serayu Opak
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -111,7 +111,7 @@ https://templatemo.com/tm-569-edu-meeting
                         <div class="caption">
                             <h6></h6>
                             <h2>Selamat Datang Di WEBGIS P3-TGAI</h2>
-                            <p>Program Percepatan Peningkatan Tata Guna Air Irigasi (P3-TGA)I adalah program perbaikan,
+                            <p>Program Percepatan Peningkatan Tata Guna Air Irigasi (P3-TGAI) adalah program perbaikan,
                                 rehabilitasi atau peningkatan jaringan irigasi dengan berbasis peran serta masyarakat
                                 petani yang dilaksanakan oleh Perkumpulan Petani Pemakai Air (P3A), Gabungan Perkumpulan
                                 Petani Pemakai Air (GP3A) atau Induk Perkumpulan Petani Pemakai Air (IP3A)</p>
@@ -127,7 +127,7 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
     </section>
     <!-- ***** Main Banner Area End ***** -->
-    <iframe src="{{ asset('qgis2web/qgis2web_2023_09_08-11_14_50_809512/index.html') }}" width="100%" height="700"
+    <iframe src="{{ asset('qgis2web/qgis2web_2023_09_08-11_14_50_809512/index.html') }}" width="100%" height="900"
         id="my-iframe"></iframe>
 
 

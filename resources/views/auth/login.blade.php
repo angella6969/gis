@@ -78,12 +78,12 @@
                             <div class="clearfix"></div>
                             <br /><br />
                             <div>
-                                <a class="btn btn-link" href="#">
+                                {{-- <a class="btn btn-link" href="#">
                                     <img class="img-thumbnail" src={{ asset('images\LOGO_SISDA.png') }}
                                         alt="LOGO SISDA.png">
-                                </a>
-                                <p>Sistem Informasi Sumber Daya Air</p>
-                                <p>BBWS Serayu Opak</p>
+                                </a> --}}
+                                <p>© 2023 BBWS Serayu Opak</p>
+                                {{-- <p>BBWS Serayu Opak</p> --}}
                             </div>
                         </div>
                     </section>
