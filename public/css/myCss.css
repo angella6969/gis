@@ -47,12 +47,11 @@ header {
 nav {
     display: flex;
     justify-content: space-around;
-    /* background-color: #161e2c; */
     padding: 0px 50px; 
 }
 
 nav a {
-    color: #ffffff; 
+    color: #000000; 
     text-decoration: none;
     padding: 5px 10px; 
     border-radius: 20px;
@@ -63,4 +62,5 @@ nav a:hover {
 }
 li a:hover {
     background-color: #95ee8d; 
+    border-radius: 40px;
 }

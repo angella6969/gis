@@ -23,14 +23,12 @@ Route::get('/login', [UserController::class, 'index'])->middleware('guest')->nam
 Route::post('/login', [UserController::class, 'authenticate']);
 Route::get('/map', [MapController::class, 'showMap']);
 
-
+Route::get('/qgis2webmap', function () {
+    return view('content.qgis2webmap');
+});
 
 
 //=================== Perlu Login =============================
 
 Route::middleware(['auth'])->group(function () {
-
-
-
-
 });
