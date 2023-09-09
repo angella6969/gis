@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\inputController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,8 @@ Route::get('/main', function () {
 Route::get('/map-preview', [MapController::class, 'preview'])->name('map.preview');
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard/create', [inputController::class, 'create']);
+Route::get('/dashboard/daerah-irigasi', [inputController::class, 'index']);
 
 //=================== Perlu Login =============================
 

@@ -5,18 +5,30 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title fw-semibold mb-4">Daftar Daerah Irigasi P3-TGAI</h5>
+            <form action="/dashboard/daerah-irigasi">
+                <div class="row">
+                    <div class="col-6 col-sm-12">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Pencarian Berdasarkan Daerah Irigasi"
+                                name="search" value="{{ request('search') }}">
+                            <button class="btn btn-primary" type="submit" id="basic-addon2">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="mt-2 mb-2">
+                <a href="/dashboard/create" class="btn btn-info">Tambah Daerah Irigasi</a>
+            </div>
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="/dashboard/item" enctype="multipart/form-data">
+                    {{-- <form method="post" action="/dashboard/item" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
                             <input type="text" class="form-control" id="DaerahIrigasi" placeholder="Daerah Irigasi"
                                 required>
-                            {{-- <div id="emailHelp" class="form-text">
-                            </div> --}}
                         </div>
-                        
+
                         <div class="mb-3">
                             <label for="DaerahIrigasi" class="form-label">Total Saluran Irigasi Tersier & Irigasi Desa
                                 Terbangun</label>
@@ -117,43 +129,10 @@
                             @endif
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-<script>
-    function addNamaField() {
-        var namaContainer = document.getElementById('nama-container');
-        var inputGroup = document.createElement('div');
-        inputGroup.className = 'input-group mb-3';
-
-        var input = document.createElement('input');
-        input.type = 'text';
-        input.className = 'form-control';
-        input.name = 'names[]';
-        input.placeholder = 'Nama';
-
-        var appendDiv = document.createElement('div');
-        appendDiv.className = 'input-group-append';
-
-        var removeButton = document.createElement('button');
-        removeButton.className = 'btn btn-outline-secondary';
-        removeButton.type = 'button';
-        removeButton.textContent = '-';
-        removeButton.onclick = function() {
-            namaContainer.removeChild(inputGroup);
-        };
-
-        appendDiv.appendChild(removeButton);
-        inputGroup.appendChild(input);
-        inputGroup.appendChild(appendDiv);
-        namaContainer.appendChild(inputGroup);
-    }
-</script>
-
 @endsection

@@ -29,11 +29,11 @@
             <span class="hide-menu">Menu</span>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="#" aria-expanded="false">
+            <a class="sidebar-link" href="/dashboard/create" aria-expanded="false">
               <span>
                 <i class="ti ti-article"></i>
               </span>
-              <span class="hide-menu">Buttons</span>
+              <span class="hide-menu">Daerah Irigasi</span>
             </a>
           </li>
           <li class="sidebar-item">
