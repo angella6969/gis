@@ -13,10 +13,8 @@
                             <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
                             <input type="text" class="form-control" id="DaerahIrigasi" placeholder="Daerah Irigasi"
                                 required>
-                            {{-- <div id="emailHelp" class="form-text">
-                            </div> --}}
                         </div>
-                        
+
                         <div class="mb-3">
                             <label for="DaerahIrigasi" class="form-label">Total Saluran Irigasi Tersier & Irigasi Desa
                                 Terbangun</label>
@@ -84,11 +82,6 @@
                                 id="peta_pdf" name="peta_pdf" accept="application/pdf" required>
                             <h6>PDF Max 1 MB</h6>
 
-                            @if ($errors->has('peta_pdf'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('peta_pdf') }}</strong>
-                            </span>
-                            @endif
                         </div>
                         <div class="mt-3 mb-3">
                             <label for="pdf">Skema jaringan Irigasi</label>
@@ -97,11 +90,6 @@
                             <div class="form-text">PDF Max 5 MB
                             </div>
 
-                            @if ($errors->has('jaringan_pdf'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('jaringan_pdf') }}</strong>
-                            </span>
-                            @endif
                         </div>
                         <div class="mt-3 mb-3">
                             <label for="pdf">Dokumentasi Saluran Irigasi Tersier</label>
@@ -109,12 +97,6 @@
                                 id="dokumentasi_pdf" name="dokumentasi_pdf" accept="application/pdf" required>
                             <div class="form-text">PDF Max 5 MB
                             </div>
-
-                            @if ($errors->has('jaringan_pdf'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('jaringan_pdf') }}</strong>
-                            </span>
-                            @endif
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

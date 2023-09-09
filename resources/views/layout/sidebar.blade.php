@@ -3,7 +3,7 @@
     <div>
       <div class="brand-logo d-flex align-items-center justify-content-between">
         <a href="#" class="text-nowrap logo-img">
-          <img src="{{ asset('src') }}/assets/images/logos/dark-logo.svg" width="180" alt="" />
+          <img src="{{ asset('images/android-chrome-512x512.png') }} "width="180" alt="" />
         </a>
         <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
           <i class="ti ti-x fs-8"></i>
@@ -29,7 +29,7 @@
             <span class="hide-menu">Menu</span>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="/dashboard/create" aria-expanded="false">
+            <a class="sidebar-link" href="/dashboard/daerah-irigasi" aria-expanded="false">
               <span>
                 <i class="ti ti-article"></i>
               </span>
