@@ -32,16 +32,18 @@ Route::get('/map', [MapController::class, 'showMap']);
 Route::get('/qgis2webmap', function () {
     return view('content.qgis2webmap');
 });
+Route::get('/main', function () {
+    return view('layout.main');
+});
 
 Route::get('/map-preview', [MapController::class, 'preview'])->name('map.preview');
 
-
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 //=================== Perlu Login =============================
 
 Route::middleware(['auth'])->group(function () {
 
 
-Route::get('/dashbord', [DashboardController::class, 'index']);
 
 });
