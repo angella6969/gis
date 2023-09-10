@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Validator::extend('pdf', function ($attribute, $value, $parameters, $validator) {
+            // Validasi jika file adalah PDF
+            return $value->getClientOriginalExtension() === 'pdf';
+        });
     }
 }

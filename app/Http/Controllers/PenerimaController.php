@@ -28,7 +28,47 @@ class PenerimaController extends Controller
      */
     public function store(Request $request)
     {
-        dd('ini adalah store new');
+        // dd($request);
+        $validatedData = $request->validate([
+            'DaerahIrigasi' => ['required'],
+            'Kabupaten' => ['required'],
+            'Desa' => ['required'],
+            'Kecamatan' => ['required'],
+            'IrigasiDesaTerbangun' => ['required'],
+            'IrigasiDesaBelumTerbangun' => ['required'],
+            'PolaTanamSaatIni' => ['required'],
+            'JenisVegetasi' => ['required'],
+            'MendapatkanP4-ISDA' => ['required'],
+            'TahunMendapatkan' => ['required'],
+            'names' => ['required'], // Mengganti 'names.*' menjadi 'names'
+            'peta_pdf' => ['required', 'file', 'max:1024', 'mimes:pdf'],
+            'jaringan_pdf' => ['required', 'file', 'max:1024', 'mimes:pdf'],
+            'dokumentasi_pdf' => ['required', 'file', 'max:1024', 'mimes:pdf'],
+        ]);
+
+        if ($request->hasFile('peta_pdf')) {
+            $petaPdfPath = $request->file('peta_pdf')->store('public/pdf');
+            $validatedData['peta_pdf'] = $petaPdfPath;
+        }
+        
+        if ($request->hasFile('jaringan_pdf')) {
+            $jaringanPdfPath = $request->file('jaringan_pdf')->store('public/pdf');
+            $validatedData['jaringan_pdf'] = $jaringanPdfPath;
+        }
+        
+        if ($request->hasFile('dokumentasi_pdf')) {
+            $dokumentasiPdfPath = $request->file('dokumentasi_pdf')->store('public/pdf');
+            $validatedData['dokumentasi_pdf'] = $dokumentasiPdfPath;
+        }
+        $validatedData['names'] = json_encode($validatedData['names']);
+
+        try {
+            Penerima::create($validatedData);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+
+        return redirect('/dashboard/daerah-irigasi')->with('success', 'Data berhasil disimpan.');
     }
 
     /**

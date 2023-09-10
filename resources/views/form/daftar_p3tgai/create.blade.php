@@ -4,22 +4,41 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title fw-semibold mb-4">Daftar Daerah Irigasi P3-TGAI</h5>
+            <h5 class="card-title fw-semibold mb-4">Daftar Calon Daerah Irigasi Penerima P3-TGAI</h5>
             <div class="card">
                 <div class="card-body">
                     <form method="post" action="/dashboard/create" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
-                            <input type="text" class="form-control" id="DaerahIrigasi" name="DaerahIrigasi" placeholder="Daerah Irigasi"
-                                required>
+                            <input type="text" class="form-control" id="DaerahIrigasi" name="DaerahIrigasi"
+                                placeholder="Daerah Irigasi" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Kabupaten" class="form-label">Kabupaten</label>
+                            <input type="text" class="form-control" id="Kabupaten" name="Kabupaten"
+                                placeholder="Kabupaten" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Kecamatan" class="form-label">Kecamatan</label>
+                            <input type="text" class="form-control" id="Kecamatan" name="Kecamatan"
+                                placeholder="Kecamatan" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Desa" class="form-label">Desa</label>
+                            <input type="text" class="form-control" id="Desa" name="Desa"
+                                placeholder="Desa" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="IrigasiDesaTerbangun" class="form-label">Total Saluran Irigasi Tersier & Irigasi
                                 Desa Terbangun</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="IrigasiDesaTerbangun" name="IrigasiDesaTerbangun"
+                                <input type="text" class="form-control" id="IrigasiDesaTerbangun"
+                                    name="IrigasiDesaTerbangun"
                                     placeholder="Total Saluran Irigasi Tersier & Irigasi Desa Terbangun" required>
                                 <span class="input-group-text">M<sup>2</sup></span>
                             </div>
@@ -28,7 +47,8 @@
                             <label for="IrigasiDesaBelumTerbangun" class="form-label">Total Saluran Irigasi Tersier &
                                 Irigasi Desa Belum Terbangun</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="IrigasiDesaBelumTerbangun" name="IrigasiDesaBelumTerbangun"
+                                <input type="text" class="form-control" id="IrigasiDesaBelumTerbangun"
+                                    name="IrigasiDesaBelumTerbangun"
                                     placeholder="Total Saluran Irigasi Tersier & Irigasi Desa Belum Terbangun" required>
                                 <span class="input-group-text">M<sup>2</sup></span>
                             </div>
@@ -42,15 +62,15 @@
 
                         <div class="mb-3">
                             <label for="JenisVegetasi" class="form-label">Jenis Vegetasi</label>
-                            <input type="text" class="form-control" id="JenisVegetasi" name="JenisVegetasi" placeholder="Jenis Vegetasi"
-                                required>
+                            <input type="text" class="form-control" id="JenisVegetasi" name="JenisVegetasi"
+                                placeholder="Jenis Vegetasi" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="MendapatkanP4-ISDA" class="form-label">Mendapatkan P4-ISDA/P3-TGAI</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="MendapatkanP4-ISDA" name="MendapatkanP4-ISDA"
-                                    placeholder="Mendapatkan P4-ISDA/P3-TGAI" required>
+                                <input type="text" class="form-control" id="MendapatkanP4-ISDA"
+                                    name="MendapatkanP4-ISDA" placeholder="Mendapatkan P4-ISDA/P3-TGAI" required>
                                 <span class="input-group-text">Kali</sup></span>
                             </div>
                         </div>
@@ -78,7 +98,7 @@
                         <div class="mt-3 mb-3">
                             <label for="peta_pdf">Peta Desa</label>
                             <input type="file" class="form-control @error('peta_pdf') is-invalid @enderror"
-                                id="peta_pdf" name="peta_pdf" accept="application/pdf" >
+                                id="peta_pdf" name="peta_pdf" accept="application/pdf">
                             <h6>PDF Max 1 MB</h6>
 
                         </div>
@@ -86,7 +106,7 @@
                         <div class="mt-3 mb-3">
                             <label for="pdf">Skema jaringan Irigasi</label>
                             <input type="file" class="form-control @error('jaringan_pdf') is-invalid @enderror"
-                                id="jaringan_pdf" name="jaringan_pdf" accept="application/pdf" >
+                                id="jaringan_pdf" name="jaringan_pdf" accept="application/pdf">
                             <div class="form-text">PDF Max 5 MB
                             </div>
 
@@ -95,7 +115,7 @@
                         <div class="mt-3 mb-3">
                             <label for="pdf">Dokumentasi Saluran Irigasi Tersier</label>
                             <input type="file" class="form-control @error('dokumentasi_pdf') is-invalid @enderror"
-                                id="dokumentasi_pdf" name="dokumentasi_pdf" accept="application/pdf" >
+                                id="dokumentasi_pdf" name="dokumentasi_pdf" accept="application/pdf">
                             <div class="form-text">PDF Max 5 MB
                             </div>
                         </div>
@@ -137,6 +157,56 @@
         inputGroup.appendChild(appendDiv);
         namaContainer.appendChild(inputGroup);
     }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Ketika pilihan provinsi berubah
+        $('#province').change(function () {
+            var provinceId = $(this).val();
+            if (provinceId) {
+                $.ajax({
+                    url: '/get-regencies/' + provinceId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#regency').empty();
+                        $('#district').empty();
+                        $('#regency').append('<option value="">Pilih Kabupaten/Kota</option>');
+                        $.each(data, function (key, value) {
+                            $('#regency').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#regency').empty();
+                $('#district').empty();
+                $('#regency').append('<option value="">Pilih Kabupaten/Kota</option>');
+            }
+        });
+
+        // Ketika pilihan kabupaten/kota berubah
+        $('#regency').change(function () {
+            var regencyId = $(this).val();
+            if (regencyId) {
+                $.ajax({
+                    url: '/get-districts/' + regencyId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#district').empty();
+                        $('#district').append('<option value="">Pilih Kecamatan</option>');
+                        $.each(data, function (key, value) {
+                            $('#district').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#district').empty();
+                $('#district').append('<option value="">Pilih Kecamatan</option>');
+            }
+        });
+    });
 </script>
 
 @endsection
