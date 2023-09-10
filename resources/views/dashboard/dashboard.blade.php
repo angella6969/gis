@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('container')
+@section('container') 
 <div class="col-xl-4 col-md-6 mb-2">
   <div class="card bg-info text-white  h-100">
     <div class="card-body">
