@@ -12,6 +12,11 @@
 </head>
 <script src="https://unpkg.com/feather-icons"></script>
 
+<style>
+  body {
+    /* background-color: rgb(31,38,44) */
+  }
+</style>
 
 <body>
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"

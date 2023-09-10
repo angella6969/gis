@@ -2,6 +2,18 @@
 @section('container')
 
 <style>
+    .table {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Atur bayangan tabel */
+        transition: box-shadow 0.3s ease;
+        /* Efek transisi saat bayangan berubah */
+    }
+
+    .table:hover {
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        /* Bayangan saat cursor dihover */
+    }
+
     .table th,
     .table td {
         white-space: nowrap;
@@ -19,13 +31,22 @@
         /* Atur lebar maksimum kartu sesuai kebutuhan */
         overflow-x: auto;
         /* Aktifkan scroll horizontal jika tabel melebihi lebar kartu */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Atur bayangan card */
+        transition: box-shadow 0.3s ease;
+        /* Efek transisi saat bayangan berubah */
+
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     }
 </style>
 
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title fw-semibold mb-4">Daftar Daerah Irigasi P3-TGAI</h5>
+            <h5 class="card-title fw-semibold mb-4">Daftar Daerah Irigasi Penerima P3-TGAI</h5>
             <form action="/dashboard/daerah-irigasi">
                 <div class="row">
                     <div class="col-6 col-sm-12">
@@ -52,18 +73,18 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Daerah Irigasi </th>
                                     <th scope="col">Nama P3A/GP3A</th>
-                                    <th scope="col">Total Irigasi Desa Terbangun</th>
+                                    {{-- <th scope="col">Total Irigasi Desa Terbangun</th>
                                     <th scope="col">Total Irigasi Desa Belum Terbangun</th>
                                     <th scope="col">Pola Tanam Saat Ini </th>
                                     <th scope="col">Jenis Vegetasi </th>
                                     <th scope="col">Mendapatkan P4-ISDA/P3-TGAI</th>
-                                    <th scope="col">Tahun Mendapatkan</th>
+                                    <th scope="col">Tahun Mendapatkan</th> --}}
                                     <th scope="col">Kabupaten</th>
                                     <th scope="col">Kecamatan </th>
                                     <th scope="col">Desa</th>
-                                    <th scope="col">Peta Desa </th>
-                                    <th scope="col">Skema Jaringan Irigasi </th>
-                                    <th scope="col">Dokumentasi Saluran Irigasi Tersier</th>
+                                    {{-- <th scope="col">Peta Desa </th> --}}
+                                    {{-- <th scope="col">Skema Jaringan Irigasi </th>
+                                    <th scope="col">Dokumentasi Saluran Irigasi Tersier</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
