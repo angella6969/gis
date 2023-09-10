@@ -82,42 +82,38 @@
                                     <th scope="col">Kabupaten</th>
                                     <th scope="col">Kecamatan </th>
                                     <th scope="col">Desa</th>
+                                    <th scope="col">Aksi</th>
                                     {{-- <th scope="col">Peta Desa </th> --}}
                                     {{-- <th scope="col">Skema Jaringan Irigasi </th>
                                     <th scope="col">Dokumentasi Saluran Irigasi Tersier</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($a as $item)
+                                @foreach ($penerimas as $penerima)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td> {{ $penerima->DaerahIrigasi }}</td>
+                                    <td> {{ $penerima->names }}</td>
+                                    <td> {{ $penerima->Kabupaten }}</td>
+                                    <td> {{ $penerima->Kecamatan }}</td>
+                                    <td> {{ $penerima->Desa }}</td>
                                     <td>
-                                        @if ($item->image)
-                                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}"
-                                            width="100">
-                                        @endif
-                                    </td>
-                                    <td> {{ $item->name }}</td>
-                                    <td> {{ $item->total }}</td>
-                                    <td> {{ $item->brand }}</td>
-                                    <td>
-                                        <a href="/dashboard/item/detail/{{ $item->name }}/{{ $item->category_id }}"
-                                            class="badge bg-success border-0 "><span data-feather="eye"></span></a>
+                                        <a href="#" class="badge bg-success border-0 "><span
+                                                data-feather="eye"></span></a>
 
-                                        <a href="/dashboard/item/update/{{ $item->name }}/{{ $item->category_id }}"
-                                            class="badge bg-warning border-0 "><span data-feather="edit"></span></a>
-
-                                        <form action="/dashboard/item/{{ $item->name }}/{{ $item->category_id }}"
-                                            class="d-inline" method="POST">
+                                        <a href="#" class="badge bg-warning border-0 "><span
+                                                data-feather="edit"></span></a>
+{{-- 
+                                        <form action="#" class="d-inline" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="badge bg-danger border-0"
                                                 onclick="return confirm('Yakin Ingin Menghapus Data yang berhubungan dengan? {{ $item->name }}')"><span
                                                     data-feather="file-minus"></span></button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

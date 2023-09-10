@@ -12,7 +12,13 @@ class PenerimaController extends Controller
      */
     public function index()
     {
-        return view('form.daftar_p3tgai.index');
+        $penerimas = Penerima::latest()
+            ->filter(request(['search']))
+            ->orderBy('created_at', 'desc') // Menambahkan orderBy untuk mensortir data
+            ->get();
+        return view('form.daftar_p3tgai.index', [
+            "penerimas" => $penerimas
+        ]);
     }
 
     /**
@@ -50,12 +56,12 @@ class PenerimaController extends Controller
             $petaPdfPath = $request->file('peta_pdf')->store('public/pdf');
             $validatedData['peta_pdf'] = $petaPdfPath;
         }
-        
+
         if ($request->hasFile('jaringan_pdf')) {
             $jaringanPdfPath = $request->file('jaringan_pdf')->store('public/pdf');
             $validatedData['jaringan_pdf'] = $jaringanPdfPath;
         }
-        
+
         if ($request->hasFile('dokumentasi_pdf')) {
             $dokumentasiPdfPath = $request->file('dokumentasi_pdf')->store('public/pdf');
             $validatedData['dokumentasi_pdf'] = $dokumentasiPdfPath;
