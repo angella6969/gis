@@ -16,50 +16,49 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="DaerahIrigasi" class="form-label">Total Saluran Irigasi Tersier & Irigasi Desa
-                                Terbangun</label>
+                            <label for="IrigasiDesaTerbangun" class="form-label">Total Saluran Irigasi Tersier & Irigasi
+                                Desa Terbangun</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="DaerahIrigasi" placeholder="Daerah Irigasi"
-                                    required>
+                                <input type="text" class="form-control" id="IrigasiDesaTerbangun"
+                                    placeholder="Total Saluran Irigasi Tersier & Irigasi Desa Terbangun" required>
                                 <span class="input-group-text">M<sup>2</sup></span>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="DaerahIrigasi" class="form-label">Total Saluran Irigasi Tersier & Irigasi Desa
-                                Belum
-                                Terbangun</label>
+                            <label for="IrigasiDesaBelumTerbangun" class="form-label">Total Saluran Irigasi Tersier &
+                                Irigasi Desa Belum Terbangun</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="DaerahIrigasi" placeholder="Daerah Irigasi"
-                                    required>
+                                <input type="text" class="form-control" id="IrigasiDesaBelumTerbangun"
+                                    placeholder="Total Saluran Irigasi Tersier & Irigasi Desa Belum Terbangun" required>
                                 <span class="input-group-text">M<sup>2</sup></span>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="DaerahIrigasi" class="form-label">Pola Tanam Saat Ini</label>
-                            <input type="text" class="form-control" id="DaerahIrigasi" placeholder="Daerah Irigasi"
+                            <label for="PolaTanamSaatIni" class="form-label">Pola Tanam Saat Ini</label>
+                            <input type="text" class="form-control" id="PolaTanamSaatIni"
+                                placeholder="Pola Tanam Saat Ini" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="JenisVegetasi" class="form-label">Jenis Vegetasi</label>
+                            <input type="text" class="form-control" id="JenisVegetasi" placeholder="Jenis Vegetasi"
                                 required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="DaerahIrigasi" class="form-label">Jenis Vegetasi</label>
-                            <input type="text" class="form-control" id="DaerahIrigasi" placeholder="Daerah Irigasi"
-                                required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="DaerahIrigasi" class="form-label">Mendapatkan P4-ISDA/P3-TGAI</label>
+                            <label for="MendapatkanP4-ISDA" class="form-label">Mendapatkan P4-ISDA/P3-TGAI</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="DaerahIrigasi" placeholder="Daerah Irigasi"
-                                    required>
+                                <input type="text" class="form-control" id="MendapatkanP4-ISDA"
+                                    placeholder="Mendapatkan P4-ISDA/P3-TGAI" required>
                                 <span class="input-group-text">Kali</sup></span>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="DaerahIrigasi" class="form-label">Tahun Mendapatkan</label>
-                            <input type="text" class="form-control" id="DaerahIrigasi" placeholder="Daerah Irigasi"
-                                required>
+                            <label for="TahunMendapatkan" class="form-label">Tahun Mendapatkan</label>
+                            <input type="text" class="form-control" id="TahunMendapatkan"
+                                placeholder="Tahun Mendapatkan" required>
                         </div>
 
                         <div class="mt-3 mb-3">
@@ -83,6 +82,7 @@
                             <h6>PDF Max 1 MB</h6>
 
                         </div>
+
                         <div class="mt-3 mb-3">
                             <label for="pdf">Skema jaringan Irigasi</label>
                             <input type="file" class="form-control @error('jaringan_pdf') is-invalid @enderror"
@@ -91,6 +91,7 @@
                             </div>
 
                         </div>
+
                         <div class="mt-3 mb-3">
                             <label for="pdf">Dokumentasi Saluran Irigasi Tersier</label>
                             <input type="file" class="form-control @error('dokumentasi_pdf') is-invalid @enderror"

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\inputController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\updateProgresController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -42,6 +43,9 @@ Route::get('/map-preview', [MapController::class, 'preview'])->name('map.preview
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/dashboard/create', [inputController::class, 'create']);
 Route::get('/dashboard/daerah-irigasi', [inputController::class, 'index']);
+
+Route::get('/dashboard/update/perkembangan-daerah-irigasi', [updateProgresController::class, 'create']);
+Route::post('/dashboard/update/perkembangan-daerah-irigasi', [updateProgresController::class, 'store']);
 
 //=================== Perlu Login =============================
 

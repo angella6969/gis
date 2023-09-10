@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class inputController extends Controller
+class updateProgresController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('form.daftar_p3tgai.index');
+        //
     }
 
     /**
@@ -19,8 +19,8 @@ class inputController extends Controller
      */
     public function create()
     {
-        return view('form.daftar_p3tgai.create');
-
+        // dd('a');
+        return view('form.perkembangan.create');
     }
 
     /**
@@ -28,7 +28,7 @@ class inputController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('ini form update');
     }
 
     /**
