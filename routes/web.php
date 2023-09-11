@@ -17,7 +17,9 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 Route::get('/', function () {
     return view('content/newhome');
 });
@@ -39,13 +41,16 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/dashboard/daerah-irigasi/create', [PenerimaController::class, 'create']);
 Route::post('/dashboard/daerah-irigasi/create', [PenerimaController::class, 'store']);
 
-Route::get('/dashboard/daerah-irigasi', [PenerimaController::class, 'index']);
-Route::get('/dashboard/daerah-irigasi/{id}/edit', [PenerimaController::class, 'edit']);
-Route::post('/dashboard/daerah-irigasi/{id}', [PenerimaController::class, 'update']);
-Route::DELETE('/dashboard/daerah-irigasi/{id}', [PenerimaController::class, 'destroy']);
+// Route::get('/dashboard/daerah-irigasi', [PenerimaController::class, 'index']);
+// Route::get('/dashboard/daerah-irigasi/{id}/edit', [PenerimaController::class, 'edit']);
+// Route::post('/dashboard/daerah-irigasi/{id}', [PenerimaController::class, 'update']);
+// Route::DELETE('/dashboard/daerah-irigasi/{id}', [PenerimaController::class, 'destroy']);
 
-Route::get('/dashboard/update/perkembangan-daerah-irigasi', [ProgresController::class, 'create']);
-Route::post('/dashboard/update/perkembangan-daerah-irigasi', [ProgresController::class, 'store']);
+Route::resource('/dashboard/daerah-irigasi', PenerimaController::class);
+// Route::resource('/dashboard/update/perkembangan-daerah-irigasi', ProgresController::class);
+
+Route::get('/dashboard/update/perkembangan-daerah-irigasi/{id}', [ProgresController::class, 'create']);
+Route::post('/dashboard/update/perkembangan-daerah-irigasi/{id}', [ProgresController::class, 'store']);
 
 //=================== Perlu Login =============================
 

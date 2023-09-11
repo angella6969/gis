@@ -11,7 +11,7 @@ class Penerima extends Model
     protected $guarded = ['id'];
     public function scopeFilter($query, array $Filters)
     {
-        $query->when($filters['search'] ?? false, function ($query, $search) {
+        $query->when($Filters['search'] ?? false, function ($query, $search) {
             return $query->where('DaerahIrigasi', 'LIKE', '%' . strtolower($search) . '%');
         });
     }

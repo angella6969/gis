@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <form method="post" action="/dashboard/daerah-irigasi/{{ $Penerimas->id }}"
                             enctype="multipart/form-data">
-                            @method('put')
+                            @method('PUT')
                             @csrf
                             <div class="mb-3">
                                 <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
@@ -93,13 +93,11 @@
                             <div class="mt-3 mb-3">
                                 <label for="names">Nama P3A/GP3A</label>
                                 <div id="nama-container">
-                                    @if (isset($Penerimas) && is_array($Penerimas->names))
-                                        @foreach ($Penerimas->names as $name)
+                                    @if (is_array(old('names')))
+                                        @foreach (old('names') as $name)
                                             <div class="input-group mb-3">
                                                 <input type="text" class="form-control" name="names[]"
-                                                    placeholder="Nama P3A/GP3A" required
-                                                    value="{{ isset($Penerimas) && is_array($Penerimas->names) ? $name : '' }}">
-
+                                                    placeholder="Nama P3A/GP3A" required value="{{ $name }}">
                                                 <div class="input-group-append">
                                                     <button class="btn btn-outline-secondary" type="button"
                                                         onclick="addNamaField()">+</button>
@@ -157,40 +155,7 @@
 
     <!-- Kode JavaScript Anda -->
     <script>
-        // Inisialisasi input field dinamis dengan data dari database
-        function initializeInputFields(dataFromDatabase) {
-            var namaContainer = document.getElementById('nama-container');
-
-            dataFromDatabase.forEach(function(data) {
-                var inputGroup = document.createElement('div');
-                inputGroup.className = 'input-group mb-3';
-
-                var input = document.createElement('input');
-                input.type = 'text';
-                input.className = 'form-control';
-                input.name = 'names[]';
-                input.placeholder = 'Nama';
-                input.value = data.nama; // Ganti "nama" dengan nama kolom yang sesuai dengan data Anda
-
-                var appendDiv = document.createElement('div');
-                appendDiv.className = 'input-group-append';
-
-                var removeButton = document.createElement('button');
-                removeButton.className = 'btn btn-outline-secondary';
-                removeButton.type = 'button';
-                removeButton.textContent = 'Hapus';
-                removeButton.onclick = function() {
-                    namaContainer.removeChild(inputGroup);
-                };
-
-                appendDiv.appendChild(removeButton);
-                inputGroup.appendChild(input);
-                inputGroup.appendChild(appendDiv);
-                namaContainer.appendChild(inputGroup);
-            });
-        }
-
-        // Fungsi untuk menambahkan input field dinamis
+       <script>
         function addNamaField() {
             var namaContainer = document.getElementById('nama-container');
             var inputGroup = document.createElement('div');
@@ -208,7 +173,7 @@
             var removeButton = document.createElement('button');
             removeButton.className = 'btn btn-outline-secondary';
             removeButton.type = 'button';
-            removeButton.textContent = 'Hapus';
+            removeButton.textContent = '-';
             removeButton.onclick = function() {
                 namaContainer.removeChild(inputGroup);
             };
@@ -218,6 +183,7 @@
             inputGroup.appendChild(appendDiv);
             namaContainer.appendChild(inputGroup);
         }
+    </script>
     </script>
 
 @endsection

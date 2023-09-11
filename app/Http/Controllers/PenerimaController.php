@@ -13,7 +13,8 @@ class PenerimaController extends Controller
     public function index()
     {
         $penerimas = Penerima::latest()
-            ->filter(request(['search']))
+            // ->filter(request(['search']))
+            ->filter(request()->only('search'))
             ->orderBy('created_at', 'desc') // Menambahkan orderBy untuk mensortir data
             ->get();
         return view('form.daftar_p3tgai.index', [
@@ -69,11 +70,10 @@ class PenerimaController extends Controller
 
         try {
             Penerima::create($validatedData);
+            return redirect('/dashboard/daerah-irigasi')->with('success', 'Data berhasil disimpan.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-
-        return redirect('/dashboard/daerah-irigasi')->with('success', 'Data berhasil disimpan.');
     }
 
     /**
@@ -101,7 +101,50 @@ class PenerimaController extends Controller
      */
     public function update(Request $request, Penerima $penerima)
     {
-        dd("ini update");
+        // dd("ini update");
+        $validatedData = $request->validate([
+            'DaerahIrigasi' => ['required', 'unique:penerimas'],
+            'Kabupaten' => ['required'],
+            'Desa' => ['required'],
+            'Kecamatan' => ['required'],
+            'IrigasiDesaTerbangun' => ['required'],
+            'IrigasiDesaBelumTerbangun' => ['required'],
+            'PolaTanamSaatIni' => ['required'],
+            'JenisVegetasi' => ['required'],
+            'MendapatkanP4_ISDA' => ['required'],
+            'TahunMendapatkan' => ['required'],
+            'names' => ['required'], // Mengganti 'names.*' menjadi 'names'
+            'peta_pdf' => ['file', 'max:1024', 'mimes:pdf'],
+            'jaringan_pdf' => ['file', 'max:1024', 'mimes:pdf'],
+            'dokumentasi_pdf' => ['file', 'max:1024', 'mimes:pdf'],
+        ]);
+
+
+        if ($request->hasFile('peta_pdf')) {
+            $petaPdfPath = $request->file('peta_pdf')->store('public/pdf');
+            $validatedData['peta_pdf'] = $petaPdfPath;
+        }
+
+        if ($request->hasFile('jaringan_pdf')) {
+            $jaringanPdfPath = $request->file('jaringan_pdf')->store('public/pdf');
+            $validatedData['jaringan_pdf'] = $jaringanPdfPath;
+        }
+
+        if ($request->hasFile('dokumentasi_pdf')) {
+            $dokumentasiPdfPath = $request->file('dokumentasi_pdf')->store('public/pdf');
+            $validatedData['dokumentasi_pdf'] = $dokumentasiPdfPath;
+        }
+        $validatedData['names'] = json_encode($validatedData['names']);
+
+        try {
+            // Assuming 'Penerima' is your model and $id is the ID of the record you want to update.
+            $penerima = Penerima::findOrFail($penerima);
+            $penerima->update($validatedData);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+
+        return redirect('/dashboard/daerah-irigasi')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**

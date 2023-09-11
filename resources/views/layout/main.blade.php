@@ -9,6 +9,13 @@
     <title>BBWSSO | Dashboard</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('src') }}/assets/images/logos/favicon-16x16.png" />
     <link rel="stylesheet" href="{{ asset('src') }}/assets/css/styles.min.css" />
+    <link rel="stylesheet" href="iziToast.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css"
+        integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <style>
@@ -23,9 +30,8 @@
         <aside class="left-sidebar">
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="./index.html" class="text-nowrap logo-img">
-                        <img src="{{ asset('src') }}/assets/images/logos/dark-logo.svg" width="180"
-                            alt="" />
+                    {{-- <a href="./index.html" class="text-nowrap logo-img"> --}}
+                    <img src="{{ asset('src') }}/assets/images/logos/dark-logo.svg" width="180" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -60,21 +66,22 @@
             </div>
         </div>
     </div>
+    <script src="iziToast.min.js" type="text/javascript"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script>
         feather.replace();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+        integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('src') }}/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="{{ asset('src') }}/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
-    integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     <script src="{{ asset('src') }}/assets/js/sidebarmenu.js"></script>
     <script src="{{ asset('src') }}/assets/js/app.min.js"></script>
-    {{-- <script src="{{ asset('src') }}/assets/libs/apexcharts/dist/apexcharts.min.js"></script> --}}
+    <script src="{{ asset('src') }}/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="{{ asset('src') }}/assets/libs/simplebar/dist/simplebar.js"></script>
-    {{-- <script src="{{ asset('src') }}/assets/js/dashboard.js"></script> --}}
+    <script src="{{ asset('src') }}/assets/js/dashboard.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
 </body>

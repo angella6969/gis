@@ -78,12 +78,13 @@ https://templatemo.com/tm-569-edu-meeting
                             <li class="btn"><a href="#">Tentang</a></li>
 
                             @if (auth()->check())
-                                <form action="/logout" method="post">
+                                {{-- <form action="/logout" method="post">
                                     @csrf
-                                    <button type="submit" class="nav-link px-3 bg-dark border-0">
+                                    <button type="submit" class="btn btn-outline-primary mx-5 mt-2 d-block">
                                         KELUAR <span data-feather="log-out" class="align-text-bottom"></span>
                                     </button>
-                                </form>
+                                </form> --}}
+                                <li class="btn"><a href="/dashboard">Dashboard</a></li>
                             @else
                                 <li class="btn"><a href="/login">MASUK</a></li>
                             @endif

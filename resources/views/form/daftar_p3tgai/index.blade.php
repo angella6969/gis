@@ -63,8 +63,7 @@
                 </form>
                 <div class="mt-2 mb-2">
                     <a href="/dashboard/daerah-irigasi/create" class="btn btn-info">Tambah Daerah Irigasi</a>
-                    <a href="/dashboard/update/perkembangan-daerah-irigasi" class="btn btn-info">Update Progres Daerah
-                        Irigasi</a>
+
                 </div>
 
                 <div class="card">
@@ -104,9 +103,11 @@
                                                 {{-- <a href="/dashboard/daerah-irigasi/{{$penerima->id}}/edit" class="badge bg-success border-0 "><span
                                                 data-feather="eye"></span></a> --}}
                                                 {{-- <button> modal</button> --}}
+                                                <a href="/dashboard/update/perkembangan-daerah-irigasi/{{ $penerima->id }}"
+                                                    class="btn btn-info">Progres</a>
                                                 <a href="/dashboard/daerah-irigasi/{{ $penerima->id }}/edit"
                                                     class="badge bg-warning border-0 "><span data-feather="edit"></span></a>
-
+                                                
                                                 <form action="/dashboard/daerah-irigasi/{{ $penerima->id }}"
                                                     class="d-inline" method="POST">
                                                     @csrf
@@ -126,4 +127,14 @@
             </div>
         </div>
     </div>
+
+    <script>
+        @if (Session::has('success'))
+            iziToast.success({
+                title: 'success',
+                message: '{{ Session::get('success') }}',
+                position: 'topRight',
+            });
+        @endif
+    </script>
 @endsection

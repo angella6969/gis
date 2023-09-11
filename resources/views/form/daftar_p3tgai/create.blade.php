@@ -189,57 +189,5 @@
             namaContainer.appendChild(inputGroup);
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Ketika pilihan provinsi berubah
-            $('#province').change(function() {
-                var provinceId = $(this).val();
-                if (provinceId) {
-                    $.ajax({
-                        url: '/get-regencies/' + provinceId,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#regency').empty();
-                            $('#district').empty();
-                            $('#regency').append(
-                                '<option value="">Pilih Kabupaten/Kota</option>');
-                            $.each(data, function(key, value) {
-                                $('#regency').append('<option value="' + key + '">' +
-                                    value + '</option>');
-                            });
-                        }
-                    });
-                } else {
-                    $('#regency').empty();
-                    $('#district').empty();
-                    $('#regency').append('<option value="">Pilih Kabupaten/Kota</option>');
-                }
-            });
-
-            // Ketika pilihan kabupaten/kota berubah
-            $('#regency').change(function() {
-                var regencyId = $(this).val();
-                if (regencyId) {
-                    $.ajax({
-                        url: '/get-districts/' + regencyId,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#district').empty();
-                            $('#district').append('<option value="">Pilih Kecamatan</option>');
-                            $.each(data, function(key, value) {
-                                $('#district').append('<option value="' + key + '">' +
-                                    value + '</option>');
-                            });
-                        }
-                    });
-                } else {
-                    $('#district').empty();
-                    $('#district').append('<option value="">Pilih Kecamatan</option>');
-                }
-            });
-        });
-    </script>
+ 
 @endsection

@@ -73,26 +73,18 @@
                         </form>
 
                         <div class="separator">
-                            {{-- <small class="d-block text-center">Powered By</a>
-                            </small> --}}
+
                             <div class="clearfix"></div>
-                            {{-- <br /><br />
-                            <div> --}}
-                                {{-- <a class="btn btn-link" href="#">
-                                    <img class="img-thumbnail" src={{ asset('images\LOGO_SISDA.png') }}
-                                        alt="LOGO SISDA.png">
-                                </a> --}}
-                                <p>© 2023 BBWS Serayu Opak</p>
-                                {{-- <p>BBWS Serayu Opak</p> --}}
-                            </div>
+                            <p>© 2023 BBWS Serayu Opak</p>
                         </div>
                     </section>
                 </div>
-
             </main>
         </div>
+
+        </main>
     </div>
-    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
         integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title fw-semibold mb-4">Progres Perkembangan Irigasi P3-TGAI</h5>
-            <form action="/dashboard/update/perkembangan-daerah-irigasi">
+            <form action="/dashboard/update/perkembangan-daerah-irigasi/{{$id}}">
                 <div class="row">
                     <div class="col-6 col-sm-12">
                         <div class="input-group mb-3">
@@ -50,7 +50,7 @@
                                 <option value="Pembangunan">Pembangunan</option>
                             </select>
                         </div>
-                        <div class="mt-3 mb-3">
+                        {{-- <div class="mt-3 mb-3">
                             <label for="langsirMaterial" class="form-label">Langsir Material</label>
                             <select class="form-select" id="langsirMaterial" required>
                                 <option value="">Pilih salah satu opsi</option>
@@ -189,7 +189,7 @@
                                 required>
                             <div class="form-text">PDF Max 5 MB
                             </div>
-                        </div>
+                        </div> --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
