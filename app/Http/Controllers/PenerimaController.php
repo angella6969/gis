@@ -34,9 +34,8 @@ class PenerimaController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $validatedData = $request->validate([
-            'DaerahIrigasi' => ['required'],
+            'DaerahIrigasi' => ['required','unique:penerimas'],
             'Kabupaten' => ['required'],
             'Desa' => ['required'],
             'Kecamatan' => ['required'],
@@ -44,12 +43,12 @@ class PenerimaController extends Controller
             'IrigasiDesaBelumTerbangun' => ['required'],
             'PolaTanamSaatIni' => ['required'],
             'JenisVegetasi' => ['required'],
-            'MendapatkanP4-ISDA' => ['required'],
+            'MendapatkanP4_ISDA' => ['required'],
             'TahunMendapatkan' => ['required'],
             'names' => ['required'], // Mengganti 'names.*' menjadi 'names'
-            'peta_pdf' => ['required', 'file', 'max:1024', 'mimes:pdf'],
-            'jaringan_pdf' => ['required', 'file', 'max:1024', 'mimes:pdf'],
-            'dokumentasi_pdf' => ['required', 'file', 'max:1024', 'mimes:pdf'],
+            'peta_pdf' => ['file', 'max:1024', 'mimes:pdf'],
+            'jaringan_pdf' => ['file', 'max:1024', 'mimes:pdf'],
+            'dokumentasi_pdf' => ['file', 'max:1024', 'mimes:pdf'],
         ]);
 
         if ($request->hasFile('peta_pdf')) {
@@ -88,9 +87,13 @@ class PenerimaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Penerima $penerima)
+    public function edit(string $id)
     {
-        //
+        $penerima = Penerima::findOrFail($id);
+
+        return view('form.daftar_p3tgai.edit', [
+            "Penerimas" => $penerima
+        ]);
     }
 
     /**
@@ -98,14 +101,32 @@ class PenerimaController extends Controller
      */
     public function update(Request $request, Penerima $penerima)
     {
-        //
+        dd("ini update");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Penerima $penerima)
+    public function destroy(string $id)
     {
-        //
+        // dd("ini delete");
+        $penerima = Penerima::findOrFail($id);
+        try {
+            $penerima->delete();
+            return redirect()->back()->with('success', 'Berhasil Menghapus Data');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+    public function getDataDariDatabase()
+    {
+        $dataDariDatabase = Penerima::all(); // Mengambil data dari model
+
+        return view(
+            'form.daftar_p3tgai.index',
+            [
+                'dataDariDatabase' => $dataDariDatabase
+            ]
+        );
     }
 }

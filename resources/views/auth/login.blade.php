@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sistem Agenda | Login</title>
+    <title>P3TGAI | Masuk</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -57,7 +57,7 @@
                         <form action="/login" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <h1>Login Form</h1>
+                            <h1>Masuk</h1>
 
                             <div class="form-floating">
                                 <input type="email" name='email' class="form-control  " id="email"
@@ -72,20 +72,20 @@
                                 <button class="w-100 btn btn-lg btn-light" type="submit">Login</button>
                         </form>
 
-                        <div class="separator">
+                        {{-- <div class="separator">
                             <small class="d-block text-center">Powered By</a>
                             </small>
                             <div class="clearfix"></div>
                             <br /><br />
-                            <div>
+                            <div> --}}
                                 {{-- <a class="btn btn-link" href="#">
                                     <img class="img-thumbnail" src={{ asset('images\LOGO_SISDA.png') }}
                                         alt="LOGO SISDA.png">
                                 </a> --}}
-                                <p>© 2023 BBWS Serayu Opak</p>
+                                {{-- <p>© 2023 BBWS Serayu Opak</p> --}}
                                 {{-- <p>BBWS Serayu Opak</p> --}}
-                            </div>
-                        </div>
+                            {{-- </div> --}}
+                        {{-- </div> --}}
                     </section>
                 </div>
 

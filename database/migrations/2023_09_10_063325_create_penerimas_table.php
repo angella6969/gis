@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('penerimas', function (Blueprint $table) {
             $table->id();
-            $table->string('DaerahIrigasi');
+            $table->string('DaerahIrigasi')->unique();
+            $table->string('Kabupaten');
             $table->string('Desa');
             $table->string('Kecamatan');
-            $table->string('Kabupaten');
-            $table->json('names');
+            $table->json('names'); 
             $table->string('IrigasiDesaTerbangun');
             $table->string('IrigasiDesaBelumTerbangun');
             $table->string('PolaTanamSaatIni');
             $table->string('JenisVegetasi');
+            $table->string('MendapatkanP4_ISDA');
             $table->string('TahunMendapatkan');
-            $table->string('MendapatkanP4-ISDA');
-            $table->string('peta_pdf');
-            $table->string('jaringan_pdf');
-            $table->string('dokumentasi_pdf');
+            $table->string('peta_pdf')->nullable();
+            $table->string('jaringan_pdf')->nullable();
+            $table->string('dokumentasi_pdf')->nullable();
             $table->timestamps();
         });
     }
