@@ -6,13 +6,15 @@
                 <h5 class="card-title fw-semibold mb-4">Daftar Calon Daerah Irigasi Penerima P3-TGAI</h5>
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" action="/dashboard/daerah-irigasi/{{ $Penerimas->id }}" enctype="multipart/form-data">
+                        <form method="post" action="/dashboard/daerah-irigasi/{{ $Penerimas->id }}"
+                            enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="mb-3">
                                 <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
                                 <input type="text" class="form-control" id="DaerahIrigasi" name="DaerahIrigasi"
-                                    value="{{ old('DaerahIrigasi', $Penerimas->DaerahIrigasi) }}" placeholder="Daerah Irigasi" required>
+                                    value="{{ old('DaerahIrigasi', $Penerimas->DaerahIrigasi) }}"
+                                    placeholder="Daerah Irigasi" required>
                             </div>
 
                             <div class="mb-3">
@@ -29,8 +31,8 @@
 
                             <div class="mb-3">
                                 <label for="Desa" class="form-label">Desa</label>
-                                <input type="text" class="form-control" id="Desa" name="Desa" value="{{ old('Desa', $Penerimas->Desa) }}" placeholder="Desa"
-                                    required>
+                                <input type="text" class="form-control" id="Desa" name="Desa"
+                                    value="{{ old('Desa', $Penerimas->Desa) }}" placeholder="Desa" required>
                             </div>
 
                             <div class="mb-3">
@@ -39,7 +41,8 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="IrigasiDesaTerbangun"
                                         name="IrigasiDesaTerbangun"
-                                        value="{{ old('IrigasiDesaTerbangun', $Penerimas->IrigasiDesaTerbangun) }}" placeholder="Total Saluran Irigasi Tersier & Irigasi Desa Terbangun" required>
+                                        value="{{ old('IrigasiDesaTerbangun', $Penerimas->IrigasiDesaTerbangun) }}"
+                                        placeholder="Total Saluran Irigasi Tersier & Irigasi Desa Terbangun" required>
                                     <span class="input-group-text">M<sup>2</sup></span>
                                 </div>
                             </div>
@@ -49,7 +52,8 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="IrigasiDesaBelumTerbangun"
                                         name="IrigasiDesaBelumTerbangun"
-                                        value="{{ old('IrigasiDesaBelumTerbangun', $Penerimas->IrigasiDesaBelumTerbangun) }}" placeholder="Total Saluran Irigasi Tersier & Irigasi Desa Belum Terbangun" required>
+                                        value="{{ old('IrigasiDesaBelumTerbangun', $Penerimas->IrigasiDesaBelumTerbangun) }}"
+                                        placeholder="Total Saluran Irigasi Tersier & Irigasi Desa Belum Terbangun" required>
                                     <span class="input-group-text">M<sup>2</sup></span>
                                 </div>
                             </div>
@@ -57,20 +61,24 @@
                             <div class="mb-3">
                                 <label for="PolaTanamSaatIni" class="form-label">Pola Tanam Saat Ini</label>
                                 <input type="text" class="form-control" id="PolaTanamSaatIni" name="PolaTanamSaatIni"
-                                    value="{{ old('PolaTanamSaatIni', $Penerimas->PolaTanamSaatIni) }}" placeholder="Pola Tanam Saat Ini" required>
+                                    value="{{ old('PolaTanamSaatIni', $Penerimas->PolaTanamSaatIni) }}"
+                                    placeholder="Pola Tanam Saat Ini" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="JenisVegetasi" class="form-label">Jenis Vegetasi</label>
                                 <input type="text" class="form-control" id="JenisVegetasi" name="JenisVegetasi"
-                                    value="{{ old('JenisVegetasi', $Penerimas->JenisVegetasi) }}" placeholder="Jenis Vegetasi" required>
+                                    value="{{ old('JenisVegetasi', $Penerimas->JenisVegetasi) }}"
+                                    placeholder="Jenis Vegetasi" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="MendapatkanP4_ISDA" class="form-label">Mendapatkan P4-ISDA/P3-TGAI</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="MendapatkanP4_ISDA"
-                                        name="MendapatkanP4_ISDA" value="{{ old('MendapatkanP4_ISDA', $Penerimas->MendapatkanP4_ISDA) }}" placeholder="Mendapatkan P4-ISDA/P3-TGAI" required>
+                                        name="MendapatkanP4_ISDA"
+                                        value="{{ old('MendapatkanP4_ISDA', $Penerimas->MendapatkanP4_ISDA) }}"
+                                        placeholder="Mendapatkan P4-ISDA/P3-TGAI" required>
                                     <span class="input-group-text">Kali</sup></span>
                                 </div>
                             </div>
@@ -78,34 +86,40 @@
                             <div class="mb-3">
                                 <label for="TahunMendapatkan" class="form-label">Tahun Mendapatkan</label>
                                 <input type="text" class="form-control" id="TahunMendapatkan" name="TahunMendapatkan"
-                                    value="{{ old('TahunMendapatkan', $Penerimas->TahunMendapatkan) }}" placeholder="Tahun Mendapatkan" required>
+                                    value="{{ old('TahunMendapatkan', $Penerimas->TahunMendapatkan) }}"
+                                    placeholder="Tahun Mendapatkan" required>
                             </div>
-                            
+
                             <div class="mt-3 mb-3">
                                 <label for="names">Nama P3A/GP3A</label>
                                 <div id="nama-container">
-                                    @if(is_array(old('names', $Penerimas->names)))
-                                        @foreach(old('names', $Penerimas->names) as $name)
+                                    @if (isset($Penerimas) && is_array($Penerimas->names))
+                                        @foreach ($Penerimas->names as $name)
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="names[]" placeholder="Nama P3A/GP3A"
-                                                    required value="{{ $name }}">
+                                                <input type="text" class="form-control" name="names[]"
+                                                    placeholder="Nama P3A/GP3A" required
+                                                    value="{{ isset($Penerimas) && is_array($Penerimas->names) ? $name : '' }}">
+
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-outline-secondary" type="button" onclick="addNamaField()">+</button>
+                                                    <button class="btn btn-outline-secondary" type="button"
+                                                        onclick="addNamaField()">+</button>
                                                 </div>
                                             </div>
                                         @endforeach
                                     @else
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" name="names[]" placeholder="Nama P3A/GP3A"
-                                                required value="">
+                                            <input type="text" class="form-control" name="names[]"
+                                                placeholder="Nama P3A/GP3A" required value="">
                                             <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="addNamaField()">+</button>
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    onclick="addNamaField()">+</button>
                                             </div>
                                         </div>
                                     @endif
                                 </div>
                             </div>
-                            
+
+
 
                             <div class="mt-3 mb-3">
                                 <label for="peta_pdf">Peta Desa</label>
@@ -141,7 +155,42 @@
 
 
 
+    <!-- Kode JavaScript Anda -->
     <script>
+        // Inisialisasi input field dinamis dengan data dari database
+        function initializeInputFields(dataFromDatabase) {
+            var namaContainer = document.getElementById('nama-container');
+
+            dataFromDatabase.forEach(function(data) {
+                var inputGroup = document.createElement('div');
+                inputGroup.className = 'input-group mb-3';
+
+                var input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'form-control';
+                input.name = 'names[]';
+                input.placeholder = 'Nama';
+                input.value = data.nama; // Ganti "nama" dengan nama kolom yang sesuai dengan data Anda
+
+                var appendDiv = document.createElement('div');
+                appendDiv.className = 'input-group-append';
+
+                var removeButton = document.createElement('button');
+                removeButton.className = 'btn btn-outline-secondary';
+                removeButton.type = 'button';
+                removeButton.textContent = 'Hapus';
+                removeButton.onclick = function() {
+                    namaContainer.removeChild(inputGroup);
+                };
+
+                appendDiv.appendChild(removeButton);
+                inputGroup.appendChild(input);
+                inputGroup.appendChild(appendDiv);
+                namaContainer.appendChild(inputGroup);
+            });
+        }
+
+        // Fungsi untuk menambahkan input field dinamis
         function addNamaField() {
             var namaContainer = document.getElementById('nama-container');
             var inputGroup = document.createElement('div');
@@ -159,7 +208,7 @@
             var removeButton = document.createElement('button');
             removeButton.className = 'btn btn-outline-secondary';
             removeButton.type = 'button';
-            removeButton.textContent = '-';
+            removeButton.textContent = 'Hapus';
             removeButton.onclick = function() {
                 namaContainer.removeChild(inputGroup);
             };
@@ -170,57 +219,5 @@
             namaContainer.appendChild(inputGroup);
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Ketika pilihan provinsi berubah
-            $('#province').change(function() {
-                var provinceId = $(this).val();
-                if (provinceId) {
-                    $.ajax({
-                        url: '/get-regencies/' + provinceId,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#regency').empty();
-                            $('#district').empty();
-                            $('#regency').append(
-                                '<option value="">Pilih Kabupaten/Kota</option>');
-                            $.each(data, function(key, value) {
-                                $('#regency').append('<option value="' + key + '">' +
-                                    value + '</option>');
-                            });
-                        }
-                    });
-                } else {
-                    $('#regency').empty();
-                    $('#district').empty();
-                    $('#regency').append('<option value="">Pilih Kabupaten/Kota</option>');
-                }
-            });
 
-            // Ketika pilihan kabupaten/kota berubah
-            $('#regency').change(function() {
-                var regencyId = $(this).val();
-                if (regencyId) {
-                    $.ajax({
-                        url: '/get-districts/' + regencyId,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#district').empty();
-                            $('#district').append('<option value="">Pilih Kecamatan</option>');
-                            $.each(data, function(key, value) {
-                                $('#district').append('<option value="' + key + '">' +
-                                    value + '</option>');
-                            });
-                        }
-                    });
-                } else {
-                    $('#district').empty();
-                    $('#district').append('<option value="">Pilih Kecamatan</option>');
-                }
-            });
-        });
-    </script>
 @endsection

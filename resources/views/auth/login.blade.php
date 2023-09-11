@@ -57,7 +57,7 @@
                         <form action="/login" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <h1>Masuk</h1>
+                            <h1>P3-TGAI</h1>
 
                             <div class="form-floating">
                                 <input type="email" name='email' class="form-control  " id="email"
@@ -69,23 +69,23 @@
                                     placeholder="Password" required>
                             </div>
                             <div>
-                                <button class="w-100 btn btn-lg btn-light" type="submit">Login</button>
+                                <button class="w-100 btn btn-lg btn-light" type="submit">Masuk</button>
                         </form>
 
-                        {{-- <div class="separator">
-                            <small class="d-block text-center">Powered By</a>
-                            </small>
+                        <div class="separator">
+                            {{-- <small class="d-block text-center">Powered By</a>
+                            </small> --}}
                             <div class="clearfix"></div>
-                            <br /><br />
+                            {{-- <br /><br />
                             <div> --}}
                                 {{-- <a class="btn btn-link" href="#">
                                     <img class="img-thumbnail" src={{ asset('images\LOGO_SISDA.png') }}
                                         alt="LOGO SISDA.png">
                                 </a> --}}
-                                {{-- <p>© 2023 BBWS Serayu Opak</p> --}}
+                                <p>© 2023 BBWS Serayu Opak</p>
                                 {{-- <p>BBWS Serayu Opak</p> --}}
-                            {{-- </div> --}}
-                        {{-- </div> --}}
+                            </div>
+                        </div>
                     </section>
                 </div>
 

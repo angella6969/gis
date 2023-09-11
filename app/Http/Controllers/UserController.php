@@ -25,7 +25,7 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/dashbord');
+            return redirect('/dashboard');
         } else {
             return redirect('/login')->with('loginError', 'Email atau Password invalid');
         }

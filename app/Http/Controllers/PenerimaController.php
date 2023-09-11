@@ -35,7 +35,7 @@ class PenerimaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'DaerahIrigasi' => ['required','unique:penerimas'],
+            'DaerahIrigasi' => ['required', 'unique:penerimas'],
             'Kabupaten' => ['required'],
             'Desa' => ['required'],
             'Kecamatan' => ['required'],
@@ -90,7 +90,7 @@ class PenerimaController extends Controller
     public function edit(string $id)
     {
         $penerima = Penerima::findOrFail($id);
-
+        // dd($penerima);
         return view('form.daftar_p3tgai.edit', [
             "Penerimas" => $penerima
         ]);
