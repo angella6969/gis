@@ -5,7 +5,8 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title fw-semibold mb-4">Progres Perkembangan Irigasi P3-TGAI</h5>
-            <form action="/dashboard/update/perkembangan-daerah-irigasi/{{$id}}">
+            {{-- <form method="POST" action="/dashboard/update/perkembangan-daerah-irigasi/{{$id}}">
+                <input type="hidden" name="id" value="{{$id}}">
                 <div class="row">
                     <div class="col-6 col-sm-12">
                         <div class="input-group mb-3">
@@ -15,31 +16,35 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </form> --}}
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="/dashboard/update/perkembangan-daerah-irigasi"
+                    <form method="post" action="/dashboard/update/perkembangan-daerah-irigasi/{{$id}}"
                         enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{$id}}">
                         <div class="mb-3">
                             <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
                             <input type="text" class="form-control" id="DaerahIrigasi" placeholder="Daerah Irigasi"
-                                disabled>
+                                disabled value="{{ $penerima->DaerahIrigasi }}">
                         </div>
 
-                        <div class="mt-3 mb-3">
+                        {{-- <div class="mt-3 mb-3">
                             <label for="names" class="form-label">Nama P3A/GP3A</label>
                             <div id="nama-container">
+                                @foreach ($penerima as $item)
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="names[]" placeholder="Nama P3A/GP3A"
+                                    <input type="text" class="form-control" name="names[]" value="{{ $item->names }}"
                                         disabled>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" type="button"
                                             onclick="addNamaField()">+</button>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
-                        </div>
+                        </div> --}}
+                       
 
                         <div class="mt-3 mb-3">
                             <label for="jenisPekerjaan" class="form-label">Jenis Pekerjaan</label>
