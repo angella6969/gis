@@ -108,7 +108,7 @@
                                                 <a href="/dashboard/update/perkembangan-daerah-irigasi/{{ $penerima->id }}"
                                                     class="btn btn-info">Progres</a>
                                                 <a href="/dashboard/daerah-irigasi/{{ $penerima->id }}/edit"
-                                                    class="badge bg-warning border-0 "><span data-feather="edit"></span></a>
+                                                    class="badge bg-warning border-0 "><span data-feather="edit"> </span>Edit</a>
                                                 
                                                 {{-- <form action="/dashboard/daerah-irigasi/{{ $penerima->id }}"
                                                     class="d-inline" method="POST">
