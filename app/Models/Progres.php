@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Progres extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+    public function penerima()
+    {
+        return $this->belongsTo(penerima::class);
+    }
 }

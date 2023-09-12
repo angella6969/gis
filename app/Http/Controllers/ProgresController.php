@@ -11,8 +11,15 @@ class ProgresController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
+        // dd('ini index progres',$id);
+        // $a = Penerima::findOrFail($id);
+        // dd($a);
+        return view('form.perkembangan.index', [
+            'penerimas' => Penerima::findOrFail($id),
+            'progress' => Progres::get(),
+        ]);
     }
 
     /**
@@ -20,7 +27,8 @@ class ProgresController extends Controller
      */
     public function create($id)
     {
-        // dd($id);
+        // dd('ini create progres',$id);
+
         $penerima = Penerima::findOrFail($id);
         $oldNames = $penerima->names ?? [];
         return view('form.perkembangan.create', [
@@ -33,13 +41,62 @@ class ProgresController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        $id = $request->input('id');
+        // dd($id);
+        $validatedData = $request->validate([
+            'penerima_id' => ['required'],
+            'TahunPengerjaan' => ['required'],
+            'jenisPekerjaan' => ['required'],
+            'langsirMaterial' => ['required'],
+            'jarakLangsir' => ['required'],
+            'bedaLangsir' => ['required'],
+            'metodeLangsir' => ['required'],
+            'KondisiLokasiPekerjaan' => ['required'],
+            'KondisiTanahLokasiPekerjaan' => ['required'],
+            'PotensiMasalahSosial' => ['required'],
+            'TerlampirAktePendirian' => ['file', 'max:1024', 'mimes:pdf'],
+            'TerlampirNPWP' => ['file', 'max:1024', 'mimes:pdf'],
+            'TerlampirBukuRekening' => ['file', 'max:1024', 'mimes:pdf'],
+        ]);
 
+        if ($request->input('TahunPengerjaan') === 'lainnya') {
+            $validatedData['TahunPengerjaan'] = $request->input('pilihanLainnyaTahunPengerjaan');
+        }
+        if ($request->input('metodeLangsir') === 'lainnya') {
+            $validatedData['metodeLangsir'] = $request->input('pilihanLainnyaMetode');
+        }
+        if ($request->input('KondisiLokasiPekerjaan') === 'lainnya') {
+            $validatedData['KondisiLokasiPekerjaan'] = $request->input('pilihanLainnyaKondisiLokasiPekerjaan');
+        }
+        if ($request->input('KondisiTanahLokasiPekerjaan') === 'lainnya') {
+            $validatedData['KondisiTanahLokasiPekerjaan'] = $request->input('pilihanLainnyaKondisiTanahLokasiPekerjaan');
+        }
+        if ($request->input('PotensiMasalahSosial') === 'lainnya') {
+            $validatedData['PotensiMasalahSosial'] = $request->input('pilihanLainnyaPotensiMasalahSosial');
+        }
+        if ($request->hasFile('TerlampirAktePendirian')) {
+            $petaPdfPath = $request->file('TerlampirAktePendirian')->store('public/pdf');
+            $validatedData['TerlampirAktePendirian'] = $petaPdfPath;
+        }
 
-        dd($id);
-        dd('ini form update');
+        if ($request->hasFile('TerlampirNPWP')) {
+            $jaringanPdfPath = $request->file('TerlampirNPWP')->store('public/pdf');
+            $validatedData['TerlampirNPWP'] = $jaringanPdfPath;
+        }
+
+        if ($request->hasFile('TerlampirBukuRekening')) {
+            $dokumentasiPdfPath = $request->file('TerlampirBukuRekening')->store('public/pdf');
+            $validatedData['TerlampirBukuRekening'] = $dokumentasiPdfPath;
+        }
+
+        // dd($validatedData);
+        try {
+            Progres::create($validatedData);
+            return redirect("/dashboard/update/perkembangan-daerah-irigasi/$id")->with('success', 'Data berhasil disimpan.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 
     /**

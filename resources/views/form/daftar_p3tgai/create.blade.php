@@ -97,8 +97,13 @@
                                 <input type="text" class="form-control" id="TahunMendapatkan" name="TahunMendapatkan"
                                     value="{{ old('TahunMendapatkan') }}" placeholder="Tahun Mendapatkan" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="names" class="form-label">Nama P3A/GP3A</label>
+                                <input type="text" class="form-control" id="names" name="names"
+                                    value="{{ old('names') }}" placeholder="Nama P3A/GP3A" required>
+                            </div>
 
-                            <div class="mt-3 mb-3">
+                            {{-- <div class="mt-3 mb-3">
                                 <label for="names">Nama P3A/GP3A</label>
                                 <div id="nama-container">
                                     @if (is_array(old('names')))
@@ -123,7 +128,7 @@
                                         </div>
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                             <div class="mt-3 mb-3">

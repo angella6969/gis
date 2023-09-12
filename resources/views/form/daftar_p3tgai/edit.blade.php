@@ -89,8 +89,12 @@
                                     value="{{ old('TahunMendapatkan', $Penerimas->TahunMendapatkan) }}"
                                     placeholder="Tahun Mendapatkan" required>
                             </div>
-
-                            <div class="mt-3 mb-3">
+                            <div class="mb-3">
+                                <label for="names" class="form-label">Nama P3A/GP3A</label>
+                                <input type="text" class="form-control" id="names" name="names"
+                                    value="{{ old('names',$Penerimas->names) }}" placeholder="Nama P3A/GP3A" required>
+                            </div>
+                            {{-- <div class="mt-3 mb-3">
                                 <label for="names">Nama P3A/GP3A</label>
                                 <div id="nama-container">
                                     @if (is_array(old('names')))
@@ -115,7 +119,7 @@
                                         </div>
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
 
 
 
@@ -155,35 +159,34 @@
 
     <!-- Kode JavaScript Anda -->
     <script>
-       <script>
-        function addNamaField() {
-            var namaContainer = document.getElementById('nama-container');
-            var inputGroup = document.createElement('div');
-            inputGroup.className = 'input-group mb-3';
+        < script >
+            function addNamaField() {
+                var namaContainer = document.getElementById('nama-container');
+                var inputGroup = document.createElement('div');
+                inputGroup.className = 'input-group mb-3';
 
-            var input = document.createElement('input');
-            input.type = 'text';
-            input.className = 'form-control';
-            input.name = 'names[]';
-            input.placeholder = 'Nama';
+                var input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'form-control';
+                input.name = 'names[]';
+                input.placeholder = 'Nama';
 
-            var appendDiv = document.createElement('div');
-            appendDiv.className = 'input-group-append';
+                var appendDiv = document.createElement('div');
+                appendDiv.className = 'input-group-append';
 
-            var removeButton = document.createElement('button');
-            removeButton.className = 'btn btn-outline-secondary';
-            removeButton.type = 'button';
-            removeButton.textContent = '-';
-            removeButton.onclick = function() {
-                namaContainer.removeChild(inputGroup);
-            };
+                var removeButton = document.createElement('button');
+                removeButton.className = 'btn btn-outline-secondary';
+                removeButton.type = 'button';
+                removeButton.textContent = '-';
+                removeButton.onclick = function() {
+                    namaContainer.removeChild(inputGroup);
+                };
 
-            appendDiv.appendChild(removeButton);
-            inputGroup.appendChild(input);
-            inputGroup.appendChild(appendDiv);
-            namaContainer.appendChild(inputGroup);
-        }
+                appendDiv.appendChild(removeButton);
+                inputGroup.appendChild(input);
+                inputGroup.appendChild(appendDiv);
+                namaContainer.appendChild(inputGroup);
+            }
+    </>
     </script>
-    </script>
-
 @endsection

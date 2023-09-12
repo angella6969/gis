@@ -66,7 +66,7 @@ class PenerimaController extends Controller
             $dokumentasiPdfPath = $request->file('dokumentasi_pdf')->store('public/pdf');
             $validatedData['dokumentasi_pdf'] = $dokumentasiPdfPath;
         }
-        $validatedData['names'] = json_encode($validatedData['names']);
+        // $validatedData['names'] = json_encode($validatedData['names']);
 
         try {
             Penerima::create($validatedData);
@@ -99,11 +99,10 @@ class PenerimaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Penerima $penerima)
+    public function update(Request $request, string $id)
     {
-        // dd("ini update");
         $validatedData = $request->validate([
-            'DaerahIrigasi' => ['required', 'unique:penerimas'],
+            'DaerahIrigasi' => ['required'],
             'Kabupaten' => ['required'],
             'Desa' => ['required'],
             'Kecamatan' => ['required'],
@@ -119,7 +118,6 @@ class PenerimaController extends Controller
             'dokumentasi_pdf' => ['file', 'max:1024', 'mimes:pdf'],
         ]);
 
-
         if ($request->hasFile('peta_pdf')) {
             $petaPdfPath = $request->file('peta_pdf')->store('public/pdf');
             $validatedData['peta_pdf'] = $petaPdfPath;
@@ -134,12 +132,9 @@ class PenerimaController extends Controller
             $dokumentasiPdfPath = $request->file('dokumentasi_pdf')->store('public/pdf');
             $validatedData['dokumentasi_pdf'] = $dokumentasiPdfPath;
         }
-        $validatedData['names'] = json_encode($validatedData['names']);
 
         try {
-            // Assuming 'Penerima' is your model and $id is the ID of the record you want to update.
-            $penerima = Penerima::findOrFail($penerima);
-            $penerima->update($validatedData);
+            Penerima::where('id', $id)->update($validatedData);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }

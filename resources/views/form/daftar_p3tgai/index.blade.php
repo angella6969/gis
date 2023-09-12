@@ -71,7 +71,7 @@
                         <div class="table-responsive-sm">
                             <table class="table table-striped table-sm">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align: center;">
                                         <th scope="col">No</th>
                                         <th scope="col">Daerah Irigasi </th>
                                         <th scope="col">Nama P3A/GP3A</th>
@@ -92,7 +92,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($penerimas as $penerima)
-                                        <tr>
+                                        <tr style="text-align: center;">
                                             <td>{{ $loop->iteration }}</td>
                                             <td> {{ $penerima->DaerahIrigasi }}</td>
                                             <td> {{ $penerima->names }}</td>
@@ -103,19 +103,21 @@
                                                 {{-- <a href="/dashboard/daerah-irigasi/{{$penerima->id}}/edit" class="badge bg-success border-0 "><span
                                                 data-feather="eye"></span></a> --}}
                                                 {{-- <button> modal</button> --}}
+                                                {{-- <a href="/dashboard/update/perkembangan-daerah-irigasi/create/{{ $penerima->id }}"
+                                                    class="btn btn-info">Progres</a> --}}
                                                 <a href="/dashboard/update/perkembangan-daerah-irigasi/{{ $penerima->id }}"
                                                     class="btn btn-info">Progres</a>
                                                 <a href="/dashboard/daerah-irigasi/{{ $penerima->id }}/edit"
                                                     class="badge bg-warning border-0 "><span data-feather="edit"></span></a>
                                                 
-                                                <form action="/dashboard/daerah-irigasi/{{ $penerima->id }}"
+                                                {{-- <form action="/dashboard/daerah-irigasi/{{ $penerima->id }}"
                                                     class="d-inline" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="badge bg-danger border-0"
                                                         onclick="return confirm('Yakin Ingin Menghapus Data yang berhubungan dengan? {{ $penerima->DaerahIrigasi }}')"><span
                                                             data-feather="file-minus"></span></button>
-                                                </form>
+                                                </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach

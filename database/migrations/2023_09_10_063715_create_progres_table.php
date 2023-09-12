@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('progres', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('penerima_id');
+            $table->string('TahunPengerjaan'); 
+            $table->string('jenisPekerjaan');
+            $table->string('langsirMaterial');
+            $table->string('jarakLangsir');
+            $table->string('bedaLangsir');
+            $table->string('metodeLangsir');
+            $table->string('KondisiLokasiPekerjaan');
+            $table->string('KondisiTanahLokasiPekerjaan');
+            $table->string('PotensiMasalahSosial');
+            $table->string('TerlampirAktePendirian')->nullable();
+            $table->string('TerlampirNPWP')->nullable();
+            $table->string('TerlampirBukuRekening')->nullable();
             
             $table->timestamps();
         });

@@ -20,13 +20,52 @@
     <link rel="stylesheet" href="{{ asset('edu-meeting') }}/assets/css/templatemo-edu-meeting.css">
     <link rel="stylesheet" href="{{ asset('edu-meeting') }}/assets/css/owl.css">
     <link rel="stylesheet" href="{{ asset('edu-meeting') }}/assets/css/lightbox.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-        /* @media (max-width: 768px) {
-            #bg-image {
-                width: 50%;
-                height: auto;
-            }
-        } */
+        .nowrap td {
+            white-space: nowrap;
+        }
+
+        table {
+            /* table-layout: fixed; */
+            /* Tetapkan lebar kolom tetap */
+            width: 100%;
+            /* Lebar tabel 100% dari container */
+        }
+
+        th,
+        td {
+            padding: 10px;
+            white-space: nowrap;
+            /* Teks dalam sel tidak akan dienter */
+            overflow: hidden;
+            /* Hindari pemotongan teks yang terlalu panjang */
+            text-overflow: ellipsis;
+            /* Teks yang terlalu panjang akan muncul dengan tanda elipsis (titik-titik) */
+        }
+
+        th.col-center {
+            text-align: center;
+        }
+
+        td.col-center {
+            text-align: center;
+        }
+
+
+
+        /* Gaya untuk header kelompok Penerima */
+        th.group-penerima {
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        /* Gaya untuk header kelompok Progres */
+        th.group-progres {
+            background-color: lightgreen;
+            text-align: center;
+        }
     </style>
     <!--
 
@@ -78,12 +117,6 @@ https://templatemo.com/tm-569-edu-meeting
                             <li class="btn"><a href="#">Tentang</a></li>
 
                             @if (auth()->check())
-                                {{-- <form action="/logout" method="post">
-                                    @csrf
-                                    <button type="submit" class="btn btn-outline-primary mx-5 mt-2 d-block">
-                                        KELUAR <span data-feather="log-out" class="align-text-bottom"></span>
-                                    </button>
-                                </form> --}}
                                 <li class="btn"><a href="/dashboard">Dashboard</a></li>
                             @else
                                 <li class="btn"><a href="/login">MASUK</a></li>
@@ -872,336 +905,92 @@ https://templatemo.com/tm-569-edu-meeting
                 <div class="col-lg-12">
                     <form id="contact" action="" method="post">
                         <div class="row">
-                            <div class="table-responsive">
-                                <table class="table">
+                            <div class="table-responsive align-content-center">
+                                <table class="table table-bordered  nowrap">
                                     <thead>
                                         <tr>
+                                            <th colspan="11" class="table-active group-header group-penerima">Data
+                                                Penerima P3-TGAI</th>
+                                            <th colspan="9" class="table-active group-header group-progres">Data
+                                                Progres</th>
+                                        </tr>
+                                        <tr>
+                                            <!-- Kolom Penerima -->
                                             <th scope="col">no</th>
-                                            <th scope="col">Nama Data Dasar Infrastruktur</th>
-                                            <th scope="col">Tahun Data</th>
-                                            <th scope="col">Nama DAS</th>
-                                            <th scope="col">Nama Sungai</th>
-                                            <th scope="col">Desa</th>
-                                            <th scope="col">Kecamatan</th>
+                                            <th scope="col">Daerah Irigasi</th>
+                                            <th scope="col">Nama P3-TGAI</th>
                                             <th scope="col">Kabupaten</th>
-                                            <th scope="col">Provinsi</th>
-                                            <th scope="col">data 9</th>
-                                            <th scope="col">data 10</th>
-                                            <th scope="col">data 11</th>
-                                            <th scope="col">data 12</th>
-                                            <th scope="col">data 13</th>
-                                            <th scope="col">data 14</th>
+                                            <th scope="col">Kecamatan</th>
+                                            <th scope="col">Desa</th>
+                                            <th scope="col">Irigasi Terbangun</th>
+                                            <th scope="col">Irigasi Belum Terbangun</th>
+                                            <th scope="col">Pola Tanam</th>
+                                            <th scope="col">Jenis Vegetasi</th>
+                                            <th scope="col">Mendapatkan P4-ISDA/P3-TGAI</th>
+
+                                            <!-- Kolom Progres -->
+                                            <th scope="col">Pengerjaan</th>
+                                            <th scope="col">Jenis Pekerjaan</th>
+                                            <th scope="col">Langsir Material</th>
+                                            <th scope="col">Jarak Langsir</th>
+                                            <th scope="col">Beda Tinggi Langsir</th>
+                                            <th scope="col">Metode Langsir</th>
+                                            <th scope="col">Kondisi Lokasi</th>
+                                            <th scope="col">Kondisi Tanah</th>
+                                            <th scope="col">Potensi Masalah</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                            <td>data</td>
-                                        </tr>
+                                        @php
+                                            $totalRows = count($penerimas);
+                                            $rowCounter = 0;
+                                        @endphp
+                                        @foreach ($penerimas as $penerima)
+                                            @if ($penerima->progres->isNotEmpty())
+                                                @foreach ($penerima->progres as $progres)
+                                                    <tr>
+                                                        <td>{{ ++$rowCounter }}</td>
+                                                        <td>{{ $penerima->DaerahIrigasi }}</td>
+                                                        <td>{{ $penerima->names }}</td>
+                                                        <td>{{ $penerima->Kabupaten }}</td>
+                                                        <td>{{ $penerima->Kecamatan }}</td>
+                                                        <td>{{ $penerima->Desa }}</td>
+                                                        <td>{{ $penerima->IrigasiDesaTerbangun }}</td>
+                                                        <td>{{ $penerima->IrigasiDesaBelumTerbangun }}</td>
+                                                        <td>{{ $penerima->PolaTanamSaatIni }}</td>
+                                                        <td>{{ $penerima->JenisVegetasi }}</td>
+                                                        <td>{{ $penerima->MendapatkanP4_ISDA }}</td>
+                                                        <td>{{ $progres->TahunPengerjaan }}</td>
+                                                        <td>{{ $progres->jenisPekerjaan }}</td>
+                                                        <td>{{ $progres->langsirMaterial }}</td>
+                                                        <td>{{ $progres->jarakLangsir }}</td>
+                                                        <td>{{ $progres->bedaLangsir }}</td>
+                                                        <td>{{ $progres->metodeLangsir }}</td>
+                                                        <td>{{ $progres->KondisiLokasiPekerjaan }}</td>
+                                                        <td>{{ $progres->KondisiTanahLokasiPekerjaan }}</td>
+                                                        <td>{{ $progres->PotensiMasalahSosial }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td>{{ ++$rowCounter }}</td>
+                                                    <td>{{ $penerima->DaerahIrigasi }}</td>
+                                                    <td>{{ $penerima->Kabupaten }}</td>
+                                                    <td>{{ $penerima->Kecamatan }}</td>
+                                                    <td>{{ $penerima->Desa }}</td>
+                                                    <td>{{ $penerima->IrigasiDesaTerbangun }}</td>
+                                                    <td>{{ $penerima->IrigasiDesaBelumTerbangun }}</td>
+                                                    <td>{{ $penerima->PolaTanamSaatIni }}</td>
+                                                    <td>{{ $penerima->JenisVegetasi }}</td>
+                                                    <td>{{ $penerima->MendapatkanP4_ISDA }}</td>
+                                                    <td colspan="8">Dalam Progres</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+
                                     </tbody>
                                 </table>
+
                             </div>
                             {{-- <div class="col-lg-12">
                                         <h2>Let's get in touch</h2>
@@ -1269,11 +1058,6 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
         <div class="footer">
             <p>© 2023 BBWS Serayu Opak
-                {{-- <br>
-                Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
-                <br>
-                Distibuted By: <a href="https://themewagon.com" target="_blank"
-                    title="Build Better UI, Faster">ThemeWagon</a> --}}
             </p>
         </div>
     </section>
@@ -1282,7 +1066,9 @@ https://templatemo.com/tm-569-edu-meeting
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('edu-meeting') }}/vendor/jquery/jquery.min.js"></script>
     <script src="{{ asset('edu-meeting') }}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
     <script src="{{ asset('edu-meeting') }}/assets/js/isotope.min.js"></script>
     <script src="{{ asset('edu-meeting') }}/assets/js/owl-carousel.js"></script>
     <script src="{{ asset('edu-meeting') }}/assets/js/lightbox.js"></script>

@@ -15,8 +15,8 @@ class Penerima extends Model
             return $query->where('DaerahIrigasi', 'LIKE', '%' . strtolower($search) . '%');
         });
     }
-    // public function names()
-    // {
-    //     return $this->hasMany(NamaP3A::class); // Gantilah NamaP3A dengan model dan relasi yang sesuai
-    // }
+    public function progres()
+    {
+        return $this->hasMany(progres::class);
+    }
 }

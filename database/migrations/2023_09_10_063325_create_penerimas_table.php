@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('penerimas', function (Blueprint $table) {
             $table->id();
-            $table->string('DaerahIrigasi')->unique();
+            $table->string('DaerahIrigasi');
             $table->string('Kabupaten');
             $table->string('Desa');
             $table->string('Kecamatan');
