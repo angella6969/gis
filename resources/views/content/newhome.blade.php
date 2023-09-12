@@ -173,7 +173,7 @@ https://templatemo.com/tm-569-edu-meeting
                 </div>
             </div>
             <iframe src="{{ asset('qgis2web/qgis2web_2023_09_08-11_14_50_809512/index.html') }}" width="100%"
-                height="900" id="my-iframe"></iframe>
+                height="700" id="my-iframe"></iframe>
             {{-- <div class="col-lg-4">
                     <div class="categories">
                         <h4>Meeting Catgories</h4>

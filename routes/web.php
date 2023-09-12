@@ -57,6 +57,10 @@ Route::resource('/dashboard/daerah-irigasi', PenerimaController::class);
 Route::get('/dashboard/update/perkembangan-daerah-irigasi/{id}', [ProgresController::class, 'index']);
 Route::get('/dashboard/update/perkembangan-daerah-irigasi/create/{id}', [ProgresController::class, 'create']);
 Route::post('/dashboard/update/perkembangan-daerah-irigasi/create/{id}', [ProgresController::class, 'store']);
+Route::get('/dashboard/update/perkembangan-daerah-irigasi/edit/{id}', [ProgresController::class, 'edit']);
+Route::get('/dashboard/update/perkembangan-daerah-irigasi/show/{id}', [ProgresController::class, 'show']);
+Route::post('/dashboard/update/perkembangan-daerah-irigasi/edit/{id}', [ProgresController::class, 'update']);
+Route::DELETE('/dashboard/update/perkembangan-daerah-irigasi/{id}', [ProgresController::class, 'destroy']);
 
 //=================== Perlu Login =============================
 Route::middleware(['auth'])->group(function () {

@@ -41,7 +41,7 @@ class ProgresController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request,$id)
+    public function store(Request $request, $id)
     {
         // dd($id);
         $validatedData = $request->validate([
@@ -102,32 +102,131 @@ class ProgresController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Progres $progres)
+    public function show(string $id)
     {
-        //
+        $progres = Progres::findOrFail($id);
+        return response()->json([
+            'progres' => $progres,
+            
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Progres $progres)
+    public function edit(string $id)
     {
-        //
+        $progres = Progres::findOrfail($id);
+        return view('form.perkembangan.edit', [
+            "progres" => $progres,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Progres $progres)
+    public function update(Request $request, string $id)
     {
-        //
+        $a = Progres::findOrfail($id);
+        // dd($a);
+        $validatedData = $request->validate([
+            'TahunPengerjaan' => ['nullable'],
+            'jenisPekerjaan' => ['nullable'],
+            'langsirMaterial' => ['nullable'],
+            'jarakLangsir' => ['nullable'],
+            'bedaLangsir' => ['nullable'],
+            'metodeLangsir' => ['nullable'],
+            'KondisiLokasiPekerjaan' => ['nullable'],
+            'KondisiTanahLokasiPekerjaan' => ['nullable'],
+            'PotensiMasalahSosial' => ['nullable'],
+            'TerlampirAktePendirian' => ['file', 'max:1024', 'mimes:pdf'],
+            'TerlampirNPWP' => ['file', 'max:1024', 'mimes:pdf'],
+            'TerlampirBukuRekening' => ['file', 'max:1024', 'mimes:pdf'],
+        ]);
+
+        if ($request->input('TahunPengerjaan') === 'lainnya') {
+            $validatedData['TahunPengerjaan'] = $request->input('pilihanLainnyaTahunPengerjaan');
+        }
+        if ($request->input('metodeLangsir') === 'lainnya') {
+            $validatedData['metodeLangsir'] = $request->input('pilihanLainnyaMetode');
+        }
+        if ($request->input('KondisiLokasiPekerjaan') === 'lainnya') {
+            $validatedData['KondisiLokasiPekerjaan'] = $request->input('pilihanLainnyaKondisiLokasiPekerjaan');
+        }
+        if ($request->input('KondisiTanahLokasiPekerjaan') === 'lainnya') {
+            $validatedData['KondisiTanahLokasiPekerjaan'] = $request->input('pilihanLainnyaKondisiTanahLokasiPekerjaan');
+        }
+        if ($request->input('PotensiMasalahSosial') === 'lainnya') {
+            $validatedData['PotensiMasalahSosial'] = $request->input('pilihanLainnyaPotensiMasalahSosial');
+        }
+
+        if ($validatedData['TahunPengerjaan'] == null) {
+            $validatedData['TahunPengerjaan'] = $a->TahunPengerjaan;
+        }
+        if ($validatedData['jenisPekerjaan'] == null) {
+            $validatedData['jenisPekerjaan'] = $a->jenisPekerjaan;
+        }
+        if ($validatedData['langsirMaterial'] == null) {
+            $validatedData['langsirMaterial'] = $a->langsirMaterial;
+        }
+        if ($validatedData['jarakLangsir'] == null) {
+            $validatedData['jarakLangsir'] = $a->jarakLangsir;
+        }
+        if ($validatedData['bedaLangsir'] == null) {
+            $validatedData['bedaLangsir'] = $a->bedaLangsir;
+        }
+        if ($validatedData['metodeLangsir'] == null) {
+            $validatedData['metodeLangsir'] = $a->metodeLangsir;
+        }
+        if ($validatedData['KondisiLokasiPekerjaan'] == null) {
+            $validatedData['KondisiLokasiPekerjaan'] = $a->KondisiLokasiPekerjaan;
+        }
+        if ($validatedData['KondisiTanahLokasiPekerjaan'] == null) {
+            $validatedData['KondisiTanahLokasiPekerjaan'] = $a->KondisiTanahLokasiPekerjaan;
+        }
+        if ($validatedData['PotensiMasalahSosial'] == null) {
+            $validatedData['PotensiMasalahSosial'] = $a->PotensiMasalahSosial;
+        }
+
+
+
+
+        if ($request->hasFile('TerlampirAktePendirian')) {
+            $petaPdfPath = $request->file('TerlampirAktePendirian')->store('public/pdf');
+            $validatedData['TerlampirAktePendirian'] = $petaPdfPath;
+        }
+
+        if ($request->hasFile('TerlampirNPWP')) {
+            $jaringanPdfPath = $request->file('TerlampirNPWP')->store('public/pdf');
+            $validatedData['TerlampirNPWP'] = $jaringanPdfPath;
+        }
+
+        if ($request->hasFile('TerlampirBukuRekening')) {
+            $dokumentasiPdfPath = $request->file('TerlampirBukuRekening')->store('public/pdf');
+            $validatedData['TerlampirBukuRekening'] = $dokumentasiPdfPath;
+        }
+
+        // dd($a);
+        try {
+            Progres::where('id', $id)->update($validatedData);
+            return redirect("/dashboard/update/perkembangan-daerah-irigasi/$a->penerima_id")->with('success', 'Data berhasil disimpan.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Progres $progres)
+    public function destroy(string $id)
     {
-        //
+        // dd("ini route delete");
+        $Progres = Progres::findOrFail($id);
+        try {
+            $Progres->delete();
+            return redirect()->back()->with('success', 'Berhasil Menghapus Data');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 }
