@@ -17,6 +17,6 @@ class Penerima extends Model
     }
     public function progres()
     {
-        return $this->hasMany(progres::class);
+        return $this->hasMany(Progres::class);
     }
 }

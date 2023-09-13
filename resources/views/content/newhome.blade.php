@@ -31,18 +31,16 @@
             /* table-layout: fixed; */
             /* Tetapkan lebar kolom tetap */
             width: 100%;
-            /* Lebar tabel 100% dari container */
+            max-height: 10em;
+            overflow-y: auto;
         }
 
         th,
         td {
             padding: 10px;
             white-space: nowrap;
-            /* Teks dalam sel tidak akan dienter */
             overflow: hidden;
-            /* Hindari pemotongan teks yang terlalu panjang */
             text-overflow: ellipsis;
-            /* Teks yang terlalu panjang akan muncul dengan tanda elipsis (titik-titik) */
         }
 
         th.col-center {
