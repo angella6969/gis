@@ -23,11 +23,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         User::create([
             'name' => 'Super Admin',
-            // 'username' => 'Super Admin',
             'email' => 'superadmin@yahoo.com',
             'password' => Hash::make('123456'),
-            // 'role_id' => '1',
-            // 'status' => 'active',
 
         ]);
     }

@@ -36,16 +36,16 @@ class PenerimaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'DaerahIrigasi' => ['required', 'unique:penerimas'],
+            'DaerahIrigasi' => ['required'],
             'Kabupaten' => ['required'],
             'Desa' => ['required'],
             'Kecamatan' => ['required'],
-            'IrigasiDesaTerbangun' => ['required'],
-            'IrigasiDesaBelumTerbangun' => ['required'],
-            'PolaTanamSaatIni' => ['required'],
-            'JenisVegetasi' => ['required'],
-            'MendapatkanP4_ISDA' => ['required'],
-            'TahunMendapatkan' => ['required'],
+            'IrigasiDesaTerbangun' => ['nullable', 'regex:/^[0-9]+(\.[0-9]+)?$/'],
+            'IrigasiDesaBelumTerbangun' => ['nullable', 'regex:/^[0-9]+(\.[0-9]+)?$/'],
+            'PolaTanamSaatIni' => ['nullable'],
+            'JenisVegetasi' => ['nullable'],
+            'MendapatkanP4_ISDA' => ['nullable', 'regex:/^[0-9]+(\.[0-9]+)?$/'],
+            'TahunMendapatkan' => ['nullable'],
             'names' => ['required'], // Mengganti 'names.*' menjadi 'names'
             'peta_pdf' => ['file', 'max:1024', 'mimes:pdf'],
             'jaringan_pdf' => ['file', 'max:1024', 'mimes:pdf'],
@@ -72,7 +72,7 @@ class PenerimaController extends Controller
             Penerima::create($validatedData);
             return redirect('/dashboard/daerah-irigasi')->with('success', 'Data berhasil disimpan.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->with('fail', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
 
@@ -106,12 +106,12 @@ class PenerimaController extends Controller
             'Kabupaten' => ['required'],
             'Desa' => ['required'],
             'Kecamatan' => ['required'],
-            'IrigasiDesaTerbangun' => ['required'],
-            'IrigasiDesaBelumTerbangun' => ['required'],
-            'PolaTanamSaatIni' => ['required'],
-            'JenisVegetasi' => ['required'],
-            'MendapatkanP4_ISDA' => ['required'],
-            'TahunMendapatkan' => ['required'],
+            'IrigasiDesaTerbangun' => ['nullable', 'regex:/^[0-9]+(\.[0-9]+)?$/'],
+            'IrigasiDesaBelumTerbangun' => ['nullable', 'regex:/^[0-9]+(\.[0-9]+)?$/'],
+            'PolaTanamSaatIni' => ['nullable'],
+            'JenisVegetasi' => ['nullable'],
+            'MendapatkanP4_ISDA' => ['nullable', 'regex:/^[0-9]+(\.[0-9]+)?$/'],
+            'TahunMendapatkan' => ['nullable'],
             'names' => ['required'], // Mengganti 'names.*' menjadi 'names'
             'peta_pdf' => ['file', 'max:1024', 'mimes:pdf'],
             'jaringan_pdf' => ['file', 'max:1024', 'mimes:pdf'],
@@ -136,7 +136,7 @@ class PenerimaController extends Controller
         try {
             Penerima::where('id', $id)->update($validatedData);
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->with('fail', 'Terjadi kesalahan: ' . $e->getMessage());
         }
 
         return redirect('/dashboard/daerah-irigasi')->with('success', 'Data berhasil diperbarui.');
@@ -153,7 +153,7 @@ class PenerimaController extends Controller
             $penerima->delete();
             return redirect()->back()->with('success', 'Berhasil Menghapus Data');
         } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
+            return back()->with('fail', $e->getMessage());
         }
     }
     public function getDataDariDatabase()

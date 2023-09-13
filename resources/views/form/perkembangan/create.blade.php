@@ -98,7 +98,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="jarakLangsir" name="jarakLangsir"
                                         placeholder="jarak Langsir" value="{{ old('jarakLangsir') }}" required>
-                                    <span class="input-group-text">M<sub>1</sub></span>
+                                    <span class="input-group-text">M</sub></span>
                                 </div>
                             </div>
 
@@ -107,7 +107,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="BedaLangsir" name="bedaLangsir"
                                         placeholder="Beda Tinggi Langsir" value="{{ old('bedaLangsir') }}" required>
-                                    <span class="input-group-text">M<sub>1</sub></span>
+                                    <span class="input-group-text">M</sub></span>
                                 </div>
                             </div>
 
@@ -253,9 +253,9 @@
 
                             <div class="mt-3 mb-3">
                                 <label for="TerlampirNPWP">Terlampir NPWP</label>
-                                <input type="file" class="form-control @error('jaringan_pdf') is-invalid @enderror"
+                                <input type="file" class="form-control"
                                     id="TerlampirNPWP" name="TerlampirNPWP" accept="application/pdf">
-                                <div class="form-text">PDF Max 5 MB
+                                <div class="form-text">PDF Max 1 MB
                                 </div>
 
                             </div>
@@ -263,9 +263,9 @@
                             <div class="mt-3 mb-3">
                                 <label for="TerlampirBukuRekening">Terlampir Buku Rekening</label>
                                 <input type="file"
-                                    class="form-control @error('TerlampirBukuRekening') is-invalid @enderror"
+                                    class="form-control "
                                     id="TerlampirBukuRekening" name="TerlampirBukuRekening" accept="application/pdf">
-                                <div class="form-text">PDF Max 5 MB
+                                <div class="form-text">PDF Max 1 MB
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -275,7 +275,19 @@
             </div>
         </div>
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kode Anda yang menggunakan iziToast
+            iziToast.success({
+                message: '{{ Session::get('success') }}',
+                position: 'topRight',
+            });
+            iziToast.warning({
+                message: '{{ Session::get('fail') }}',
+                position: 'topRight',
+            });
+        });
+    </script>
     <script>
         // Ambil elemen-elemen yang diperlukan
         const TahunPengerjaan = document.getElementById('TahunPengerjaan');

@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('progres', function (Blueprint $table) {
             $table->id();
             $table->foreignId('penerima_id');
-            $table->string('TahunPengerjaan'); 
-            $table->string('jenisPekerjaan');
-            $table->string('langsirMaterial');
-            $table->string('jarakLangsir');
-            $table->string('bedaLangsir');
-            $table->string('metodeLangsir');
-            $table->string('KondisiLokasiPekerjaan');
-            $table->string('KondisiTanahLokasiPekerjaan');
-            $table->string('PotensiMasalahSosial');
+            $table->string('TahunPengerjaan')->nullable(); 
+            $table->string('jenisPekerjaan')->nullable();
+            $table->string('langsirMaterial')->nullable();
+            $table->string('jarakLangsir')->nullable();
+            $table->string('bedaLangsir')->nullable();
+            $table->string('metodeLangsir')->nullable();
+            $table->string('KondisiLokasiPekerjaan')->nullable();
+            $table->string('KondisiTanahLokasiPekerjaan')->nullable();
+            $table->string('PotensiMasalahSosial')->nullable();
             $table->string('TerlampirAktePendirian')->nullable();
             $table->string('TerlampirNPWP')->nullable();
             $table->string('TerlampirBukuRekening')->nullable();

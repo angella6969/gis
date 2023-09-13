@@ -33,7 +33,7 @@
               <span>
                 <i class="ti ti-article"></i>
               </span>
-              <span class="hide-menu">Daerah Irigasi</span>
+              <span class="hide-menu">Daftar Menerima P3-TGAI</span>
             </a>
           </li>
           {{-- <li class="sidebar-item">

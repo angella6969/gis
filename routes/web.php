@@ -42,7 +42,12 @@ Route::get('/main', function () {
 
 
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'handleChart']);
+Route::get('/dashboard/chart', [DashboardController::class, 'handleChart']);
+
+
+
+
 Route::get('/dashboard/daerah-irigasi/create', [PenerimaController::class, 'create']);
 Route::post('/dashboard/daerah-irigasi/create', [PenerimaController::class, 'store']);
 
@@ -61,6 +66,8 @@ Route::get('/dashboard/update/perkembangan-daerah-irigasi/edit/{id}', [ProgresCo
 Route::get('/dashboard/update/perkembangan-daerah-irigasi/show/{id}', [ProgresController::class, 'show']);
 Route::post('/dashboard/update/perkembangan-daerah-irigasi/edit/{id}', [ProgresController::class, 'update']);
 Route::DELETE('/dashboard/update/perkembangan-daerah-irigasi/{id}', [ProgresController::class, 'destroy']);
+
+
 
 //=================== Perlu Login =============================
 Route::middleware(['auth'])->group(function () {

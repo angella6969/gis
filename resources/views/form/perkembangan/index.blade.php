@@ -263,18 +263,17 @@
             });
         });
     </script>
-
-
-
-
-
     <script>
-        @if (Session::has('success'))
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kode Anda yang menggunakan iziToast
             iziToast.success({
-                title: 'success',
                 message: '{{ Session::get('success') }}',
                 position: 'topRight',
             });
-        @endif
+            iziToast.warning({
+                message: '{{ Session::get('fail') }}',
+                position: 'topRight',
+            });
+        });
     </script>
 @endsection

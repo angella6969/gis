@@ -49,7 +49,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title fw-semibold mb-4">Daftar Daerah Irigasi Penerima P3-TGAI</h5>
+                <h5 class="card-title fw-semibold mb-4">Daftar Penerima P3-TGAI</h5>
                 <form action="/dashboard/daerah-irigasi">
                     <div class="row">
                         <div class="col-6 col-sm-12">
@@ -62,7 +62,7 @@
                     </div>
                 </form>
                 <div class="mt-2 mb-2">
-                    <a href="/dashboard/daerah-irigasi/create" class="btn btn-info">Tambah Daerah Irigasi</a>
+                    <a href="/dashboard/daerah-irigasi/create" class="btn btn-info">Tambah Data</a>
 
                 </div>
 
@@ -108,8 +108,9 @@
                                                 <a href="/dashboard/update/perkembangan-daerah-irigasi/{{ $penerima->id }}"
                                                     class="btn btn-info">Progres</a>
                                                 <a href="/dashboard/daerah-irigasi/{{ $penerima->id }}/edit"
-                                                    class="badge bg-warning border-0 "><span data-feather="edit"> </span>Edit</a>
-                                                
+                                                    class="badge bg-warning border-0 "><span data-feather="edit">
+                                                    </span>Edit</a>
+
                                                 {{-- <form action="/dashboard/daerah-irigasi/{{ $penerima->id }}"
                                                     class="d-inline" method="POST">
                                                     @csrf
@@ -131,12 +132,16 @@
     </div>
 
     <script>
-        @if (Session::has('success'))
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kode Anda yang menggunakan iziToast
             iziToast.success({
-                title: 'success',
                 message: '{{ Session::get('success') }}',
                 position: 'topRight',
             });
-        @endif
+            iziToast.warning({
+                message: '{{ Session::get('fail') }}',
+                position: 'topRight',
+            });
+        });
     </script>
 @endsection

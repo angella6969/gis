@@ -13,12 +13,14 @@ class NewHomeController extends Controller
      */
     public function index()
     {
-        // $a = Penerima::get();
+        // $a = Penerima::get('names');
         // $b = Progres::get();
-        // dd( $b);
+        // dd( $a);
         return view('content.newhome', [
 
+            // 'penerimas' => Penerima::get(),
             'penerimas' => Penerima::with(['Progres'])->get(),
+
 
             // atau jika Anda ingin membatasi jumlah data yang diambil
             // 'penerimas' => Penerima::latest()->get()

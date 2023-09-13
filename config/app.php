@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Clockwork\Support\Laravel\ClockworkServiceProvider::class,
         Laravolt\Indonesia\ServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
     ])->toArray(),
 
     /*

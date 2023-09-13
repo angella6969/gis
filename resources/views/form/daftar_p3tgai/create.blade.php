@@ -20,21 +20,142 @@
                     <div class="card-body">
                         <form method="post" action="/dashboard/daerah-irigasi/create" enctype="multipart/form-data">
                             @csrf
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
-                                <input type="text" class="form-control @error('DaerahIrigasi') is-invalid @enderror" id="DaerahIrigasi" name="DaerahIrigasi"
-                                    value="{{ old('DaerahIrigasi') }}" placeholder="Daerah Irigasi" required>
+                                <input type="text" class="form-control @error('DaerahIrigasi') is-invalid @enderror"
+                                    id="DaerahIrigasi" name="DaerahIrigasi" value="{{ old('DaerahIrigasi') }}"
+                                    placeholder="Daerah Irigasi" required>
                                 @error('DaerahIrigasi')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
+                            </div> --}}
+
+                            <div class="mt-3 mb-3">
+                                <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
+                                <select class="form-select" id="DaerahIrigasi" name="DaerahIrigasi" required>
+                                    <option value="">Pilih salah satu opsi</option>
+                                    <option value="Tajum" {{ old('DaerahIrigasi') == 'Tajum' ? 'selected' : '' }}>Tajum
+                                    </option>
+                                    <option value="Progo Manggis"
+                                        {{ old('DaerahIrigasi') == 'Progo Manggis' ? 'selected' : '' }}>Progo Manggis
+                                    </option>
+                                    <option value="Sempor" {{ old('DaerahIrigasi') == 'Sempor' ? 'selected' : '' }}>Sempor
+                                    </option>
+                                    <option value="Mataram" {{ old('DaerahIrigasi') == 'Mataram' ? 'selected' : '' }}>
+                                        Mataram
+                                    </option>
+                                    <option value="Kalibawang" {{ old('DaerahIrigasi') == 'Kalibawang' ? 'selected' : '' }}>
+                                        Kalibawang
+                                    </option>
+                                    <option value="Kedungputri"
+                                        {{ old('DaerahIrigasi') == 'Kedungputri' ? 'selected' : '' }}>Kedungputri
+                                    </option>
+                                    <option value="Serayu" {{ old('DaerahIrigasi') == 'Serayu' ? 'selected' : '' }}>Serayu
+                                    </option>
+                                    <option value="Boro" {{ old('DaerahIrigasi') == 'Boro' ? 'selected' : '' }}>Boro
+                                    </option>
+                                    <option value="Wadaslintang"
+                                        {{ old('DaerahIrigasi') == 'Wadaslintang' ? 'selected' : '' }}>Wadaslintang
+                                    </option>
+                                    <option value="Banjarcahyana"
+                                        {{ old('DaerahIrigasi') == 'Banjarcahyana' ? 'selected' : '' }}>Banjarcahyana
+                                    </option>
+                                    <option value="Tuk Kuning"
+                                        {{ old('DaerahIrigasi') == 'Tuk Kuning' ? 'selected' : '' }}>Tuk Kuning
+                                    </option>
+                                    <option value="Singomerto"
+                                        {{ old('DaerahIrigasi') == 'Singomerto' ? 'selected' : '' }}>Singomerto
+                                    </option>
+                                </select>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="Kabupaten" class="form-label">Kabupaten</label>
+                            {{-- <div class="mb-3">
+                                <label for="Kabupaten" class="form-label">Kota/Kabupaten</label>
                                 <input type="text" class="form-control" id="Kabupaten" name="Kabupaten"
                                     value="{{ old('Kabupaten') }}" placeholder="Kabupaten" required>
+                            </div> --}}
+                            <div class="mt-3 mb-3">
+                                <label for="Kabupaten" class="form-label">Daerah Irigasi</label>
+                                {{-- <input type="text" class="form-control" disabled
+                                    value="Data Lama : {{ $Penerimas->Kabupaten }}"> --}}
+                                <select class="form-select" id="Kabupaten" name="Kabupaten" required>
+                                    <option value="">Pilih salah satu opsi</option>
+                                    <option value="Sleman" {{ old('Kabupaten') == 'Sleman' ? 'selected' : '' }}>Sleman
+                                    </option>
+                                    <option value="Bantul" {{ old('Kabupaten') == 'Bantul' ? 'selected' : '' }}>Bantul
+                                    </option>
+                                    <option value="Gunungkidul" {{ old('Kabupaten') == 'Gunungkidul' ? 'selected' : '' }}>
+                                        Gunungkidul
+                                    </option>
+                                    <option value="Kulon Progo" {{ old('Kabupaten') == 'Kulon Progo' ? 'selected' : '' }}>
+                                        Kulon Progo
+                                    </option>
+                                    <option value="Kota Yogyakarta"
+                                        {{ old('Kabupaten') == 'Kota Yogyakarta' ? 'selected' : '' }}>
+                                        Kota Yogyakarta
+                                    </option>
+                                    <option value="Purbalingga" {{ old('Kabupaten') == 'Purbalingga' ? 'selected' : '' }}>
+                                        Purbalingga
+                                    </option>
+                                    <option value="Kebumen" {{ old('Kabupaten') == 'Kebumen' ? 'selected' : '' }}>Kebumen
+                                    </option>
+                                    <option value="Magelang" {{ old('Kabupaten') == 'Magelang' ? 'selected' : '' }}>
+                                        Magelang
+                                    </option>
+                                    <option value="Cilacap" {{ old('Kabupaten') == 'Cilacap' ? 'selected' : '' }}>Cilacap
+                                    </option>
+                                    <option value="Banjarnegara"
+                                        {{ old('Kabupaten') == 'Banjarnegara' ? 'selected' : '' }}>Banjarnegara
+                                    </option>
+                                    <option value="Banyumas" {{ old('Kabupaten') == 'Banyumas' ? 'selected' : '' }}>
+                                        Banyumas
+                                    </option>
+                                    <option value="Purworejo" {{ old('Kabupaten') == 'Purworejo' ? 'selected' : '' }}>
+                                        Purworejo
+                                    </option>
+                                    <option value="Pemalang" {{ old('Kabupaten') == 'Pemalang' ? 'selected' : '' }}>
+                                        Pemalang
+                                    </option>
+                                    <option value="Temanggung" {{ old('Kabupaten') == 'Temanggung' ? 'selected' : '' }}>
+                                        Temanggung
+                                    </option>
+                                    <option value="Klaten" {{ old('Kabupaten') == 'Klaten' ? 'selected' : '' }}>
+                                        Klaten
+                                    </option>
+                                    <option value="Wonogiri" {{ old('Kabupaten') == 'Wonogiri' ? 'selected' : '' }}>
+                                        Wonogiri
+                                    </option>
+                                    <option value="Semarang" {{ old('Kabupaten') == 'Semarang' ? 'selected' : '' }}>
+                                        Semarang
+                                    </option>
+                                    <option value="Kendal" {{ old('Kabupaten') == 'Kendal' ? 'selected' : '' }}>
+                                        Kendal
+                                    </option>
+                                    <option value="Pekalongan" {{ old('Kabupaten') == 'Pekalongan' ? 'selected' : '' }}>
+                                        Pekalongan
+                                    </option>
+                                    <option value="Boyolali" {{ old('Kabupaten') == 'Boyolali' ? 'selected' : '' }}>
+                                        Boyolali
+                                    </option>
+                                    <option value="Brebes" {{ old('Kabupaten') == 'Brebes' ? 'selected' : '' }}>
+                                        Brebes
+                                    </option>
+                                    <option value="Sukoharjo" {{ old('Kabupaten') == 'Sukoharjo' ? 'selected' : '' }}>
+                                        Sukoharjo
+                                    </option>
+                                    <option value="Batang" {{ old('Kabupaten') == 'Batang' ? 'selected' : '' }}>
+                                        Batang
+                                    </option>
+                                    <option value="Kota Magelang"
+                                        {{ old('Kabupaten') == 'Kota Magelang' ? 'selected' : '' }}>
+                                        Kota Magelang
+                                    </option>
+                                    {{-- <option value="Wonosobo" {{ old('Kabupaten') == 'Wonosobo' ? 'selected' : '' }}>
+                                        Wonosobo
+                                    </option> --}}
+                                </select>
                             </div>
 
                             <div class="mb-3">
@@ -53,20 +174,20 @@
                                 <label for="IrigasiDesaTerbangun" class="form-label">Total Saluran Irigasi Tersier & Irigasi
                                     Desa Terbangun</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="IrigasiDesaTerbangun"
+                                    <input type="text" class="form-control" id="IrigasiDesaTerbangun"
                                         name="IrigasiDesaTerbangun" value="{{ old('IrigasiDesaTerbangun') }}"
                                         placeholder="Hanya Menerima Masukan Angka Saja" required>
-                                    <span class="input-group-text">M<sup>2</sup></span>
+                                    <span class="input-group-text">KM</sup></span>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="IrigasiDesaBelumTerbangun" class="form-label">Total Saluran Irigasi Tersier &
                                     Irigasi Desa Belum Terbangun</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="IrigasiDesaBelumTerbangun"
+                                    <input type="text" class="form-control" id="IrigasiDesaBelumTerbangun"
                                         name="IrigasiDesaBelumTerbangun" value="{{ old('IrigasiDesaBelumTerbangun') }}"
                                         placeholder="Hanya Menerima Masukan Angka Saja" required>
-                                    <span class="input-group-text">M<sup>2</sup></span>
+                                    <span class="input-group-text">KM</sup></span>
                                 </div>
                             </div>
 
@@ -85,7 +206,7 @@
                             <div class="mb-3">
                                 <label for="MendapatkanP4_ISDA" class="form-label">Mendapatkan P4-ISDA/P3-TGAI</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="MendapatkanP4_ISDA"
+                                    <input type="text" class="form-control" id="MendapatkanP4_ISDA"
                                         name="MendapatkanP4_ISDA" value="{{ old('MendapatkanP4_ISDA') }}"
                                         placeholder="Hanya Menerima Masukan Angka Saja" required>
                                     <span class="input-group-text">Kali</sup></span>
@@ -163,7 +284,19 @@
         </div>
     </div>
 
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kode Anda yang menggunakan iziToast
+            iziToast.success({
+                message: '{{ Session::get('success') }}',
+                position: 'topRight',
+            });
+            // iziToast.warning({
+            //     message: '{{ Session::get('fail') }}',
+            //     position: 'topRight',
+            // });
+        });
+    </script>
 
     <script>
         function addNamaField() {
@@ -194,5 +327,4 @@
             namaContainer.appendChild(inputGroup);
         }
     </script>
- 
 @endsection

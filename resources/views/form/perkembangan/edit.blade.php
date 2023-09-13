@@ -105,7 +105,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="jarakLangsir" name="jarakLangsir"
                                         placeholder="jarak Langsir" value="{{ old('jarakLangsir') }}">
-                                    <span class="input-group-text">M<sub>1</sub></span>
+                                    <span class="input-group-text">M</sub></span>
                                 </div>
                             </div>
 
@@ -116,7 +116,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="BedaLangsir" name="bedaLangsir"
                                         placeholder="Beda Tinggi Langsir" value="{{ old('bedaLangsir') }}">
-                                    <span class="input-group-text">M<sub>1</sub></span>
+                                    <span class="input-group-text">M</sub></span>
                                 </div>
                             </div>
 
@@ -290,7 +290,19 @@
             </div>
         </div>
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kode Anda yang menggunakan iziToast
+            iziToast.success({
+                message: '{{ Session::get('success') }}',
+                position: 'topRight',
+            });
+            iziToast.warning({
+                message: '{{ Session::get('fail') }}',
+                position: 'topRight',
+            });
+        });
+    </script>
     <script>
         // Ambil elemen-elemen yang diperlukan
         const TahunPengerjaan = document.getElementById('TahunPengerjaan');
