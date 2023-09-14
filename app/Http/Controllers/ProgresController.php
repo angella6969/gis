@@ -18,7 +18,7 @@ class ProgresController extends Controller
         // dd($a);
         return view('form.perkembangan.index', [
             'penerimas' => Penerima::findOrFail($id),
-            'progress' => Progres::get(),
+            'progress' => Progres::where('penerima_id',$id)->get(),
         ]);
     }
 

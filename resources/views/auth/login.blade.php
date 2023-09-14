@@ -69,7 +69,7 @@
                                     placeholder="Password" required>
                             </div>
                             <div>
-                                <button class="w-100 btn btn-lg btn-light" type="submit">Masuk</button>
+                                <button class="w-100 btn btn-lg btn-success" type="submit">Masuk</button>
                         </form>
 
                         <div class="separator">

@@ -21,7 +21,10 @@ class DashboardController extends Controller
     public function handleChart()
     {
         $a = DB::table('penerimas')->sum('IrigasiDesaTerbangun');
+        $formattedValueA = number_format($a, 3);
         $b = DB::table('penerimas')->sum('IrigasiDesaBelumTerbangun');
+        $formattedValueB = number_format($b, 3);
+
         $userData = Penerima::select('Kabupaten', DB::raw('SUM(MendapatkanP4_ISDA) as total_mendapatkan'))
             ->groupBy('Kabupaten')
             ->get();
@@ -36,8 +39,8 @@ class DashboardController extends Controller
             'userData' => $userData,
             'users' => User::all(),
             'DaerahIrigasi' => Penerima::all(),
-            'IrigasiDesaTerbangun' => $a,
-            'IrigasiDesaBelumTerbangun' => $b,
+            'IrigasiDesaTerbangun' => $formattedValueA,
+            'IrigasiDesaBelumTerbangun' => $formattedValueB,
         ]);
     }
 }
