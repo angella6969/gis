@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('map_gis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('penerima_id');
             $table->string('xAx');
             $table->string('yAx');
             $table->string('info');

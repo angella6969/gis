@@ -12,9 +12,9 @@
         }
 
         /* #map-container {
-                                            position: relative;
-                                            z-index: 2;
-                                        } */
+                                                    position: relative;
+                                                    z-index: 2;
+                                                } */
 
         /* CSS untuk modal */
         .modal {
@@ -72,7 +72,7 @@
     </style>
     <div class="container-fluid">
         {{-- <div id="map-container"> --}}
-        <div id="map"></div>
+        <div id="map"></div> 
     </div>
 
 
@@ -115,7 +115,17 @@
             var longitude = data[1];
             var info = data[2];
 
-            var marker = L.marker([latitude, longitude]).addTo(map);
+
+            var customIcon = L.icon({
+                iconUrl:  'images/LOGO_SISDA.png', // URL gambar ikon penanda
+                iconSize: [32, 32], // Ukuran ikon [panjang, lebar]
+                iconAnchor: [16, 32], // Anchor point ikon
+                popupAnchor: [0, -32] // Anchor point untuk popup
+            });
+
+            var marker = L.marker([latitude, longitude], {
+                icon: customIcon
+            }).addTo(map);
 
             // Menampilkan modal saat marker diklik
             marker.on('click', function() {
