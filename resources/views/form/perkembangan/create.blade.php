@@ -253,8 +253,8 @@
 
                             <div class="mt-3 mb-3">
                                 <label for="TerlampirNPWP">Terlampir NPWP</label>
-                                <input type="file" class="form-control"
-                                    id="TerlampirNPWP" name="TerlampirNPWP" accept="application/pdf">
+                                <input type="file" class="form-control" id="TerlampirNPWP" name="TerlampirNPWP"
+                                    accept="application/pdf">
                                 <div class="form-text">PDF Max 1 MB
                                 </div>
 
@@ -262,9 +262,8 @@
 
                             <div class="mt-3 mb-3">
                                 <label for="TerlampirBukuRekening">Terlampir Buku Rekening</label>
-                                <input type="file"
-                                    class="form-control "
-                                    id="TerlampirBukuRekening" name="TerlampirBukuRekening" accept="application/pdf">
+                                <input type="file" class="form-control " id="TerlampirBukuRekening"
+                                    name="TerlampirBukuRekening" accept="application/pdf">
                                 <div class="form-text">PDF Max 1 MB
                                 </div>
                             </div>
@@ -277,15 +276,20 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Kode Anda yang menggunakan iziToast
-            iziToast.success({
-                message: '{{ Session::get('success') }}',
-                position: 'topRight',
-            });
-            iziToast.warning({
-                message: '{{ Session::get('fail') }}',
-                position: 'topRight',
-            });
+            @if (Session::has('success'))
+                iziToast.success({
+                    title: 'Success',
+                    message: '{{ Session::get('success') }}',
+                    position: 'topRight',
+                });
+            @endif
+            @if (Session::has('fail'))
+                iziToast.warning({
+                    title: 'Warning',
+                    message: '{{ Session::get('fail') }}',
+                    position: 'topRight',
+                });
+            @endif
         });
     </script>
     <script>

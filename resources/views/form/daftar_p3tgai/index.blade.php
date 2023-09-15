@@ -133,15 +133,21 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Kode Anda yang menggunakan iziToast
-            iziToast.success({
-                message: '{{ Session::get('success') }}',
-                position: 'topRight',
-            });
-            iziToast.warning({
-                message: '{{ Session::get('fail') }}',
-                position: 'topRight',
-            });
+      
+            @if (Session::has('success'))
+                iziToast.success({
+                    title: 'Success',
+                    message: '{{ Session::get('success') }}',
+                    position: 'topRight',
+                });
+            @endif
+            @if (Session::has('fail'))
+                iziToast.warning({
+                    title: 'Warning',
+                    message: '{{ Session::get('fail') }}',
+                    position: 'topRight',
+                });
+            @endif
         });
     </script>
 @endsection

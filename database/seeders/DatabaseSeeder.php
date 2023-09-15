@@ -4,9 +4,13 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\map;
+use App\Models\map_gis;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+
+use function PHPSTORM_META\map;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,5 +31,43 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456'),
 
         ]);
+
+        map_gis::create([
+            'xAx' =>  110.40877100158879, 
+            'yAx' => -7.781662717889876,
+            'info' => 'ini adalah peta 1'
+        ]);
+        map_gis::create([
+            'xAx' =>  110.50877100158879, 
+            'yAx' => -7.781662717889876,
+            'info' => 'ini adalah peta 6'
+
+        ]);
+        map_gis::create([
+            'xAx' =>  110.60877100158879, 
+            'yAx' => -7.781662717889876,
+            'info' => 'ini adalah peta 5'
+
+        ]);
+        map_gis::create([
+            'xAx' =>  110.70877100158879, 
+            'yAx' => -7.781662717889876,
+            'info' => 'ini adalah peta 4'
+
+        ]);
+        map_gis::create([
+            'xAx' =>  110.80877100158879, 
+            'yAx' => -7.781662717889876,
+            'info' => 'ini adalah peta 3'
+
+        ]);
+        map_gis::create([
+            'xAx' =>  110.40877100158879, 
+            'yAx' => -7.881662717889876,
+            'info' => 'ini adalah peta 2'
+
+        ]);
+      
+        
     }
 }

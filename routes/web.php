@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MapsController;
 use App\Http\Controllers\NewHomeController;
 use App\Http\Controllers\PenerimaController;
 use App\Http\Controllers\ProgresController;
@@ -45,6 +46,8 @@ Route::get('/main', function () {
 Route::get('/dashboard', [DashboardController::class, 'handleChart']);
 Route::get('/dashboard/chart', [DashboardController::class, 'handleChart']);
 
+Route::get('/dashboard/maps', [MapsController::class, 'handleChart']);
+Route::get('/dashboard/maps/chart', [MapsController::class, 'handleChart']);
 
 
 

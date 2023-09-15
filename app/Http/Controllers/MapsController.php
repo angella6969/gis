@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\map_gis;
 use ConsoleTVs\Charts\Facades\Charts;
 use App\Models\Penerima;
 use App\Models\Progres;
@@ -9,11 +10,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class DashboardController extends Controller
+class MapsController extends Controller
 {
     public function index()
     {
-        return view('dashboard.dashboard', [
+        return view('dashboard.map', [
             // 'IrigasiDesaTerbangun' => DB::table('penerimas')->sum('IrigasiDesaTerbangun'),
             // 'IrigasiDesaBelumTerbangun' => DB::table('penerimas')->sum('IrigasiDesaBelumTerbangun'),
         ]);
@@ -25,20 +26,18 @@ class DashboardController extends Controller
         $b = DB::table('penerimas')->sum('IrigasiDesaBelumTerbangun');
         $formattedValueB = number_format($b, 3);
 
-        
-
-
-
-        $userData = Penerima::select('Kabupaten', DB::raw('SUM(MendapatkanP4_ISDA) as total_mendapatkan'))
-            ->groupBy('Kabupaten')
+        $userData = map_gis::select('yAx', 'xAx', 'info')
             ->get();
         $dataArray = [];
         foreach ($userData as $data) {
-            $dataArray[] = [$data->Kabupaten, $data->total_mendapatkan];
+            $dataArray[] = [(float)$data->yAx, (float)$data->xAx, $data->info];
         }
         $dataJSON = json_encode($dataArray);
-        // dd($dataJSON);
-        return view('dashboard.dashboard', [
+
+
+
+
+        return view('dashboard.map', [
             'dataJSON' => $dataJSON,
             'userData' => $userData,
             'users' => User::all(),

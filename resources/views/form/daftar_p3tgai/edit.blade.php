@@ -63,7 +63,7 @@
                                     value="{{ old('Kabupaten', $Penerimas->Kabupaten) }}" placeholder="Kabupaten" required>
                             </div> --}}
                             <div class="mt-3 mb-3">
-                                <label for="Kabupaten" class="form-label">Daerah Irigasi</label>
+                                <label for="Kabupaten" class="form-label">Kabupaten</label>
                                 <input type="text" class="form-control" disabled
                                     value="Data Lama : {{ $Penerimas->Kabupaten }}">
                                 <select class="form-select" id="Kabupaten" name="Kabupaten" required>
@@ -281,15 +281,20 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Kode Anda yang menggunakan iziToast
-            iziToast.success({
-                message: '{{ Session::get('success') }}',
-                position: 'topRight',
-            });
-            // iziToast.warning({
-            //     message: '{{ Session::get('fail') }}',
-            //     position: 'topRight',
-            // });
+            @if (Session::has('success'))
+                iziToast.success({
+                    title: 'Success',
+                    message: '{{ Session::get('success') }}',
+                    position: 'topRight',
+                });
+            @endif
+            @if (Session::has('fail'))
+                iziToast.warning({
+                    title: 'Warning',
+                    message: '{{ Session::get('fail') }}',
+                    position: 'topRight',
+                });
+            @endif
         });
     </script>
     <!-- Kode JavaScript Anda -->
