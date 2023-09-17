@@ -12,9 +12,9 @@
         }
 
         /* #map-container {
-                                                    position: relative;
-                                                    z-index: 2;
-                                                } */
+                                                                position: relative;
+                                                                z-index: 2;
+                                                            } */
 
         /* CSS untuk modal */
         .modal {
@@ -72,7 +72,7 @@
     </style>
     <div class="container-fluid">
         {{-- <div id="map-container"> --}}
-        <div id="map"></div> 
+        <div id="map"></div>
     </div>
 
 
@@ -115,25 +115,20 @@
             var longitude = data[1];
             var info = data[2];
 
+            console.log(info);
 
-            var customIcon = L.icon({
-                iconUrl:  'images/LOGO_SISDA.png', // URL gambar ikon penanda
-                iconSize: [32, 32], // Ukuran ikon [panjang, lebar]
-                iconAnchor: [16, 32], // Anchor point ikon
-                popupAnchor: [0, -32] // Anchor point untuk popup
-            });
+            // Membuat penutupan (closure) untuk menyimpan nilai-nilai
+            (function(lat, long, inf) {
+                var marker = L.marker([lat, long], ).addTo(map);
 
-            var marker = L.marker([latitude, longitude], {
-                icon: customIcon
-            }).addTo(map);
-
-            // Menampilkan modal saat marker diklik
-            marker.on('click', function() {
-                document.getElementById('modalLatitude').textContent = latitude;
-                document.getElementById('modalLongitude').textContent = longitude;
-                document.getElementById('modalInfo').textContent = info;
-                document.getElementById('myModal').style.display = 'block';
-            });
+                // Menampilkan modal saat marker diklik
+                marker.on('click', function() {
+                    document.getElementById('modalLatitude').textContent = lat;
+                    document.getElementById('modalLongitude').textContent = long;
+                    document.getElementById('modalInfo').textContent = inf;
+                    document.getElementById('myModal').style.display = 'block';
+                });
+            })(latitude, longitude, info);
         }
 
         // Menutup modal saat tombol close diklik
