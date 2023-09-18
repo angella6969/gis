@@ -25,7 +25,7 @@
                             <div class="mb-3">
                                 <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
                                 <input type="text" class="form-control" id="DaerahIrigasi" placeholder="Daerah Irigasi"
-                                    disabled value="{{ $penerima->DaerahIrigasi }}">
+                                    disabled value="{{ $penerima->DaerahIrigasi->nama }}">
                             </div>
                             <div class="mb-3">
                                 <label for="Desa" class="form-label">Desa</label>

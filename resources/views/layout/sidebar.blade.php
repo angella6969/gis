@@ -1,4 +1,14 @@
 <aside class="left-sidebar">
+    <style>
+        .submenu {
+            display: none;
+        }
+
+        /* Saat mouse di atas elemen <li>, tampilkan submenu */
+        .dropdown li:hover .submenu {
+            display: block;
+        }
+    </style>
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -29,6 +39,14 @@
                     <span class="hide-menu">Menu</span>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="/dashboard/daerah-irigasi/add" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-article"></i>
+                        </span>
+                        <span class="hide-menu">Daerah Irigasi</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="/dashboard/daerah-irigasi" aria-expanded="false">
                         <span>
                             <i class="ti ti-article"></i>
@@ -36,13 +54,9 @@
                         <span class="hide-menu">Daftar Menerima P3-TGAI</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-alert-circle"></i>
-                        </span>
-                        <span class="hide-menu">Alerts</span>
-                    </a>
+                {{-- <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Kelola Daerah Irigasi</span>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="#" aria-expanded="false">
@@ -51,7 +65,7 @@
                         </span>
                         <span class="hide-menu">Card</span>
                     </a>
-                </li>
+                </li> --}}
                 {{-- <li class="sidebar-item">
             <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
               <span>
@@ -100,14 +114,15 @@
               <span class="hide-menu">Icons</span>
             </a>
           </li> --}}
+
                 {{-- <li class="sidebar-item">
-            <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
-              <span>
-                <i class="ti ti-aperture"></i>
-              </span>
-              <span class="hide-menu">Sample Page</span>
-            </a>
-          </li> --}}
+                    <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-aperture"></i>
+                        </span>
+                        <span class="hide-menu">Sample Page</span>
+                    </a>
+                </li> --}}
             </ul>
         </nav>
     </div>

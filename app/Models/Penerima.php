@@ -19,4 +19,8 @@ class Penerima extends Model
     {
         return $this->hasMany(Progres::class);
     }
+    public function daerahIrigasi()
+    {
+        return $this->belongsTo(DaerahIrigasi::class);
+    }
 }

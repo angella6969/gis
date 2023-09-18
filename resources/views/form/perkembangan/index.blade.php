@@ -76,6 +76,7 @@
                             <table class="table table-striped table-sm">
                                 <thead>
                                     <tr style="text-align: center; background-color: lightblue;">
+                                        <th scope="col">No </th>
                                         <th scope="col">Daerah Irigasi </th>
                                         <th scope="col">Nama P3A/GP3A</th>
                                         <th scope="col">Kabupaten</th>
@@ -89,8 +90,8 @@
                                         $rowCounter = 1; // Nomor urutan (jika hanya satu baris)
                                     @endphp
                                     <tr>
-                                        {{-- <td>{{ $rowCounter }}</td> --}}
-                                        <td>{{ $penerimas->DaerahIrigasi }}</td>
+                                        <td>{{ $rowCounter }}</td>
+                                        <td>{{ $penerimas->DaerahIrigasi->nama }}</td>
                                         <td>{{ $penerimas->names }}</td>
                                         <td>{{ $penerimas->Kabupaten }}</td>
                                         <td>{{ $penerimas->Kecamatan }}</td>

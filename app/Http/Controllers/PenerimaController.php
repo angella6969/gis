@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DaerahIrigasi;
 use App\Models\Penerima;
 use Illuminate\Http\Request;
 
@@ -13,12 +14,12 @@ class PenerimaController extends Controller
     public function index()
     {
         $penerimas = Penerima::latest()
-            // ->filter(request(['search']))
+            ->with('daerahIrigasi')
             ->filter(request()->only('search'))
-            ->orderBy('created_at', 'desc') // Menambahkan orderBy untuk mensortir data
+            ->orderBy('created_at', 'desc')
             ->get();
         return view('form.daftar_p3tgai.index', [
-            "penerimas" => $penerimas
+            "penerimas" => $penerimas,
         ]);
     }
 
@@ -27,7 +28,9 @@ class PenerimaController extends Controller
      */
     public function create()
     {
-        return view('form.daftar_p3tgai.create');
+        return view('form.daftar_p3tgai.create', [
+            'DaerahIrigasi' => DaerahIrigasi::all()
+        ]);
     }
 
     /**
@@ -36,7 +39,7 @@ class PenerimaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'DaerahIrigasi' => ['required'],
+            'daerah_irigasi_id' => ['required'],
             'Kabupaten' => ['required'],
             'Desa' => ['required'],
             'Kecamatan' => ['required'],
@@ -92,7 +95,9 @@ class PenerimaController extends Controller
         $penerima = Penerima::findOrFail($id);
         // dd($penerima);
         return view('form.daftar_p3tgai.edit', [
-            "Penerimas" => $penerima
+            "Penerimas" => $penerima,
+            "DaerahIrigasi" => DaerahIrigasi::get()
+
         ]);
     }
 
@@ -102,7 +107,7 @@ class PenerimaController extends Controller
     public function update(Request $request, string $id)
     {
         $validatedData = $request->validate([
-            'DaerahIrigasi' => ['required'],
+            'daerah_irigasi_id' => ['required'],
             'Kabupaten' => ['required'],
             'Desa' => ['required'],
             'Kecamatan' => ['required'],

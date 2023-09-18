@@ -10,50 +10,17 @@
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
-                            {{-- <div class="mb-3">
-                                <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
-                                <input type="text" class="form-control" id="DaerahIrigasi" name="DaerahIrigasi"
-                                    value="{{ old('DaerahIrigasi', $Penerimas->DaerahIrigasi) }}"
-                                    placeholder="Daerah Irigasi" required>
-                            </div> --}}
                             <div class="mt-3 mb-3">
-                                <label for="DaerahIrigasi" class="form-label">Daerah Irigasi</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $Penerimas->DaerahIrigasi }}">
-                                <select class="form-select" id="DaerahIrigasi" name="DaerahIrigasi" required>
+                                <label for="daerah_irigasi_id" class="form-label">Daerah Irigasi</label>
+                                <select class="form-select" id="daerah_irigasi_id" name="daerah_irigasi_id" required>
                                     <option value="">Pilih salah satu opsi</option>
-                                    <option value="Tajum" {{ old('DaerahIrigasi') == 'Tajum' ? 'selected' : '' }}>Tajum
-                                    </option>
-                                    <option value="Progo Manggis"
-                                        {{ old('DaerahIrigasi') == 'Progo Manggis' ? 'selected' : '' }}>Progo Manggis
-                                    </option>
-                                    <option value="Sempor" {{ old('DaerahIrigasi') == 'Sempor' ? 'selected' : '' }}>Sempor
-                                    </option>
-                                    <option value="Mataram" {{ old('DaerahIrigasi') == 'Mataram' ? 'selected' : '' }}>
-                                        Mataram
-                                    </option>
-                                    <option value="Kalibawang" {{ old('DaerahIrigasi') == 'Kalibawang' ? 'selected' : '' }}>
-                                        Kalibawang
-                                    </option>
-                                    <option value="Kedungputri"
-                                        {{ old('DaerahIrigasi') == 'Kedungputri' ? 'selected' : '' }}>Kedungputri
-                                    </option>
-                                    <option value="Serayu" {{ old('DaerahIrigasi') == 'Serayu' ? 'selected' : '' }}>Serayu
-                                    </option>
-                                    <option value="Boro" {{ old('DaerahIrigasi') == 'Boro' ? 'selected' : '' }}>Boro
-                                    </option>
-                                    <option value="Wadaslintang"
-                                        {{ old('DaerahIrigasi') == 'Wadaslintang' ? 'selected' : '' }}>Wadaslintang
-                                    </option>
-                                    <option value="Banjarcahyana"
-                                        {{ old('DaerahIrigasi') == 'Banjarcahyana' ? 'selected' : '' }}>Banjarcahyana
-                                    </option>
-                                    <option value="Tuk Kuning"
-                                        {{ old('DaerahIrigasi') == 'Tuk Kuning' ? 'selected' : '' }}>Tuk Kuning
-                                    </option>
-                                    <option value="Singomerto"
-                                        {{ old('DaerahIrigasi') == 'Singomerto' ? 'selected' : '' }}>Singomerto
-                                    </option>
+                                    @foreach ($DaerahIrigasi as $DI)
+                                        @if (old('daerah_irigasi_id', $Penerimas->daerah_irigasi_id) == $DI->id)
+                                            <option value="{{ $DI->id }}" selected>{{ $DI->nama }}</option>
+                                        @else
+                                            <option value="{{ $DI->id }}">{{ $DI->nama }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -138,9 +105,6 @@
                                         {{ old('Kabupaten') == 'Kota Magelang' ? 'selected' : '' }}>
                                         Kota Magelang
                                     </option>
-                                    {{-- <option value="Wonosobo" {{ old('Kabupaten') == 'Wonosobo' ? 'selected' : '' }}>
-                                        Wonosobo
-                                    </option> --}}
                                 </select>
                             </div>
 
@@ -175,8 +139,7 @@
                                     <input type="text" class="form-control" id="IrigasiDesaBelumTerbangun"
                                         name="IrigasiDesaBelumTerbangun"
                                         value="{{ old('IrigasiDesaBelumTerbangun', $Penerimas->IrigasiDesaBelumTerbangun) }}"
-                                        placeholder="Total Saluran Irigasi Tersier & Irigasi Desa Belum Terbangun"
-                                        required>
+                                        placeholder="Total Saluran Irigasi Tersier & Irigasi Desa Belum Terbangun" required>
                                     <span class="input-group-text">KM</sup></span>
                                 </div>
                             </div>

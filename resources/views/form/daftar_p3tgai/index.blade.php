@@ -94,17 +94,26 @@
                                     @foreach ($penerimas as $penerima)
                                         <tr style="text-align: center;">
                                             <td>{{ $loop->iteration }}</td>
-                                            <td> {{ $penerima->DaerahIrigasi }}</td>
+                                            <td>{{ $penerima->daerahIrigasi->nama }}</td>
                                             <td> {{ $penerima->names }}</td>
                                             <td> {{ $penerima->Kabupaten }}</td>
                                             <td> {{ $penerima->Kecamatan }}</td>
                                             <td> {{ $penerima->Desa }}</td>
                                             <td>
-                                                {{-- <a href="/dashboard/daerah-irigasi/{{$penerima->id}}/edit" class="badge bg-success border-0 "><span
-                                                data-feather="eye"></span></a> --}}
-                                                {{-- <button> modal</button> --}}
-                                                {{-- <a href="/dashboard/update/perkembangan-daerah-irigasi/create/{{ $penerima->id }}"
-                                                    class="btn btn-info">Progres</a> --}}
+                                                <button class="btn badge bg-info border-0 show-DI-modal"
+                                                    data-id="{{ $penerima->id }}"
+                                                    data-daerah_irigasi_id="{{ $penerima->daerahIrigasi->nama }}"
+                                                    data-kabupaten="{{ $penerima->Kabupaten }}"
+                                                    data-kecamatan="{{ $penerima->Kecamatan }}"
+                                                    data-desa="{{ $penerima->Desa }}" data-names="{{ $penerima->names }}"
+                                                    data-IrigasiDesaTerbangun="{{ $penerima->IrigasiDesaTerbangun }}"
+                                                    data-irigasiDesaBelumTerbangun="{{ $penerima->IrigasiDesaBelumTerbangun }}"
+                                                    data-polaTanamSaatIni="{{ $penerima->PolaTanamSaatIni }}"
+                                                    data-jenisVegetasi="{{ $penerima->JenisVegetasi }}"
+                                                    data-mendapatkanP4_ISDA="{{ $penerima->MendapatkanP4_ISDA }}"
+                                                    data-tahunMendapatkan="{{ $penerima->TahunMendapatkan }}">
+                                                    <span data-feather="eye">
+                                                </button>
                                                 <a href="/dashboard/update/perkembangan-daerah-irigasi/{{ $penerima->id }}"
                                                     class="btn btn-info">Progres</a>
                                                 <a href="/dashboard/daerah-irigasi/{{ $penerima->id }}/edit"
@@ -130,10 +139,106 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="progresModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Daerah Irigasi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="progresModalBody">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Ketika tombol "Tampilkan Data" di klik
+            $('.show-DI-modal').on('click', function() {
+                // Ambil data dari atribut data
+                var id = $(this).data('id');
+                var daerah_irigasi_id = $(this).data('daerah_irigasi_id');
+                var Kabupaten = $(this).data('kabupaten');
+                var Kecamatan = $(this).data('kecamatan');
+                var Desa = $(this).data('desa');
+                var irigasiDesaTerbangun = $(this).data('IrigasiDesaTerbangun');
+                var IrigasiDesaBelumTerbangun = $(this).data('irigasiDesaBelumTerbangun');
+                var PolaTanamSaatIni = $(this).data('polaTanamSaatIni');
+                var JenisVegetasi = $(this).data('jenisVegetasi');
+                var MendapatkanP4_ISDA = $(this).data('mendapatkanP4_ISDA');
+                var TahunMendapatkan = $(this).data('tahunMendapatkan');
 
+                console.log(daerah_irigasi_id);
+                console.log(id);
+                console.log(Kabupaten);
+                console.log(Kecamatan);
+                console.log(Desa);
+                console.log(irigasiDesaTerbangun);
+
+                // Tampilkan data dalam modal dengan tabel horizontal
+                $('#progresModalBody').html(`
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>ID</th>
+                            <td>${id}</td>
+                        </tr>
+                        <tr>
+                            <th>Daerah Irigasi</th>
+                            <td>${daerah_irigasi_id}</td>
+                        </tr>
+                        <tr>
+                            <th>Kabupaten</th>
+                            <td>${Kabupaten}</td>
+                        </tr>
+                        <tr>
+                            <th>Kecamatan</th>
+                            <td>${Kecamatan}</td>
+                        </tr>
+                        <tr>
+                            <th>Desa</th>
+                            <td>${Desa}</td>
+                        </tr>
+                        <tr>
+                            <th>Irigasi Desa Terbangun</th>
+                            <td>${irigasiDesaTerbangun}</td>
+                        </tr>
+                        <tr>
+                            <th>Irigasi Desa Belum Terbangun</th>
+                            <td>${IrigasiDesaBelumTerbangun}</td>
+                        </tr>
+                        <tr>
+                            <th>Pola Tanam Saat Ini</th>
+                            <td>${PolaTanamSaatIni}</td>
+                        </tr>
+                        <tr>
+                            <th>Jenis Vegetasi</th>
+                            <td>${JenisVegetasi}</td>
+                        </tr>
+                        <tr>
+                            <th>Mendapatkan P4_ISDA</th>
+                            <td>${MendapatkanP4_ISDA}</td>
+                        </tr>
+                        <tr>
+                            <th>Tahun Mendapatkan</th>
+                            <td>${TahunMendapatkan}</td>
+                        </tr>
+                    </table>
+                `);
+
+                // Tampilkan modal
+                $('#progresModal').modal('show');
+            });
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-      
+
             @if (Session::has('success'))
                 iziToast.success({
                     title: 'Success',

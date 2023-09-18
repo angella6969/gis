@@ -5,18 +5,12 @@
     <style>
         #map {
             height: 550px;
-            /* position: absolute; */
             top: 0;
             left: 0;
             z-index: 1;
         }
 
-        /* #map-container {
-                                                                position: relative;
-                                                                z-index: 2;
-                                                            } */
 
-        /* CSS untuk modal */
         .modal {
             display: none;
             position: fixed;
@@ -71,8 +65,17 @@
         }
     </style>
     <div class="container-fluid">
-        {{-- <div id="map-container"> --}}
-        <div id="map"></div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Maps Daerah Irigasi Penerima P3-TGAI</h5>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
