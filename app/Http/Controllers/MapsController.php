@@ -34,10 +34,12 @@ class MapsController extends Controller
         }
         $dataJSON = json_encode($dataArray);
 
+        $a = map_gis::all();
 
 
 
         return view('dashboard.map', [
+            'dataA' => $a,
             'dataJSON' => $dataJSON,
             'userData' => $userData,
             'users' => User::all(),

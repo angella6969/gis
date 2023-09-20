@@ -93,8 +93,8 @@
                                 <tbody>
                                     @foreach ($penerimas as $penerima)
                                         <tr style="text-align: center;">
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $penerima->daerahIrigasi->nama }}</td>
+                                            <td> {{ $loop->iteration }}</td>
+                                            <td> {{ $penerima->daerahIrigasi->nama }}</td>
                                             <td> {{ $penerima->names }}</td>
                                             <td> {{ $penerima->Kabupaten }}</td>
                                             <td> {{ $penerima->Kecamatan }}</td>

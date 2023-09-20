@@ -72,6 +72,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div id="map"></div>
+                        @foreach ($dataA as $index => $a)
+                            <a href="#" id="linkToMarker{{ $index }}" data-lat="{{ $a->yAx }}"
+                                data-long="{{ $a->xAx }}">Tuju ke Titik</a> <br>
+                        @endforeach
+
+
                     </div>
                 </div>
             </div>
@@ -146,5 +152,22 @@
                 document.getElementById('myModal').style.display = 'none';
             }
         }
+    </script>
+    <script>
+        @foreach ($dataA as $index => $a)
+            document.getElementById('linkToMarker{{ $index }}').addEventListener('click', function(e) {
+                e.preventDefault(); // Mencegah aksi default link
+
+                // Mendapatkan nilai latitude dan longitude dari atribut data
+                var lat = parseFloat(this.getAttribute('data-lat'));
+                var long = parseFloat(this.getAttribute('data-long'));
+
+                // Memindahkan peta ke titik yang ditentukan
+                map.setView([lat, long], 13);
+
+                // Menampilkan modal atau info lainnya (jika perlu)
+                // Anda dapat menambahkan kode di sini untuk menampilkan info yang sesuai dengan titik yang dipilih.
+            });
+        @endforeach
     </script>
 @endsection

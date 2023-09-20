@@ -234,7 +234,8 @@ https://templatemo.com/tm-569-edu-meeting
                                                 @foreach ($penerima->progres as $progres)
                                                     <tr>
                                                         <td>{{ ++$rowCounter }}</td>
-                                                        <td>{{ $penerima->DaerahIrigasi }}</td>
+                                                        
+                                                        <td>{{ $penerima->DaerahIrigasi->nama }}</td>
                                                         <td>{{ $penerima->names }}</td>
                                                         <td>{{ $penerima->Kabupaten }}</td>
                                                         <td>{{ $penerima->Kecamatan }}</td>
@@ -259,7 +260,7 @@ https://templatemo.com/tm-569-edu-meeting
                                             @else
                                                 <tr>
                                                     <td>{{ ++$rowCounter }}</td>
-                                                    <td>{{ $penerima->DaerahIrigasi }}</td>
+                                                    <td>{{ $penerima->DaerahIrigasi->nama }}</td>
                                                     <td>{{ $penerima->names }}</td>
                                                     <td>{{ $penerima->Kabupaten }}</td>
                                                     <td>{{ $penerima->Kecamatan }}</td>
@@ -417,8 +418,8 @@ https://templatemo.com/tm-569-edu-meeting
             }
         });
     </script>
-</body>
 
 </body>
+
 
 </html>
