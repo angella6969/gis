@@ -278,8 +278,9 @@
         // Tambahkan peta tile
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-        // Membuat objek marker dan menambahkannya ke peta
         var markers = []; // Array untuk menyimpan marker
+        var autoSelectMarker = null; // Marker yang akan otomatis dipilih
+
         dataJSON.forEach(function(data) {
             var latitude = data[0];
             var longitude = data[1];
@@ -288,6 +289,11 @@
             var marker = L.marker([latitude, longitude]);
             marker.bindPopup(info);
             markers.push(marker);
+
+            // Set marker yang akan otomatis dipilih (misalnya, marker pertama)
+            if (autoSelectMarker === null) {
+                autoSelectMarker = marker;
+            }
         });
 
         // Menutup modal saat tombol close diklik
@@ -315,6 +321,9 @@
 
         // Tampilkan Layer Control di sudut kanan atas
         layerControl.setPosition('topright');
+
+        // Auto-select marker pertama
+        autoSelectMarker.openPopup();
     </script>
     <script>
         @foreach ($dataA as $index => $a)
