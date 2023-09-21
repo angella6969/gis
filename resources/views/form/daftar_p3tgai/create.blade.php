@@ -286,6 +286,17 @@
                                 </div>
                             </div>
 
+                            <div class="mb-3">
+                                <label for="latitude" class="form-label">latitude</label>
+                                <input type="text" class="form-control" id="xAx" name="xAx"
+                                    value="{{ old('xAx') }}" placeholder="latitude">
+                            </div>
+                            <div class="mb-3">
+                                <label for="longitude" class="form-label">longitude</label>
+                                <input type="text" class="form-control" id="yAx" name="yAx"
+                                    value="{{ old('yAx') }}" placeholder="longitude">
+                            </div>
+
 
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

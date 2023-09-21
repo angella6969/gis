@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Providers;
+
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
             // Validasi jika file adalah PDF
             return $value->getClientOriginalExtension() === 'pdf';
         });
+        Paginator::useBootstrap();
     }
 }

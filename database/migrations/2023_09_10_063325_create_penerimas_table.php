@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('penerimas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('daerah_irigasi_id');
+            $table->foreignId('map_id')->nullable();
             $table->string('Kabupaten');
             $table->string('Desa');
             $table->string('Kecamatan');
@@ -27,6 +28,8 @@ return new class extends Migration
             $table->string('peta_pdf')->nullable();
             $table->string('jaringan_pdf')->nullable();
             $table->string('dokumentasi_pdf')->nullable();
+            $table->string('xAx')->nullable();
+            $table->string('yAx')->nullable();
             $table->timestamps();
         });
     }

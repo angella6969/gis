@@ -37,13 +37,13 @@ class DatabaseSeeder extends Seeder
             'xAx' =>  110.40877100158879,
             'yAx' => -7.781662717889876,
             'info' => 'ini adalah peta 1',
-            'penerima_id' => '1',
+            // 'penerima_id' => '1',
         ]);
         map_gis::create([
             'xAx' =>  110.50877100158879,
             'yAx' => -7.781662717889876,
             'info' => 'ini adalah peta 6',
-            'penerima_id' => '2',
+            // 'penerima_id' => '2',
 
 
         ]);
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             'xAx' =>  110.60877100158879,
             'yAx' => -7.781662717889876,
             'info' => 'ini adalah peta 5',
-            'penerima_id' => '3',
+            // 'penerima_id' => '3',
 
 
         ]);
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             'xAx' =>  110.70877100158879,
             'yAx' => -7.781662717889876,
             'info' => 'ini adalah peta 4',
-            'penerima_id' => '4',
+            // 'penerima_id' => '4',
 
 
         ]);
@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
             'xAx' =>  110.80877100158879,
             'yAx' => -7.781662717889876,
             'info' => 'ini adalah peta 3',
-            'penerima_id' => '5',
+            // 'penerima_id' => '5',
 
 
         ]);
@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
             'xAx' =>  110.40877100158879,
             'yAx' => -7.881662717889876,
             'info' => 'ini adalah peta 2',
-            'penerima_id' => '6',
+            // 'penerima_id' => '6',
         ]);
         DaerahIrigasi::create([
             'nama' => "Tajum"

@@ -42,6 +42,8 @@ class PenerimaController extends Controller
             'daerah_irigasi_id' => ['required'],
             'Kabupaten' => ['required'],
             'Desa' => ['required'],
+            'xAx' => ['required'],
+            'yAx' => ['required'],
             'Kecamatan' => ['required'],
             'IrigasiDesaTerbangun' => ['nullable', 'regex:/^[0-9]+(\.[0-9]+)?$/'],
             'IrigasiDesaBelumTerbangun' => ['nullable', 'regex:/^[0-9]+(\.[0-9]+)?$/'],

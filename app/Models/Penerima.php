@@ -23,4 +23,8 @@ class Penerima extends Model
     {
         return $this->belongsTo(DaerahIrigasi::class);
     }
+    public function map_Gis()
+    {
+        return $this->belongsTo(map_Gis::class);
+    }
 }

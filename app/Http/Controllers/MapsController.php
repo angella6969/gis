@@ -21,12 +21,8 @@ class MapsController extends Controller
     }
     public function handleChart()
     {
-        $a = DB::table('penerimas')->sum('IrigasiDesaTerbangun');
-        $formattedValueA = number_format($a, 3);
-        $b = DB::table('penerimas')->sum('IrigasiDesaBelumTerbangun');
-        $formattedValueB = number_format($b, 3);
-
-        $userData = map_gis::select('yAx', 'xAx', 'info')
+        // dd("a");
+        $userData = Penerima::select('yAx', 'xAx')
             ->get();
         $dataArray = [];
         foreach ($userData as $data) {
@@ -34,18 +30,13 @@ class MapsController extends Controller
         }
         $dataJSON = json_encode($dataArray);
 
-        $a = map_gis::all();
-
-
-
+        $a = Penerima::latest()->paginate(10);
         return view('dashboard.map', [
             'dataA' => $a,
             'dataJSON' => $dataJSON,
-            'userData' => $userData,
-            'users' => User::all(),
-            'DaerahIrigasi' => Penerima::all(),
-            'IrigasiDesaTerbangun' => $formattedValueA,
-            'IrigasiDesaBelumTerbangun' => $formattedValueB,
+            // 'userData' => $userData,
+            // 'users' => User::all(),
+            // 'DaerahIrigasi' => Penerima::all(),
         ]);
     }
 }
