@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\csv;
 use App\Models\map_gis;
 use ConsoleTVs\Charts\Facades\Charts;
 use App\Models\Penerima;
@@ -21,7 +22,8 @@ class MapsController extends Controller
     }
     public function handleChart()
     {
-        // dd("a");
+        $b = csv::all();
+        // dd($b);
         $userData = Penerima::select('yAx', 'xAx')
             ->get();
         $dataArray = [];
@@ -30,7 +32,7 @@ class MapsController extends Controller
         }
         $dataJSON = json_encode($dataArray);
 
-        $a = Penerima::latest()->paginate(10);
+        $a = Penerima::latest()->get();
         return view('dashboard.map', [
             'dataA' => $a,
             'dataJSON' => $dataJSON,

@@ -24,9 +24,16 @@
             background-color: rgba(0, 0, 0, 0.7);
         }
 
+        .table-container {
+            max-height: 400px;
+            /* Atur ketinggian maksimum tabel di sini */
+            overflow-y: auto;
+            /* Aktifkan scrollbar vertikal jika diperlukan */
+        }
+
         table {
             margin: 0 auto;
-            width: 60%;
+            width: 100%;
             border-collapse: collapse;
             /* Membuat tabel menjadi rata tengah horizontal */
         }
@@ -40,6 +47,10 @@
             padding: 8px;
             text-align: center;
             /* Membuat isi sel tabel menjadi rata tengah horizontal */
+        }
+
+        table tr {
+            border-bottom: 1px solid #ddd;
         }
 
         .modal-content {
@@ -67,50 +78,53 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 mt-3 mb-3">
-
-                <div class="col-sm-12">
-                    <div id='map'></div>
-                </div>
+                {{-- <div class="col-sm-12"> --}}
+                <div id='map'></div>
+                {{-- </div> --}}
             </div>
             <div class="col-md-4 mt-3 mb-3">
                 <div class="card h-100">
                     <Label class="d-flex justify-content-center mt-3">Maps Daerah Irigasi Penerima P3-TGAI</Label>
                     <div class="card-body">
-                        <table class="table table-striped table-sm table-responsive">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Lokasi</th>
-                                    <th scope="col">Desa</th>
-                                    <th scope="col">Daerah Irigasi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $totalRows = count($dataA);
-                                    $rowCounter = 0;
-                                @endphp
-                                @foreach ($dataA as $index => $a)
+                        <div class="table-container">
+                            <table class="table table-striped table-sm table-responsive">
+                                <thead>
                                     <tr>
-                                        <td>{{ ++$rowCounter }}</td>
-
-                                        <td><a href="#" id="linkToMarker{{ $index }}"
-                                                data-lat="{{ $a->yAx }}" data-long="{{ $a->xAx }}"><i
-                                                    class="ti ti-pin"></i></a>
-                                            {{-- {{ $a->yAx }} ,{{ $a->xAx }} --}}
-                                        </td>
-                                        <td>{{ $a->Desa }}</td>
-                                        <td>{{ $a->DaerahIrigasi->nama }}</td>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Lokasi</th>
+                                        <th scope="col">Desa</th>
+                                        {{-- <th scope="col">Kecamatan</th> --}}
+                                        <th scope="col">Daerah Irigasi</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $totalRows = count($dataA);
+                                        $rowCounter = 0;
+                                    @endphp
+                                    @foreach ($dataA as $index => $a)
+                                        <tr>
+                                            <td>{{ ++$rowCounter }}</td>
+
+                                            <td><a href="#" id="linkToMarker{{ $index }}"
+                                                    data-lat="{{ $a->yAx }}" data-long="{{ $a->xAx }}"><i
+                                                        class="ti ti-pin"></i></a>
+                                                {{-- {{ $a->yAx }} ,{{ $a->xAx }} --}}
+                                            </td>
+                                            <td>{{ $a->Desa }}</td>
+                                            {{-- <td>{{ $a->Kecamatan }}</td> --}}
+                                            <td>{{ $a->DaerahIrigasi->nama }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <nav aria-label="Page navigation example">
+                    {{-- <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                             {{ $dataA->links() }}
                         </ul>
-                    </nav>
+                    </nav> --}}
 
                 </div>
             </div>
@@ -272,6 +286,19 @@
     <script type="text/javascript">
         // Contoh data JSON, pastikan variabel $dataJSON telah diisi dengan data yang benar
         var dataJSON = {!! $dataJSON !!};
+        var lineCoordinates = [
+            [51.509, -0.08],
+            [51.503, -0.06],
+            [51.498, -0.05],
+        ];
+
+        // Data layer poligon (polygon)
+        var polygonCoordinates = [
+            [51.509, -0.08],
+            [51.503, -0.06],
+            [51.51, -0.047],
+            [51.515, -0.065],
+        ];
 
         var map = L.map('map').setView([-7.7816627178899, 110.40877100159], 13);
 
@@ -311,15 +338,19 @@
 
         // Membuat layer-layer
         var titikLayer = L.layerGroup(markers);
-
-        // Buat objek Layer Control
-        var layerControl = L.control.layers({
+        var lineLayer = L.polyline(lineCoordinates, {
+            color: 'blue'
+        });
+        var polygonLayer = L.polygon(polygonCoordinates, {
+            color: 'green'
+        });
+        var allLayers = L.layerGroup([titikLayer, lineLayer, polygonLayer]);
+        var layerControl = L.control.layers({}, {
+            'Semua Layer': allLayers, // Masukkan layer yang ingin dipilih secara default di sini
             'Titik (Point)': titikLayer,
-            'Garis (Line)': L.layerGroup([]), // Anda dapat menambahkan layer garis jika diperlukan
-            'Poligon (Polygon)': L.layerGroup([]), // Anda dapat menambahkan layer poligon jika diperlukan
+            'Garis (Line)': lineLayer,
+            'Poligon (Polygon)': polygonLayer,
         }).addTo(map);
-
-        // Tampilkan Layer Control di sudut kanan atas
         layerControl.setPosition('topright');
 
         // Auto-select marker pertama
@@ -335,7 +366,7 @@
                 var long = parseFloat(this.getAttribute('data-long'));
 
                 // Memindahkan peta ke titik yang ditentukan
-                map.setView([lat, long], 13);
+                map.setView([lat, long], 16);
 
                 // Menampilkan modal atau info lainnya (jika perlu)
                 // Anda dapat menambahkan kode di sini untuk menampilkan info yang sesuai dengan titik yang dipilih.
