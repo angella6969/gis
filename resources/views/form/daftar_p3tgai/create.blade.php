@@ -34,7 +34,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="Kecamatan" class="form-label">Provinsi</label>
+                                <label for="Provinsi" class="form-label">Provinsi</label>
                                 <select class="form-control" id="provinsi" name="provinsi" onchange="updateKabupaten()"
                                     required>
                                     <option value="">Pilih Provinsi</option>
@@ -56,9 +56,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="Desa" class="form-label">Desa</label>
+                                <select class="form-control" id="Desa" name="Desa" required>
+                                    <option value="">Pilih Desa</option>
+                                </select>
+                            </div>
+                            {{-- <div class="mb-3">
+                                <label for="Desa" class="form-label">Desa</label>
                                 <input type="text" class="form-control" id="Desa" name="Desa"
                                     value="{{ old('Desa') }}" placeholder="Desa" required>
-                            </div>
+                            </div> --}}
                             {{-- <h1>Pilih Provinsi:</h1>
                             <select class="form-control" id="provinsi" name="provinsi" onchange="updateKabupaten()"
                                 required>
@@ -216,7 +222,7 @@
                                     <span class="input-group-text">Kali</sup></span>
                                 </div>
                             </div>
-
+ 
                             <div class="mb-3">
                                 <label for="TahunMendapatkan" class="form-label">Tahun Mendapatkan</label>
                                 <input type="text" class="form-control" id="TahunMendapatkan" name="TahunMendapatkan"
@@ -304,6 +310,10 @@
                 </div>
             </div>
         </div>
+        
+       @foreach ($d as $item)
+           {{ $item->subdis_name}}
+       @endforeach
     </div>
 
 
@@ -368,21 +378,55 @@
         var dataWilayah = {
             "Jawa Tengah": {
                 "Banjarnegara": {
-                    "Banjarnegara": [],
-                    "Batur": [],
-                    "Binangun": [],
-                    "Kalibening": [],
-                    "Karangkobar": [],
-                    "Mandiraja": [],
-                    "Pagedongan": [],
-                    "Pagentan": [],
-                    "Pekajangan": [],
-                    "Purwanegara": [],
-                    "Punggelan": [],
-                    "Sigaluh": [],
-                    "Susukan": [],
-                    "Wanadadi": [],
-                    "Wanayasa": []
+                    "Banjarnegara": ['Tlagawera', 'Ampelsari', 'Cendana', 'Sokayasa'],
+                    "Batur": ['Dieng Kulon', 'Bakal', 'Batur', 'Karangtengah', 'Kepakisan', 'Pasurenan', 'Pekasiran',
+                        'Sumberejo'
+                    ],
+                    // "Binangun": [],
+                    "Kalibening": ['Gununglangit', 'Asinan', 'Bedana', 'Kalibening', 'Kalibombong', 'Kalisat Kidul',
+                        'Karang Anyar', 'Kasinoman', 'Kertasari', 'Majatengah', 'Plorengan', 'Sembawa',
+                        'Sidakangen', 'Sikumpul', 'Sirukem', 'Sirukun'
+                    ],
+                    "Karangkobar": ['Leksana', 'Ambal', 'Binangun', 'Gumelar', 'Jlegong', 'Karanggondang',
+                        'Karangkobar', 'Pagerpelah', 'Pasuruhan', 'Paweden', 'Purwodadi', 'Sampang', 'Slatri'
+                    ],
+                    "Mandiraja": ['Kertayasa', 'Salamerta', 'Kaliwungu', 'Purwasaba', 'Panggisari', 'Banjengan',
+                        'Blimbing', 'Candiwulan', 'Glempang', 'Jalatunda', 'Kebakalan', 'Kebanaran',
+                        'Mandirajakulon', 'Mandirajawetan', 'Simbang', 'Somawangi'
+                    ],
+                    "Pagedongan": ['Duren', 'Gentansari', 'Gunungjati', 'Kebutuhduwur', 'Kebutuhjurang', 'Lebakwangi',
+                        'Pagedongan', 'Pesangkalan', 'Twelagiri', 'Jalatunda', 'Kebakalan', 'Kebanaran',
+                        'Mandirajakulon', 'Mandirajawetan', 'Simbang', 'Somawangi'
+                    ],
+                    "Pagentan": ['Pagentan', 'Aribaya', 'Babadan', 'Gumingsir', 'Kalitlaga', 'Karangnangka', 'Karekan',
+                        'Kasmaran', 'Kayuares', 'Larangan', 'Majasari', 'Metawana', 'Nagasari', 'Plumbungan',
+                        'Sokaraja', 'Tegaljeruk'
+                    ],
+                    "Pekajangan": ['Condong Campur', 'Gembol', 'Sidengok', 'Giritirta', 'Sarwodadi', 'Tlahab', 'Beji',
+                        'Biting', 'Darmayasa', 'Grogol', 'Kalilunjar', 'Karangsari', 'Panusupan', 'Pagundungan',
+                        'Pejawaran', 'Ratamba', 'Semangkung'
+                    ],
+                    "Purwanegara": ['Danaraja', 'Gumiwang', 'Kaliajir', 'Kalipelus', 'Kalitengah', 'Karanganyar',
+                        'Kutawuluh', 'Merden', 'Mertasari', 'Parakan', 'Petir', 'Pucungbedug', 'Purwonegoro'
+                    ],
+                    "Punggelan": ['Badakarya', 'Bondolharjo', 'Danakerta', 'Jembangan', 'Karangsari', 'Kecepit',
+                        'Klapa', 'Mlaya', 'Petuguran', 'Punggelan', 'Purwasana', 'Sambong', 'Sawangan', 'Sidarata',
+                        'Tanjungtirta', 'Tlaga', 'Tribuana'
+                    ],
+                    "Sigaluh": ['Wanacipta', 'Gembongan', 'Bandingan', 'Bojanegara', 'Karangmangu', 'Kemiri',
+                        'Panawaren', 'Prigi', 'Pringamba', 'Randegan', 'Sawal', 'Sigaluh', 'Singomerto', 'Tunggara'
+                    ],
+                    "Susukan": ['Berta', 'Brengkok', 'Derik', 'Dermasari', 'Gumelem Kulon', 'Gumelem Wetan',
+                        'Karangjati', 'Karangsalam', 'Kedawung', 'Kemranggon', 'Pakikiran', 'Panerusan Kulon',
+                        'Panerusan Wetan', 'Piasa Wetan', 'Susukan'
+                    ],
+                    "Wanadadi": ['Linggasari', 'Kasilib', 'Karangkemiri', 'Gumingsir', 'Kandangwangi', 'Karangjambe',
+                        'Lemahjaya', 'Wanadadi', 'Medayu', 'Tapen', 'Wanakarsa'
+                    ],
+                    "Wanayasa": ['Balun', 'Bantar', 'Dawuhan', 'Jatilawang', 'Karangtengah', 'Kasimpar', 'Kubang',
+                        'Legoksayem', 'Pagergunung', 'Pandansari', 'Penanggungan', 'Kalideres', 'Susukan',
+                        'Suwidak', 'Tempuran', 'Wanaraja', 'Wanayasa'
+                    ]
 
                 },
                 "Banyumas": {
@@ -1135,24 +1179,24 @@
             }
         }
 
-        // function updateDesa() {
-        //     // Mengisi dropdown desa/kelurahan berdasarkan kecamatan yang dipilih
-        //     var provinsi = provinsiSelect.value;
-        //     var kabupaten = kabupatenSelect.value;
-        //     var kecamatan = kecamatanSelect.value;
-        //     desaSelect.innerHTML = "<option value=''>Pilih Desa/Kelurahan</option>";
+        function updateDesa() {
+            // Mengisi dropdown desa/kelurahan berdasarkan kecamatan yang dipilih
+            var provinsi = provinsiSelect.value;
+            var kabupaten = kabupatenSelect.value;
+            var kecamatan = kecamatanSelect.value;
+            desaSelect.innerHTML = "<option value=''>Pilih Desa/Kelurahan</option>";
 
-        //     if (provinsi in dataWilayah && kabupaten in dataWilayah[provinsi] && kecamatan in dataWilayah[provinsi][
-        //             kabupaten
-        //         ]) {
-        //         var desaOptions = dataWilayah[provinsi][kabupaten][kecamatan];
-        //         for (var i = 0; i < desaOptions.length; i++) {
-        //             var option = document.createElement("option");
-        //             option.value = desaOptions[i];
-        //             option.text = desaOptions[i];
-        //             desaSelect.add(option);
-        //         }
-        //     }
-        // }
+            if (provinsi in dataWilayah && kabupaten in dataWilayah[provinsi] && kecamatan in dataWilayah[provinsi][
+                    kabupaten
+                ]) {
+                var desaOptions = dataWilayah[provinsi][kabupaten][kecamatan];
+                for (var i = 0; i < desaOptions.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = desaOptions[i];
+                    option.text = desaOptions[i];
+                    desaSelect.add(option);
+                }
+            }
+        }
     </script>
 @endsection

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cities;
 use App\Models\DaerahIrigasi;
+use App\Models\Districts;
 use App\Models\Penerima;
+use App\Models\Province;
+use App\Models\Subdistricts;
 use Illuminate\Http\Request;
 
 class PenerimaController extends Controller
@@ -28,8 +32,17 @@ class PenerimaController extends Controller
      */
     public function create()
     {
+        $a = Province::get();
+        $b = Cities::all();
+        $c = Districts::all();
+        $d = Subdistricts::all();
+        // dd($a,$b,$c,$d);
         return view('form.daftar_p3tgai.create', [
-            'DaerahIrigasi' => DaerahIrigasi::all()
+            'DaerahIrigasi' => DaerahIrigasi::all(),
+            'a' => $a,
+            'b' => $b,
+            'c' => $c,
+            'd' => $d,
         ]);
     }
 

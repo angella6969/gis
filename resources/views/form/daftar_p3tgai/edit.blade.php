@@ -29,7 +29,7 @@
                                 <input type="text" class="form-control" id="Kabupaten" name="Kabupaten"
                                     value="{{ old('Kabupaten', $Penerimas->Kabupaten) }}" placeholder="Kabupaten" required>
                             </div> --}}
-                            <div class="mt-3 mb-3">
+                            {{-- <div class="mt-3 mb-3">
                                 <label for="Kabupaten" class="form-label">Kabupaten</label>
                                 <input type="text" class="form-control" disabled
                                     value="Data Lama : {{ $Penerimas->Kabupaten }}">
@@ -106,8 +106,13 @@
                                         Kota Magelang
                                     </option>
                                 </select>
-                            </div>
+                            </div> --}}
 
+                            <div class="mb-3">
+                                <label for="Kabupaten" class="form-label">Kabupaten</label>
+                                <input type="text" class="form-control" id="Kabupaten" name="Kabupaten"
+                                    value="{{ old('Kabupaten', $Penerimas->Kabupaten) }}" placeholder="Kabupaten" required>
+                            </div>
                             <div class="mb-3">
                                 <label for="Kecamatan" class="form-label">Kecamatan</label>
                                 <input type="text" class="form-control" id="Kecamatan" name="Kecamatan"
