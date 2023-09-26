@@ -287,17 +287,18 @@
         // Contoh data JSON, pastikan variabel $dataJSON telah diisi dengan data yang benar
         var dataJSON = {!! $dataJSON !!};
         var lineCoordinates = [
-            [51.509, -0.08],
-            [51.503, -0.06],
-            [51.498, -0.05],
+            // [51.509, -0.08],
+            // [51.503, -0.06],
+            // [51.498, -0.05],
         ];
 
         // Data layer poligon (polygon)
+
         var polygonCoordinates = [
-            [51.509, -0.08],
-            [51.503, -0.06],
-            [51.51, -0.047],
-            [51.515, -0.065],
+            // [51.509, -0.08],
+            // [51.503, -0.06],
+            // [51.51, -0.047],
+            // [51.515, -0.065],
         ];
 
         var map = L.map('map').setView([-7.7816627178899, 110.40877100159], 13);
