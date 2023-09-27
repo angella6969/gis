@@ -108,10 +108,19 @@ class PenerimaController extends Controller
     public function edit(string $id)
     {
         $penerima = Penerima::findOrFail($id);
-        // dd($penerima);
+        $a = Province::where('id',$id)->get();
+        // dd($a);
+
+        // $b = Cities::all();
+        // $c = Districts::all();
+        // $d = Subdistricts::all();
         return view('form.daftar_p3tgai.edit', [
             "Penerimas" => $penerima,
-            "DaerahIrigasi" => DaerahIrigasi::get()
+            "DaerahIrigasi" => DaerahIrigasi::get(),
+            "provinsiList" => $a,
+            // "provinsiList" => $a,
+            // "provinsiList" => $a,
+            // "provinsiList" => $a,
 
         ]);
     }
@@ -186,5 +195,29 @@ class PenerimaController extends Controller
                 'dataDariDatabase' => $dataDariDatabase
             ]
         );
+    }
+    public function getProvinsi()
+    {
+        $provinsi = Province::all();
+        return response()->json($provinsi);
+    }
+    public function getKabupaten($provinsiId)
+    {
+        $Kabupaten = Cities::where('prov_id', $provinsiId)->get();
+        return response()->json($Kabupaten);
+    }
+    public function getKecamatan($cityId)
+    {
+        $Kecamatan = Districts::where('city_Id', $cityId)->get();
+        return response()->json($Kecamatan);
+    }
+    public function getDesa($dis_id)
+    {
+        $Desa = Subdistricts::where('dis_id', $dis_id)->get();
+        return response()->json($Desa);
+    }
+    public function coba()
+    {
+        return view('/dashboard/coba');
     }
 }

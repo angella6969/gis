@@ -40,6 +40,7 @@ class MapsController extends Controller
             'dataJSON' => $dataJSON,
         ]);
     }
+
     public function aksesFileJson()
     {
         // // json 
@@ -179,6 +180,7 @@ class MapsController extends Controller
                     // Tambahkan data yang diproses ke dalam array $allData
                     $allData[] = json_encode($geoJSON);
                 }
+                // dd( $allData);
             }
         } else {
             // Handle jika 'features' tidak ditemukan atau bukan array

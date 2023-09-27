@@ -222,7 +222,7 @@
                                     <span class="input-group-text">Kali</sup></span>
                                 </div>
                             </div>
- 
+
                             <div class="mb-3">
                                 <label for="TahunMendapatkan" class="form-label">Tahun Mendapatkan</label>
                                 <input type="text" class="form-control" id="TahunMendapatkan" name="TahunMendapatkan"
@@ -310,10 +310,6 @@
                 </div>
             </div>
         </div>
-        
-       @foreach ($d as $item)
-           {{ $item->subdis_name}}
-       @endforeach
     </div>
 
 
@@ -372,8 +368,89 @@
             namaContainer.appendChild(inputGroup);
         }
     </script>
-
     <script>
+        // Fungsi untuk mengambil data provinsi dari API
+        function fetchProvinsi() {
+            fetch('/getProvinsi')
+                .then(response => response.json())
+                .then(data => {
+                    const provinsiSelect = document.getElementById("provinsi");
+                    provinsiSelect.innerHTML = '<option value="">Pilih Provinsi</option>';
+                    data.forEach(provinsi => {
+                        const option = document.createElement("option");
+                        option.value = provinsi.id; // Ganti dengan atribut yang sesuai
+                        option.text = provinsi.prov_name; // Ganti dengan atribut yang sesuai
+                        provinsiSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Fungsi untuk mengambil data kabupaten berdasarkan provinsi yang dipilih
+        function updateKabupaten() {
+            const provinsiSelect = document.getElementById("provinsi");
+            const kabupatenSelect = document.getElementById("Kabupaten");
+            const selectedProvinsi = provinsiSelect.value;
+
+            fetch(`/getKabupaten/${selectedProvinsi}`)
+                .then(response => response.json())
+                .then(data => {
+                    kabupatenSelect.innerHTML = '<option value="">Pilih Kabupaten</option>';
+                    data.forEach(kabupaten => {
+                        const option = document.createElement("option");
+                        option.value = kabupaten.id; // Ganti dengan atribut yang sesuai
+                        option.text = kabupaten.city_name; // Ganti dengan atribut yang sesuai
+                        kabupatenSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Fungsi untuk mengambil data kecamatan berdasarkan kabupaten yang dipilih
+        function updateKecamatan() {
+            const kabupatenSelect = document.getElementById("Kabupaten");
+            const kecamatanSelect = document.getElementById("Kecamatan");
+            const selectedKabupaten = kabupatenSelect.value;
+
+            fetch(`/getKecamatan/${selectedKabupaten}`)
+                .then(response => response.json())
+                .then(data => {
+                    kecamatanSelect.innerHTML = '<option value="">Pilih Kecamatan</option>';
+                    data.forEach(kecamatan => {
+                        const option = document.createElement("option");
+                        option.value = kecamatan.id; // Ganti dengan atribut yang sesuai
+                        option.text = kecamatan.dis_name; // Ganti dengan atribut yang sesuai
+                        kecamatanSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Fungsi untuk mengambil data desa berdasarkan kecamatan yang dipilih
+        function updateDesa() {
+            const kecamatanSelect = document.getElementById("Kecamatan");
+            const desaSelect = document.getElementById("Desa");
+            const selectedKecamatan = kecamatanSelect.value;
+
+            fetch(`/getDesa/${selectedKecamatan}`)
+                .then(response => response.json())
+                .then(data => {
+                    desaSelect.innerHTML = '<option value="">Pilih Desa</option>';
+                    data.forEach(Desa => {
+                        const option = document.createElement("option");
+                        option.value = Desa.id; // Ganti dengan atribut yang sesuai
+                        option.text = Desa.subdis_name; // Ganti dengan atribut yang sesuai
+                        desaSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Panggil fungsi fetchProvinsi() saat halaman dimuat
+        fetchProvinsi();
+    </script>
+
+    {{-- <script>
         // Data wilayah dalam format JSON
         var dataWilayah = {
             "Jawa Tengah": {
@@ -1198,5 +1275,5 @@
                 }
             }
         }
-    </script>
+    </script> --}}
 @endsection

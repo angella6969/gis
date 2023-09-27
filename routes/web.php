@@ -47,7 +47,7 @@ Route::get('/dashboard', [DashboardController::class, 'handleChart']);
 Route::get('/dashboard/chart', [DashboardController::class, 'handleChart']);
 
 Route::get('/dashboard/maps', [MapsController::class, 'handleChart']);
-Route::get('/dashboard/maps/chart', [MapsController::class, 'handleChart']);
+Route::get('/dashboard/maps/json', [MapsController::class, 'aksesFileJson']);
 
 
 
@@ -69,6 +69,16 @@ Route::get('/dashboard/update/perkembangan-daerah-irigasi/edit/{id}', [ProgresCo
 Route::get('/dashboard/update/perkembangan-daerah-irigasi/show/{id}', [ProgresController::class, 'show']);
 Route::post('/dashboard/update/perkembangan-daerah-irigasi/edit/{id}', [ProgresController::class, 'update']);
 Route::DELETE('/dashboard/update/perkembangan-daerah-irigasi/{id}', [ProgresController::class, 'destroy']);
+
+
+
+Route::get('/getProvinsi', [PenerimaController::class, 'getProvinsi']);
+Route::get('/getKabupaten/{provinsiId}', [PenerimaController::class, 'getKabupaten']);
+Route::get('/getKecamatan/{cityId}', [PenerimaController::class, 'getKecamatan']);
+Route::get('/getDesa/{dis_id}', [PenerimaController::class, 'getDesa']);
+Route::get('/coba', [PenerimaController::class, 'coba']);
+
+
 
 
 

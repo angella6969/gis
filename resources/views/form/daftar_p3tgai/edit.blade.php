@@ -24,105 +24,36 @@
                                 </select>
                             </div>
 
-                            {{-- <div class="mb-3">
-                                <label for="Kabupaten" class="form-label">Kabupaten</label>
-                                <input type="text" class="form-control" id="Kabupaten" name="Kabupaten"
-                                    value="{{ old('Kabupaten', $Penerimas->Kabupaten) }}" placeholder="Kabupaten" required>
-                            </div> --}}
-                            {{-- <div class="mt-3 mb-3">
-                                <label for="Kabupaten" class="form-label">Kabupaten</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $Penerimas->Kabupaten }}">
-                                <select class="form-select" id="Kabupaten" name="Kabupaten" required>
-                                    <option value="">Pilih salah satu opsi</option>
-                                    <option value="Sleman" {{ old('Kabupaten') == 'Sleman' ? 'selected' : '' }}>Sleman
-                                    </option>
-                                    <option value="Bantul" {{ old('Kabupaten') == 'Bantul' ? 'selected' : '' }}>Bantul
-                                    </option>
-                                    <option value="Gunungkidul" {{ old('Kabupaten') == 'Gunungkidul' ? 'selected' : '' }}>
-                                        Gunungkidul
-                                    </option>
-                                    <option value="Kulon Progo" {{ old('Kabupaten') == 'Kulon Progo' ? 'selected' : '' }}>
-                                        Kulon Progo
-                                    </option>
-                                    <option value="Kota Yogyakarta"
-                                        {{ old('Kabupaten') == 'Kota Yogyakarta' ? 'selected' : '' }}>
-                                        Kota Yogyakarta
-                                    </option>
-                                    <option value="Purbalingga" {{ old('Kabupaten') == 'Purbalingga' ? 'selected' : '' }}>
-                                        Purbalingga
-                                    </option>
-                                    <option value="Kebumen" {{ old('Kabupaten') == 'Kebumen' ? 'selected' : '' }}>Kebumen
-                                    </option>
-                                    <option value="Magelang" {{ old('Kabupaten') == 'Magelang' ? 'selected' : '' }}>
-                                        Magelang
-                                    </option>
-                                    <option value="Cilacap" {{ old('Kabupaten') == 'Cilacap' ? 'selected' : '' }}>Cilacap
-                                    </option>
-                                    <option value="Banjarnegara"
-                                        {{ old('Kabupaten') == 'Banjarnegara' ? 'selected' : '' }}>Banjarnegara
-                                    </option>
-                                    <option value="Banyumas" {{ old('Kabupaten') == 'Banyumas' ? 'selected' : '' }}>
-                                        Banyumas
-                                    </option>
-                                    <option value="Purworejo" {{ old('Kabupaten') == 'Purworejo' ? 'selected' : '' }}>
-                                        Purworejo
-                                    </option>
-                                    <option value="Pemalang" {{ old('Kabupaten') == 'Pemalang' ? 'selected' : '' }}>
-                                        Pemalang
-                                    </option>
-                                    <option value="Temanggung" {{ old('Kabupaten') == 'Temanggung' ? 'selected' : '' }}>
-                                        Temanggung
-                                    </option>
-                                    <option value="Klaten" {{ old('Kabupaten') == 'Klaten' ? 'selected' : '' }}>
-                                        Klaten
-                                    </option>
-                                    <option value="Wonogiri" {{ old('Kabupaten') == 'Wonogiri' ? 'selected' : '' }}>
-                                        Wonogiri
-                                    </option>
-                                    <option value="Semarang" {{ old('Kabupaten') == 'Semarang' ? 'selected' : '' }}>
-                                        Semarang
-                                    </option>
-                                    <option value="Kendal" {{ old('Kabupaten') == 'Kendal' ? 'selected' : '' }}>
-                                        Kendal
-                                    </option>
-                                    <option value="Pekalongan" {{ old('Kabupaten') == 'Pekalongan' ? 'selected' : '' }}>
-                                        Pekalongan
-                                    </option>
-                                    <option value="Boyolali" {{ old('Kabupaten') == 'Boyolali' ? 'selected' : '' }}>
-                                        Boyolali
-                                    </option>
-                                    <option value="Brebes" {{ old('Kabupaten') == 'Brebes' ? 'selected' : '' }}>
-                                        Brebes
-                                    </option>
-                                    <option value="Sukoharjo" {{ old('Kabupaten') == 'Sukoharjo' ? 'selected' : '' }}>
-                                        Sukoharjo
-                                    </option>
-                                    <option value="Batang" {{ old('Kabupaten') == 'Batang' ? 'selected' : '' }}>
-                                        Batang
-                                    </option>
-                                    <option value="Kota Magelang"
-                                        {{ old('Kabupaten') == 'Kota Magelang' ? 'selected' : '' }}>
-                                        Kota Magelang
-                                    </option>
-                                </select>
-                            </div> --}}
-
                             <div class="mb-3">
-                                <label for="Kabupaten" class="form-label">Kabupaten</label>
-                                <input type="text" class="form-control" id="Kabupaten" name="Kabupaten"
-                                    value="{{ old('Kabupaten', $Penerimas->Kabupaten) }}" placeholder="Kabupaten" required>
+                                <label for="Provinsi" class="form-label">Provinsi</label>
+                                <select class="form-control" id="provinsi" name="provinsi" onchange="updateKabupaten()"
+                                    required>
+                                    <option value="">Pilih Provinsi</option>
+                                    {{-- @foreach ($provinsiList as $provinsi)
+                                        <option value="{{ $provinsi->id }}">  {{ $provinsi->prov_name }}
+                                        </option>
+                                    @endforeach --}}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Kabupaten" class="form-label">Kota/Kabupaten</label>
+                                <select class="form-control" id="Kabupaten" name="Kabupaten" onchange="updateKecamatan()"
+                                    required>
+                                    <option value="">Pilih Kabupaten/Kota</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="Kecamatan" class="form-label">Kecamatan</label>
-                                <input type="text" class="form-control" id="Kecamatan" name="Kecamatan"
-                                    value="{{ old('Kecamatan', $Penerimas->Kecamatan) }}" placeholder="Kecamatan" required>
+                                <select class="form-control" id="Kecamatan" name="Kecamatan" onchange="updateDesa()"
+                                    required>
+                                    <option value="">Pilih Kecamatan</option>
+                                </select>
                             </div>
-
                             <div class="mb-3">
                                 <label for="Desa" class="form-label">Desa</label>
-                                <input type="text" class="form-control" id="Desa" name="Desa"
-                                    value="{{ old('Desa', $Penerimas->Desa) }}" placeholder="Desa" required>
+                                <select class="form-control" id="Desa" name="Desa" required>
+                                    <option value="">Pilih Desa</option>
+                                </select>
                             </div>
 
                             <div class="mb-3">
@@ -238,6 +169,17 @@
                                 <div class="form-text">PDF Max 5 MB
                                 </div>
                             </div>
+
+                            <div class="mb-3">
+                                <label for="latitude" class="form-label">latitude</label>
+                                <input type="text" class="form-control" id="xAx" name="xAx"
+                                    value="{{ old('xAx',$Penerimas->xAx) }}" placeholder="latitude">
+                            </div>
+                            <div class="mb-3">
+                                <label for="longitude" class="form-label">longitude</label>
+                                <input type="text" class="form-control" id="yAx" name="yAx"
+                                    value="{{ old('yAx',$Penerimas->yAx) }}" placeholder="longitude">
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -267,34 +209,113 @@
     </script>
     <!-- Kode JavaScript Anda -->
     <script>
-        < script >
-            function addNamaField() {
-                var namaContainer = document.getElementById('nama-container');
-                var inputGroup = document.createElement('div');
-                inputGroup.className = 'input-group mb-3';
+        function addNamaField() {
+            var namaContainer = document.getElementById('nama-container');
+            var inputGroup = document.createElement('div');
+            inputGroup.className = 'input-group mb-3';
 
-                var input = document.createElement('input');
-                input.type = 'text';
-                input.className = 'form-control';
-                input.name = 'names[]';
-                input.placeholder = 'Nama';
+            var input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'form-control';
+            input.name = 'names[]';
+            input.placeholder = 'Nama';
 
-                var appendDiv = document.createElement('div');
-                appendDiv.className = 'input-group-append';
+            var appendDiv = document.createElement('div');
+            appendDiv.className = 'input-group-append';
 
-                var removeButton = document.createElement('button');
-                removeButton.className = 'btn btn-outline-secondary';
-                removeButton.type = 'button';
-                removeButton.textContent = '-';
-                removeButton.onclick = function() {
-                    namaContainer.removeChild(inputGroup);
-                };
+            var removeButton = document.createElement('button');
+            removeButton.className = 'btn btn-outline-secondary';
+            removeButton.type = 'button';
+            removeButton.textContent = '-';
+            removeButton.onclick = function() {
+                namaContainer.removeChild(inputGroup);
+            };
 
-                appendDiv.appendChild(removeButton);
-                inputGroup.appendChild(input);
-                inputGroup.appendChild(appendDiv);
-                namaContainer.appendChild(inputGroup);
-            } <
-            />
+            appendDiv.appendChild(removeButton);
+            inputGroup.appendChild(input);
+            inputGroup.appendChild(appendDiv);
+            namaContainer.appendChild(inputGroup);
+        }
+    </script>
+    <script>
+        // Fungsi untuk mengambil data provinsi dari API
+        function fetchProvinsi() {
+            fetch('/getProvinsi')
+                .then(response => response.json())
+                .then(data => {
+                    const provinsiSelect = document.getElementById("provinsi");
+                    provinsiSelect.innerHTML = '<option value="">Pilih Provinsi</option>';
+                    data.forEach(provinsi => {
+                        const option = document.createElement("option");
+                        option.value = provinsi.id;
+                        option.text = provinsi.prov_name;
+                        provinsiSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Fungsi untuk mengambil data kabupaten berdasarkan provinsi yang dipilih
+        function updateKabupaten() {
+            const provinsiSelect = document.getElementById("provinsi");
+            const kabupatenSelect = document.getElementById("Kabupaten");
+            const selectedProvinsi = provinsiSelect.value;
+
+            fetch(`/getKabupaten/${selectedProvinsi}`)
+                .then(response => response.json())
+                .then(data => {
+                    kabupatenSelect.innerHTML = '<option value="">Pilih Kabupaten</option>';
+                    data.forEach(kabupaten => {
+                        const option = document.createElement("option");
+                        option.value = kabupaten.id;
+                        option.text = kabupaten.city_name;
+                        kabupatenSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Fungsi untuk mengambil data kecamatan berdasarkan kabupaten yang dipilih
+        function updateKecamatan() {
+            const kabupatenSelect = document.getElementById("Kabupaten");
+            const kecamatanSelect = document.getElementById("Kecamatan");
+            const selectedKabupaten = kabupatenSelect.value;
+
+            fetch(`/getKecamatan/${selectedKabupaten}`)
+                .then(response => response.json())
+                .then(data => {
+                    kecamatanSelect.innerHTML = '<option value="">Pilih Kecamatan</option>';
+                    data.forEach(kecamatan => {
+                        const option = document.createElement("option");
+                        option.value = kecamatan.id;
+                        option.text = kecamatan.dis_name;
+                        kecamatanSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Fungsi untuk mengambil data desa berdasarkan kecamatan yang dipilih
+        function updateDesa() {
+            const kecamatanSelect = document.getElementById("Kecamatan");
+            const desaSelect = document.getElementById("Desa");
+            const selectedKecamatan = kecamatanSelect.value;
+
+            fetch(`/getDesa/${selectedKecamatan}`)
+                .then(response => response.json())
+                .then(data => {
+                    desaSelect.innerHTML = '<option value="">Pilih Desa</option>';
+                    data.forEach(Desa => {
+                        const option = document.createElement("option");
+                        option.value = Desa.id;
+                        option.text = Desa.subdis_name;
+                        desaSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        // 
+        // Panggil fungsi fetchProvinsi() saat halaman dimuat
+        fetchProvinsi();
     </script>
 @endsection
