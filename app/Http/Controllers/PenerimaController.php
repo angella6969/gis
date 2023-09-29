@@ -159,17 +159,17 @@ class PenerimaController extends Controller
         ]);
 
         if ($request->hasFile('peta_pdf')) {
-            $petaPdfPath = $request->file('peta_pdf')->store('public/pdf');
+            $petaPdfPath = $request->file('peta_pdf')->store('pdf');
             $validatedData['peta_pdf'] = $petaPdfPath;
         }
 
         if ($request->hasFile('jaringan_pdf')) {
-            $jaringanPdfPath = $request->file('jaringan_pdf')->store('public/pdf');
+            $jaringanPdfPath = $request->file('jaringan_pdf')->store('pdf');
             $validatedData['jaringan_pdf'] = $jaringanPdfPath;
         }
 
         if ($request->hasFile('dokumentasi_pdf')) {
-            $dokumentasiPdfPath = $request->file('dokumentasi_pdf')->store('public/pdf');
+            $dokumentasiPdfPath = $request->file('dokumentasi_pdf')->store('pdf');
             $validatedData['dokumentasi_pdf'] = $dokumentasiPdfPath;
         }
 

@@ -224,8 +224,11 @@
                 var peta_pdf = $(this).data('peta_pdf');
                 var jaringan_pdf = $(this).data('jaringan_pdf');
                 var dokumentasi_pdf = $(this).data('dokumentasi_pdf');
-                console.log(jaringan_pdf);
                 // Tampilkan data dalam modal dengan tabel horizontal
+                var originalString = peta_pdf;
+                var trimmedString = originalString.substring(6);
+                console.log(trimmedString);
+
                 $('#progresModalBody').html(`
                     <table class="table table-bordered">
                         <tr>
@@ -274,10 +277,6 @@
                         <tr>
                             <th>Tahun Mendapatkan P3-TGAI</th>
                             <td>${tahun}</td>
-                        </tr>
-                        <tr>
-                            <iframe src="{{ asset('storage/${peta_pdf}') }}" width="800"
-            height="600"></iframe>
                         </tr>
                         
                     </table>
