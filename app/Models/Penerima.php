@@ -27,4 +27,20 @@ class Penerima extends Model
     {
         return $this->belongsTo(map_Gis::class);
     }
+    public function provinsi()
+    {
+        return $this->belongsTo(Province::class);
+    }
+    public function kabupaten()
+    {
+        return $this->belongsTo(cities::class, 'city_id');
+    }
+    public function kecamatan()
+    {
+        return $this->belongsTo(Districts::class,'district_id');
+    }
+    public function desa()
+    {
+        return $this->belongsTo(Subdistricts::class,'subdistrict_id');
+    }
 }

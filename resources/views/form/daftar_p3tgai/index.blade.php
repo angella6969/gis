@@ -96,22 +96,28 @@
                                             <td> {{ $loop->iteration }}</td>
                                             <td> {{ $penerima->daerahIrigasi->nama }}</td>
                                             <td> {{ $penerima->names }}</td>
-                                            <td> {{ $penerima->Kabupaten }}</td>
-                                            <td> {{ $penerima->Kecamatan }}</td>
-                                            <td> {{ $penerima->Desa }}</td>
+                                            <td> {{ $penerima->kabupaten->city_name }}</td>
+                                            <td> {{ $penerima->kecamatan->dis_name }}</td>
+                                            <td> {{ $penerima->desa->subdis_name }}</td>
+
                                             <td>
                                                 <button class="btn badge bg-info border-0 show-DI-modal"
                                                     data-id="{{ $penerima->id }}"
                                                     data-daerah_irigasi_id="{{ $penerima->daerahIrigasi->nama }}"
-                                                    data-kabupaten="{{ $penerima->Kabupaten }}"
-                                                    data-kecamatan="{{ $penerima->Kecamatan }}"
-                                                    data-desa="{{ $penerima->Desa }}" data-names="{{ $penerima->names }}"
-                                                    data-IrigasiDesaTerbangun="{{ $penerima->IrigasiDesaTerbangun }}"
+                                                    data-kabupaten="{{ $penerima->kabupaten->city_name }}"
+                                                    data-kecamatan="{{ $penerima->kecamatan->dis_name }}"
+                                                    data-desa="{{ $penerima->desa->subdis_name }}"
+                                                    data-names="{{ $penerima->names }}"
+                                                    data-terbangun="{{ $penerima->IrigasiDesaTerbangun }}"
+                                                    data-belum_terbangun="{{ $penerima->IrigasiDesaTerbangun }}"
                                                     data-irigasiDesaBelumTerbangun="{{ $penerima->IrigasiDesaBelumTerbangun }}"
-                                                    data-polaTanamSaatIni="{{ $penerima->PolaTanamSaatIni }}"
-                                                    data-jenisVegetasi="{{ $penerima->JenisVegetasi }}"
-                                                    data-mendapatkanP4_ISDA="{{ $penerima->MendapatkanP4_ISDA }}"
-                                                    data-tahunMendapatkan="{{ $penerima->TahunMendapatkan }}">
+                                                    data-pola="{{ $penerima->PolaTanamSaatIni }}"
+                                                    data-jenis="{{ $penerima->JenisVegetasi }}"
+                                                    data-mendapatkan="{{ $penerima->MendapatkanP4_ISDA }}"
+                                                    data-tahun="{{ $penerima->TahunMendapatkan }}"
+                                                    data-peta_pdf="{{ $penerima->peta_pdf }}"
+                                                    data-jaringan_pdf="{{ $penerima->jaringan_pdf }}"
+                                                    data-dokumentasi_pdf="{{ $penerima->dokumentasi_pdf }}">
                                                     <span data-feather="eye">
                                                 </button>
                                                 <a href="/dashboard/update/perkembangan-daerah-irigasi/{{ $penerima->id }}"
@@ -156,7 +162,47 @@
             </div>
         </div>
     </div>
+
+
+    <div>
+        {{-- <iframe src="{{ asset('storage\pdf\5AOO5DHAhx2nvQ73dJJkennaG5Vg6HpwMpmi9vN4.pdf') }}" frameborder="0"
+            height="600" type="application/pdf">
+        </iframe> --}}
+        {{-- <iframe src="{{ asset('storage\pdf\5AOO5DHAhx2nvQ73dJJkennaG5Vg6HpwMpmi9vN4.pdf') }}" width="800"
+            height="600"></iframe> --}}
+
+        {{-- <canvas id="pdf-viewer"></canvas> --}}
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+    {{-- <script>
+        // Ambil referensi ke elemen canvas
+        var canvas = document.getElementById('pdf-viewer');
+
+        // Tentukan URL PDF yang akan ditampilkan
+        var pdfUrl = "{{ asset('storage/pdf/bWmKa6G17F9puFkznavgq81JSxhcAfXNpMh5ILW7.pdf') }}";
+
+        // Muat PDF dan tampilkan di elemen canvas
+        var loadingTask = pdfjsLib.getDocument(pdfUrl);
+        loadingTask.promise.then(function(pdf) {
+            pdf.getPage(1).then(function(page) {
+                var viewport = page.getViewport({
+                    scale: 1
+                });
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                var context = canvas.getContext('2d');
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        });
+    </script> --}}
+
+
     <script>
         $(document).ready(function() {
             // Ketika tombol "Tampilkan Data" di klik
@@ -167,20 +213,18 @@
                 var Kabupaten = $(this).data('kabupaten');
                 var Kecamatan = $(this).data('kecamatan');
                 var Desa = $(this).data('desa');
-                var irigasiDesaTerbangun = $(this).data('IrigasiDesaTerbangun');
-                var IrigasiDesaBelumTerbangun = $(this).data('irigasiDesaBelumTerbangun');
-                var PolaTanamSaatIni = $(this).data('polaTanamSaatIni');
-                var JenisVegetasi = $(this).data('jenisVegetasi');
-                var MendapatkanP4_ISDA = $(this).data('mendapatkanP4_ISDA');
-                var TahunMendapatkan = $(this).data('tahunMendapatkan');
-
-                console.log(daerah_irigasi_id);
-                console.log(id);
-                console.log(Kabupaten);
-                console.log(Kecamatan);
-                console.log(Desa);
-                console.log(irigasiDesaTerbangun);
-
+                var names = $(this).data('names');
+                var terbangun = $(this).data('terbangun');
+                var belum_terbangun = $(this).data('belum_terbangun');
+                var irigasiDesaBelumTerbangun = $(this).data('IrigasiDesaBelumTerbangun');
+                var pola = $(this).data('pola');
+                var jenis = $(this).data('jenis');
+                var mendapatkan = $(this).data('mendapatkan');
+                var tahun = $(this).data('tahun');
+                var peta_pdf = $(this).data('peta_pdf');
+                var jaringan_pdf = $(this).data('jaringan_pdf');
+                var dokumentasi_pdf = $(this).data('dokumentasi_pdf');
+                console.log(jaringan_pdf);
                 // Tampilkan data dalam modal dengan tabel horizontal
                 $('#progresModalBody').html(`
                     <table class="table table-bordered">
@@ -205,29 +249,37 @@
                             <td>${Desa}</td>
                         </tr>
                         <tr>
-                            <th>Irigasi Desa Terbangun</th>
-                            <td>${irigasiDesaTerbangun}</td>
+                            <th>Nama P3-TGAI</th>
+                            <td>${names}</td>
                         </tr>
                         <tr>
-                            <th>Irigasi Desa Belum Terbangun</th>
-                            <td>${IrigasiDesaBelumTerbangun}</td>
+                            <th>Irigasi Terbangun</th>
+                            <td>${terbangun}</td>
                         </tr>
+                        <tr>
+                            <th>Irigasi Belum Terbangun</th>
+                            <td>${belum_terbangun}</td>
                         <tr>
                             <th>Pola Tanam Saat Ini</th>
-                            <td>${PolaTanamSaatIni}</td>
+                            <td>${pola}</td>
                         </tr>
                         <tr>
                             <th>Jenis Vegetasi</th>
-                            <td>${JenisVegetasi}</td>
+                            <td>${jenis}</td>
                         </tr>
                         <tr>
-                            <th>Mendapatkan P4_ISDA</th>
-                            <td>${MendapatkanP4_ISDA}</td>
+                            <th>Mendapatkan P3-TGAI Kali</th>
+                            <td>${mendapatkan}</td>
                         </tr>
                         <tr>
-                            <th>Tahun Mendapatkan</th>
-                            <td>${TahunMendapatkan}</td>
+                            <th>Tahun Mendapatkan P3-TGAI</th>
+                            <td>${tahun}</td>
                         </tr>
+                        <tr>
+                            <iframe src="{{ asset('storage/${peta_pdf}') }}" width="800"
+            height="600"></iframe>
+                        </tr>
+                        
                     </table>
                 `);
 

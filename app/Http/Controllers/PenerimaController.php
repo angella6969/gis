@@ -18,10 +18,22 @@ class PenerimaController extends Controller
     public function index()
     {
         $penerimas = Penerima::latest()
-            ->with('daerahIrigasi')
+            ->with(['daerahIrigasi', 'provinsi', 'kecamatan', 'desa'])
+            ->leftJoin('provinces', 'penerimas.kabupaten', '=', 'provinces.id')
+            ->leftJoin('cities', 'penerimas.kabupaten', '=', 'cities.id')
+            ->leftJoin('districts', 'penerimas.kecamatan', '=', 'districts.id')
+            ->leftJoin('subdistricts', 'penerimas.desa', '=', 'subdistricts.id')
+            ->select(
+                'penerimas.*', // Pilih semua kolom dari tabel 'penerimas'
+                'provinces.id as province_id', // Atur alias untuk ID dari 'provinces'
+                'cities.id as city_id', // Atur alias untuk ID dari 'cities'
+                'districts.id as district_id', // Atur alias untuk ID dari 'districts'
+                'subdistricts.id as subdistrict_id' // Atur alias untuk ID dari 'subdistricts'
+            )
             ->filter(request()->only('search'))
-            ->orderBy('created_at', 'desc')
+            ->orderBy('penerimas.created_at', 'desc')
             ->get();
+
         return view('form.daftar_p3tgai.index', [
             "penerimas" => $penerimas,
         ]);
@@ -36,7 +48,6 @@ class PenerimaController extends Controller
         $b = Cities::all();
         $c = Districts::all();
         $d = Subdistricts::all();
-        // dd($a,$b,$c,$d);
         return view('form.daftar_p3tgai.create', [
             'DaerahIrigasi' => DaerahIrigasi::all(),
             'a' => $a,
@@ -108,7 +119,7 @@ class PenerimaController extends Controller
     public function edit(string $id)
     {
         $penerima = Penerima::findOrFail($id);
-        $a = Province::where('id',$id)->get();
+        $a = Province::where('id', $id)->get();
         // dd($a);
 
         // $b = Cities::all();
@@ -142,9 +153,9 @@ class PenerimaController extends Controller
             'MendapatkanP4_ISDA' => ['nullable', 'regex:/^[0-9]+(\.[0-9]+)?$/'],
             'TahunMendapatkan' => ['nullable'],
             'names' => ['required'], // Mengganti 'names.*' menjadi 'names'
-            'peta_pdf' => ['file', 'max:1024', 'mimes:pdf'],
-            'jaringan_pdf' => ['file', 'max:1024', 'mimes:pdf'],
-            'dokumentasi_pdf' => ['file', 'max:1024', 'mimes:pdf'],
+            'peta_pdf' => ['file', 'max:5120', 'mimes:pdf'],
+            'jaringan_pdf' => ['file', 'max:5120', 'mimes:pdf'],
+            'dokumentasi_pdf' => ['file', 'max:5120', 'mimes:pdf'],
         ]);
 
         if ($request->hasFile('peta_pdf')) {

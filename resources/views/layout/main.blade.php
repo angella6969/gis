@@ -16,7 +16,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<style>
+<style> 
     body {
         /* background-color: rgb(31,38,44) */
     }

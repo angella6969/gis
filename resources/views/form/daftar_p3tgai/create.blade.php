@@ -184,7 +184,7 @@
                                     Irigasi
                                     Desa Terbangun</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="IrigasiDesaTerbangun"
+                                    <input type="number" step="0.01" class="form-control" id="IrigasiDesaTerbangun"
                                         name="IrigasiDesaTerbangun" value="{{ old('IrigasiDesaTerbangun') }}"
                                         placeholder="Hanya Menerima Masukan Angka Saja" required>
                                     <span class="input-group-text">KM</sup></span>
@@ -194,7 +194,7 @@
                                 <label for="IrigasiDesaBelumTerbangun" class="form-label">Total Saluran Irigasi Tersier &
                                     Irigasi Desa Belum Terbangun</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="IrigasiDesaBelumTerbangun"
+                                    <input type="number" step="0.01" class="form-control" id="IrigasiDesaBelumTerbangun"
                                         name="IrigasiDesaBelumTerbangun" value="{{ old('IrigasiDesaBelumTerbangun') }}"
                                         placeholder="Hanya Menerima Masukan Angka Saja" required>
                                     <span class="input-group-text">KM</sup></span>
@@ -216,7 +216,7 @@
                             <div class="mb-3">
                                 <label for="MendapatkanP4_ISDA" class="form-label">Mendapatkan P4-ISDA/P3-TGAI</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="MendapatkanP4_ISDA"
+                                    <input type="number" step="0.01" class="form-control" id="MendapatkanP4_ISDA"
                                         name="MendapatkanP4_ISDA" value="{{ old('MendapatkanP4_ISDA') }}"
                                         placeholder="Hanya Menerima Masukan Angka Saja" required>
                                     <span class="input-group-text">Kali</sup></span>
@@ -225,7 +225,7 @@
 
                             <div class="mb-3">
                                 <label for="TahunMendapatkan" class="form-label">Tahun Mendapatkan</label>
-                                <input type="text" class="form-control" id="TahunMendapatkan" name="TahunMendapatkan"
+                                <input type="number" step="0.01" class="form-control" id="TahunMendapatkan" name="TahunMendapatkan"
                                     value="{{ old('TahunMendapatkan') }}" placeholder="Tahun Mendapatkan" required>
                             </div>
                             <div class="mb-3">
@@ -294,12 +294,12 @@
 
                             <div class="mb-3">
                                 <label for="latitude" class="form-label">latitude</label>
-                                <input type="text" class="form-control" id="xAx" name="xAx"
+                                <input type="number" step="0.01" class="form-control" id="xAx" name="xAx"
                                     value="{{ old('xAx') }}" placeholder="latitude">
                             </div>
                             <div class="mb-3">
                                 <label for="longitude" class="form-label">longitude</label>
-                                <input type="text" class="form-control" id="yAx" name="yAx"
+                                <input type="number" step="0.01" class="form-control" id="yAx" name="yAx"
                                     value="{{ old('yAx') }}" placeholder="longitude">
                             </div>
 
@@ -322,6 +322,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+
             @if (Session::has('success'))
                 iziToast.success({
                     title: 'Success',

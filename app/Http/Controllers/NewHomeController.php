@@ -13,17 +13,25 @@ class NewHomeController extends Controller
      */
     public function index()
     {
-        // $a = Penerima::get('names');
-        // $b = Progres::get();
-        // dd( $a);
+        $penerimas = Penerima::latest()
+            ->with(['daerahIrigasi', 'Progres'])
+            ->leftJoin('provinces', 'penerimas.kabupaten', '=', 'provinces.id')
+            ->leftJoin('cities', 'penerimas.kabupaten', '=', 'cities.id')
+            ->leftJoin('districts', 'penerimas.kecamatan', '=', 'districts.id')
+            ->leftJoin('subdistricts', 'penerimas.desa', '=', 'subdistricts.id')
+            ->select(
+                'penerimas.*', // Pilih semua kolom dari tabel 'penerimas'
+                'provinces.id as province_id', // Atur alias untuk ID dari 'provinces'
+                'cities.id as city_id', // Atur alias untuk ID dari 'cities'
+                'districts.id as district_id', // Atur alias untuk ID dari 'districts'
+                'subdistricts.id as subdistrict_id' // Atur alias untuk ID dari 'subdistricts'
+            )
+            ->filter(request()->only('search'))
+            ->orderBy('penerimas.created_at', 'desc')
+            ->get();
         return view('content.newhome', [
-
-            // 'penerimas' => Penerima::get(),
             'penerimas' => Penerima::with(['Progres'])->get(),
-
-
-            // atau jika Anda ingin membatasi jumlah data yang diambil
-            // 'penerimas' => Penerima::latest()->get()
+            'penerimas' =>  $penerimas
         ]);
     }
 

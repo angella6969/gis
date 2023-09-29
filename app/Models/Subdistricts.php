@@ -12,4 +12,8 @@ class Subdistricts extends Model
     {
         return $this->belongsTo(Districts::class);
     }
+    public function penerima()
+    {
+        return $this->hasMany(Penerima::class);
+    }
 }
