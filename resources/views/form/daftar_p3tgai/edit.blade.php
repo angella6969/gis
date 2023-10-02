@@ -29,10 +29,13 @@
                                 <select class="form-control" id="provinsi" name="provinsi" onchange="updateKabupaten()"
                                     required>
                                     <option value="">Pilih Provinsi</option>
-                                    {{-- @foreach ($provinsiList as $provinsi)
-                                        <option value="{{ $provinsi->id }}">  {{ $provinsi->prov_name }}
-                                        </option>
-                                    @endforeach --}}
+                                    @foreach ($provinsiList as $DI)
+                                        {{-- @if (old('provinsi', $provinsiList->id) == $DI->Kabupaten) --}}
+                                            {{-- <option value="{{ $DI->id }}" selected>{{ $DI->nama }}</option> --}}
+                                        {{-- @else --}}
+                                            {{-- <option value="{{ $DI->id }}">{{ $DI->nama }}</option> --}}
+                                        {{-- @endif --}}
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
@@ -173,12 +176,12 @@
                             <div class="mb-3">
                                 <label for="latitude" class="form-label">latitude</label>
                                 <input type="text" class="form-control" id="xAx" name="xAx"
-                                    value="{{ old('xAx',$Penerimas->xAx) }}" placeholder="latitude">
+                                    value="{{ old('xAx', $Penerimas->xAx) }}" placeholder="latitude">
                             </div>
                             <div class="mb-3">
                                 <label for="longitude" class="form-label">longitude</label>
                                 <input type="text" class="form-control" id="yAx" name="yAx"
-                                    value="{{ old('yAx',$Penerimas->yAx) }}" placeholder="longitude">
+                                    value="{{ old('yAx', $Penerimas->yAx) }}" placeholder="longitude">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
@@ -244,7 +247,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const provinsiSelect = document.getElementById("provinsi");
-                    provinsiSelect.innerHTML = '<option value="">Pilih Provinsi</option>';
+                    // provinsiSelect.innerHTML = '<option value="">Pilih Provinsi</option>';
                     data.forEach(provinsi => {
                         const option = document.createElement("option");
                         option.value = provinsi.id;

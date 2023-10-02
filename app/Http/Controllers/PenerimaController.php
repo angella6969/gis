@@ -121,7 +121,8 @@ class PenerimaController extends Controller
     public function edit(string $id)
     {
         $penerima = Penerima::findOrFail($id);
-        $a = Province::where('id', $id)->get();
+        // dd( $penerima->Kabupaten);
+        $a = Cities::where('id', $penerima->Kabupaten)->get();
         // dd($a);
 
         // $b = Cities::all();
@@ -130,7 +131,7 @@ class PenerimaController extends Controller
         return view('form.daftar_p3tgai.edit', [
             "Penerimas" => $penerima,
             "DaerahIrigasi" => DaerahIrigasi::get(),
-            "provinsiList" => $a,
+            "provinsiList" => Cities::get(),
             // "provinsiList" => $a,
             // "provinsiList" => $a,
             // "provinsiList" => $a,
@@ -212,15 +213,21 @@ class PenerimaController extends Controller
     public function getPeta_pdf(string $id)
     {
         $penerima = Penerima::where('id', $id)->pluck('peta_pdf')->first(); // Mengambil nilai pertama
+        if ($penerima === null) {
+            return redirect()->back()->with('fail', 'File Peta tidak tersedia.');
+        }
         $pdfPath = public_path('storage' . substr($penerima, 6)); // Gantilah dengan nama dan path file PDF yang sesuai
         return Response::make(file_get_contents($pdfPath), 200, [
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename=nama-file.pdf',
-        ]);
+        ]); 
     }
     public function getJaringan_pdf(string $id)
     {
         $penerima = Penerima::where('id', $id)->pluck('jaringan_pdf')->first(); // Mengambil nilai pertama
+        if ($penerima === null) {
+            return redirect()->back()->with('fail', 'File Jaringan tidak tersedia.');
+        }
         $pdfPath = public_path('storage' . substr($penerima, 6)); // Gantilah dengan nama dan path file PDF yang sesuai
         return Response::make(file_get_contents($pdfPath), 200, [
             'Content-Type' => 'application/pdf',
@@ -230,6 +237,9 @@ class PenerimaController extends Controller
     public function getDokumen_pdf(string $id)
     {
         $penerima = Penerima::where('id', $id)->pluck('dokumentasi_pdf')->first(); // Mengambil nilai pertama
+        if ($penerima === null) {
+            return redirect()->back()->with('fail', 'File Dokumentasi tidak tersedia.');
+        }
         $pdfPath = public_path('storage' . substr($penerima, 6)); // Gantilah dengan nama dan path file PDF yang sesuai
         return Response::make(file_get_contents($pdfPath), 200, [
             'Content-Type' => 'application/pdf',
