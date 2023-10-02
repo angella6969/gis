@@ -75,19 +75,9 @@
                                         <th scope="col">No</th>
                                         <th scope="col">Daerah Irigasi </th>
                                         <th scope="col">Nama P3A/GP3A</th>
-                                        {{-- <th scope="col">Total Irigasi Desa Terbangun</th>
-                                    <th scope="col">Total Irigasi Desa Belum Terbangun</th>
-                                    <th scope="col">Pola Tanam Saat Ini </th>
-                                    <th scope="col">Jenis Vegetasi </th>
-                                    <th scope="col">Mendapatkan P4-ISDA/P3-TGAI</th>
-                                    <th scope="col">Tahun Mendapatkan</th> --}}
-                                        <th scope="col">Kabupaten</th>
                                         <th scope="col">Kecamatan </th>
                                         <th scope="col">Desa</th>
                                         <th scope="col">Aksi</th>
-                                        {{-- <th scope="col">Peta Desa </th> --}}
-                                        {{-- <th scope="col">Skema Jaringan Irigasi </th>
-                                    <th scope="col">Dokumentasi Saluran Irigasi Tersier</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,7 +86,6 @@
                                             <td> {{ $loop->iteration }}</td>
                                             <td> {{ $penerima->daerahIrigasi->nama }}</td>
                                             <td> {{ $penerima->names }}</td>
-                                            <td> {{ $penerima->kabupaten->city_name }}</td>
                                             <td> {{ $penerima->kecamatan->dis_name }}</td>
                                             <td> {{ $penerima->desa->subdis_name }}</td>
 
@@ -118,7 +107,7 @@
                                                     data-peta_pdf="{{ $penerima->peta_pdf }}"
                                                     data-jaringan_pdf="{{ $penerima->jaringan_pdf }}"
                                                     data-dokumentasi_pdf="{{ $penerima->dokumentasi_pdf }}">
-                                                    <span data-feather="eye">
+                                                    <span data-feather="eye"></span> Detail
                                                 </button>
                                                 <a href="/dashboard/update/perkembangan-daerah-irigasi/{{ $penerima->id }}"
                                                     class="btn btn-info">Progres</a>
@@ -164,44 +153,9 @@
     </div>
 
 
-    <div>
-        {{-- <iframe src="{{ asset('storage\pdf\5AOO5DHAhx2nvQ73dJJkennaG5Vg6HpwMpmi9vN4.pdf') }}" frameborder="0"
-            height="600" type="application/pdf">
-        </iframe> --}}
-        {{-- <iframe src="{{ asset('storage\pdf\5AOO5DHAhx2nvQ73dJJkennaG5Vg6HpwMpmi9vN4.pdf') }}" width="800"
-            height="600"></iframe> --}}
 
-        {{-- <canvas id="pdf-viewer"></canvas> --}}
-    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-
-    {{-- <script>
-        // Ambil referensi ke elemen canvas
-        var canvas = document.getElementById('pdf-viewer');
-
-        // Tentukan URL PDF yang akan ditampilkan
-        var pdfUrl = "{{ asset('storage/pdf/bWmKa6G17F9puFkznavgq81JSxhcAfXNpMh5ILW7.pdf') }}";
-
-        // Muat PDF dan tampilkan di elemen canvas
-        var loadingTask = pdfjsLib.getDocument(pdfUrl);
-        loadingTask.promise.then(function(pdf) {
-            pdf.getPage(1).then(function(page) {
-                var viewport = page.getViewport({
-                    scale: 1
-                });
-                canvas.width = viewport.width;
-                canvas.height = viewport.height;
-                var context = canvas.getContext('2d');
-                var renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                page.render(renderContext);
-            });
-        });
-    </script> --}}
-
 
     <script>
         $(document).ready(function() {
@@ -278,7 +232,24 @@
                             <th>Tahun Mendapatkan P3-TGAI</th>
                             <td>${tahun}</td>
                         </tr>
-                        
+                        <tr>
+                            <th>Peta PDF</th>
+                            <td>
+                                <a href="{{ url('/tampilkan-peta-pdf/${id}') }}">Unduh PDF</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Jaringan PDF</th>
+                            <td>
+                                <a href="{{ url('/tampilkan-jaringan-pdf/${id}') }}">Unduh PDF</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Dokumentasi PDF</th>
+                            <td>
+                                <a href="{{ url('/tampilkan-dokumen-pdf/${id}') }}">Unduh PDF</a>
+                            </td>
+                        </tr>
                     </table>
                 `);
 

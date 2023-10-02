@@ -76,10 +76,22 @@ Route::get('/getProvinsi', [PenerimaController::class, 'getProvinsi']);
 Route::get('/getKabupaten/{provinsiId}', [PenerimaController::class, 'getKabupaten']);
 Route::get('/getKecamatan/{cityId}', [PenerimaController::class, 'getKecamatan']);
 Route::get('/getDesa/{dis_id}', [PenerimaController::class, 'getDesa']);
+
+
+
+
+
+
+
+
 Route::get('/coba', [PenerimaController::class, 'coba']);
+Route::get('/tampilkan-peta-pdf/{id}', [PenerimaController::class, 'getPeta_pdf']);
+Route::get('/tampilkan-jaringan-pdf/{id}', [PenerimaController::class, 'getJaringan_pdf']);
+Route::get('/tampilkan-dokumen-pdf/{id}', [PenerimaController::class, 'getDokumen_pdf']);
 
-
-
+Route::get('/tampilkan-akta-pdf/{id}', [ProgresController::class, 'getAkta_pdf']);
+Route::get('/tampilkan-npwp-pdf/{id}', [ProgresController::class, 'getNpwp_pdf']);
+Route::get('/tampilkan-rek-pdf/{id}', [ProgresController::class, 'getRek_pdf']);
 
 
 //=================== Perlu Login =============================

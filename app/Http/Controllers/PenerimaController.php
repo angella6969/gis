@@ -9,6 +9,8 @@ use App\Models\Penerima;
 use App\Models\Province;
 use App\Models\Subdistricts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+
 
 class PenerimaController extends Controller
 {
@@ -206,6 +208,33 @@ class PenerimaController extends Controller
                 'dataDariDatabase' => $dataDariDatabase
             ]
         );
+    }
+    public function getPeta_pdf(string $id)
+    {
+        $penerima = Penerima::where('id', $id)->pluck('peta_pdf')->first(); // Mengambil nilai pertama
+        $pdfPath = public_path('storage' . substr($penerima, 6)); // Gantilah dengan nama dan path file PDF yang sesuai
+        return Response::make(file_get_contents($pdfPath), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename=nama-file.pdf',
+        ]);
+    }
+    public function getJaringan_pdf(string $id)
+    {
+        $penerima = Penerima::where('id', $id)->pluck('jaringan_pdf')->first(); // Mengambil nilai pertama
+        $pdfPath = public_path('storage' . substr($penerima, 6)); // Gantilah dengan nama dan path file PDF yang sesuai
+        return Response::make(file_get_contents($pdfPath), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename=nama-file.pdf',
+        ]);
+    }
+    public function getDokumen_pdf(string $id)
+    {
+        $penerima = Penerima::where('id', $id)->pluck('dokumentasi_pdf')->first(); // Mengambil nilai pertama
+        $pdfPath = public_path('storage' . substr($penerima, 6)); // Gantilah dengan nama dan path file PDF yang sesuai
+        return Response::make(file_get_contents($pdfPath), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename=nama-file.pdf',
+        ]);
     }
     public function getProvinsi()
     {

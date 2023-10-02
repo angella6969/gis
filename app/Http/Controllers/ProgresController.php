@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cities;
+use App\Models\Districts;
 use App\Models\Penerima;
 use App\Models\Progres;
+use App\Models\Province;
+use App\Models\Subdistricts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class ProgresController extends Controller
 {
@@ -13,12 +18,13 @@ class ProgresController extends Controller
      */
     public function index($id)
     {
-        // dd('ini index progres',$id);
-        // $a = Penerima::findOrFail($id);
-        // dd($a);
         return view('form.perkembangan.index', [
             'penerimas' => Penerima::findOrFail($id),
-            'progress' => Progres::where('penerima_id',$id)->get(),
+            'progress' => Progres::where('penerima_id', $id)->get(),
+            'provinsi' => Province::all(),
+            'kabupaten' => Cities::get(),
+            'kecamatan' => Districts::all(),
+            'desa' => Subdistricts::all(),
         ]);
     }
 
@@ -34,6 +40,7 @@ class ProgresController extends Controller
         return view('form.perkembangan.create', [
             'id' => $id,
             'penerima' =>  $penerima,
+            'desa' => Subdistricts::all(),
             'oldNames' => $oldNames
         ]);
     }
@@ -107,7 +114,7 @@ class ProgresController extends Controller
         $progres = Progres::findOrFail($id);
         return response()->json([
             'progres' => $progres,
-            
+
         ]);
     }
 
@@ -139,9 +146,9 @@ class ProgresController extends Controller
             'KondisiLokasiPekerjaan' => ['nullable'],
             'KondisiTanahLokasiPekerjaan' => ['nullable'],
             'PotensiMasalahSosial' => ['nullable'],
-            'TerlampirAktePendirian' => ['file', 'max:1024', 'mimes:pdf'],
-            'TerlampirNPWP' => ['file', 'max:1024', 'mimes:pdf'],
-            'TerlampirBukuRekening' => ['file', 'max:1024', 'mimes:pdf'],
+            'TerlampirAktePendirian' => ['file', 'max:5120', 'mimes:pdf'],
+            'TerlampirNPWP' => ['file', 'max:5120', 'mimes:pdf'],
+            'TerlampirBukuRekening' => ['file', 'max:5120', 'mimes:pdf'],
         ]);
 
         if ($request->input('TahunPengerjaan') === 'lainnya') {
@@ -228,5 +235,41 @@ class ProgresController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
+    }
+    public function getAkta_pdf(string $id)
+    {
+        $Progres = Progres::where('id', $id)->pluck('TerlampirAktePendirian')->first(); // Mengambil nilai pertama
+        if ($Progres === null) {
+            return redirect()->back()->with('fail', 'File Akta Pendirian tidak tersedia.');
+        }
+        $pdfPath = public_path('storage' . substr($Progres, 6)); // Gantilah dengan nama dan path file PDF yang sesuai
+        return Response::make(file_get_contents($pdfPath), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename=nama-file.pdf',
+        ]);
+    }
+    public function getNpwp_pdf(string $id)
+    {
+        $Progres = Progres::where('id', $id)->pluck('TerlampirNPWP')->first(); // Mengambil nilai pertama
+        if ($Progres === null) {
+            return redirect()->back()->with('fail', 'File NPWP tidak tersedia.');
+        }
+        $pdfPath = public_path('storage' . substr($Progres, 6)); // Gantilah dengan nama dan path file PDF yang sesuai
+        return Response::make(file_get_contents($pdfPath), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename=nama-file.pdf',
+        ]);
+    }
+    public function getRek_pdf(string $id)
+    {
+        $Progres = Progres::where('id', $id)->pluck('TerlampirBukuRekening')->first(); // Mengambil nilai pertama
+        if ($Progres === null) {
+            return redirect()->back()->with('fail', 'File Buku Rekening tidak tersedia.');
+        }
+        $pdfPath = public_path('storage' . substr($Progres, 6)); // Gantilah dengan nama dan path file PDF yang sesuai
+        return Response::make(file_get_contents($pdfPath), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename=nama-file.pdf',
+        ]);
     }
 }

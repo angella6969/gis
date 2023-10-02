@@ -51,32 +51,17 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4">Progres Perkembangan Irigasi P3-TGAI</h5>
-                {{-- <form action="/dashboard/daerah-irigasi">
-                    <div class="row">
-                        <div class="col-6 col-sm-12">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control " placeholder="Pencarian Berdasarkan Daerah Irigasi"
-                                    name="search" value="{{ request('search') }}">
-                                <button class="btn btn-primary " type="submit" id="basic-addon2">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </form> --}}
-
-
                 <div class="card">
                     <div class="card-body">
                         <div class="mt-2 mb-2">
                             <a href="/dashboard/update/perkembangan-daerah-irigasi/create/{{ $penerimas->id }}"
                                 class="btn btn-info">Tambah Progres</a>
-
                         </div>
                         <h1 style="text-align: center;">Data Utama</h1>
                         <div class="table-responsive-sm">
                             <table class="table table-striped table-sm">
                                 <thead>
                                     <tr style="text-align: center; background-color: lightblue;">
-                                        <th scope="col">No </th>
                                         <th scope="col">Daerah Irigasi </th>
                                         <th scope="col">Nama P3A/GP3A</th>
                                         <th scope="col">Kabupaten</th>
@@ -85,17 +70,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $totalRows = 1; // Satu baris data
-                                        $rowCounter = 1; // Nomor urutan (jika hanya satu baris)
-                                    @endphp
                                     <tr>
-                                        <td>{{ $rowCounter }}</td>
                                         <td>{{ $penerimas->DaerahIrigasi->nama }}</td>
                                         <td>{{ $penerimas->names }}</td>
-                                        <td>{{ $penerimas->Kabupaten }}</td>
-                                        <td>{{ $penerimas->Kecamatan }}</td>
-                                        <td>{{ $penerimas->Desa }}</td>
+                                        <td>{{ $kabupaten->where('id', $penerimas->Kabupaten)->first()->city_name }}</td>
+                                        <td>{{ $kecamatan->where('id', $penerimas->Kecamatan)->first()->dis_name }}</td>
+                                        <td>{{ $desa->where('id', $penerimas->Desa)->first()->subdis_name }}</td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr style="text-align: center; background-color: lightblue;">
+                                        <th scope="col">Terbangun (KM)</th>
+                                        <th scope="col">Belum Terbangun (KM)</th>
+                                        <th scope="col">Pola Tanam</th>
+                                        <th scope="col">Jenis Vegetasi </th>
+                                        <th scope="col">Mendapatkan (Kali)</th>
+                                        <th scope="col">Tahun Mendapatkan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $penerimas->IrigasiDesaTerbangun }}</td>
+                                        <td>{{ $penerimas->IrigasiDesaBelumTerbangun }}</td>
+                                        <td>{{ $penerimas->PolaTanamSaatIni }}</td>
+                                        <td>{{ $penerimas->JenisVegetasi }}</td>
+                                        <td>{{ $penerimas->MendapatkanP4_ISDA }}</td>
+                                        <td>{{ $penerimas->TahunMendapatkan }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -115,12 +115,6 @@
                                         <th scope="col">jenis Pekerjaan</th>
                                         <th scope="col">langsir Material</th>
                                         <th scope="col">jarak Langsir</th>
-                                        {{-- <th scope="col">Beda Langsir</th>
-                                        <th scope="col">Jenis Vegetasi </th>
-                                        <th scope="col">Metode Langsir</th>
-                                        <th scope="col">Kondisi Lokasi Pekerjaan</th>
-                                        <th scope="col">Kondisi Tanah Lokasi Pekerjaan</th>
-                                        <th scope="col">Potensi Masalah Sosial </th> --}}
                                         <th scope="col">Aksi </th>
                                     </tr>
                                 </thead>
@@ -132,11 +126,7 @@
                                             <td> {{ $progres->jenisPekerjaan }}</td>
                                             <td> {{ $progres->langsirMaterial }}</td>
                                             <td> {{ $progres->jarakLangsir }}</td>
-                                            {{-- <td> {{ $progres->bedaLangsir }}</td>
-                                            <td> {{ $progres->metodeLangsir }}</td>
-                                            <td> {{ $progres->KondisiLokasiPekerjaan }}</td>
-                                            <td> {{ $progres->KondisiTanahLokasiPekerjaan }}</td>
-                                            <td> {{ $progres->PotensiMasalahSosial }}</td> --}}
+
                                             <td>
                                                 <button class="btn badge bg-info border-0 show-progres-modal"
                                                     data-id="{{ $progres->id }}"
@@ -149,7 +139,7 @@
                                                     data-kondisi-lokasi="{{ $progres->KondisiLokasiPekerjaan }}"
                                                     data-kondisi-tanah="{{ $progres->KondisiTanahLokasiPekerjaan }}"
                                                     data-potensi="{{ $progres->PotensiMasalahSosial }}">
-                                                    <span data-feather="eye">
+                                                    <span data-feather="eye"></span>
                                                 </button>
 
                                                 <a href="/dashboard/update/perkembangan-daerah-irigasi/edit/{{ $progres->id }}"
@@ -255,6 +245,24 @@
                         <tr>
                             <th>Potensi Masalah Sosial</th>
                             <td>${potensi}</td>
+                        </tr>
+                        <tr>
+                            <th>Akta PDF</th>
+                            <td>
+                                <a href="{{ url('/tampilkan-akta-pdf/${id}') }}">Unduh PDF</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>NPWP PDF</th>
+                            <td>
+                                <a href="{{ url('/tampilkan-npwp-pdf/${id}') }}">Unduh PDF</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Buku Rekening PDF</th>
+                            <td>
+                                <a href="{{ url('/tampilkan-rek-pdf/${id}') }}">Unduh PDF</a>
+                            </td>
                         </tr>
                     </table>
                 `);

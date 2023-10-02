@@ -30,7 +30,7 @@
                             <div class="mb-3">
                                 <label for="Desa" class="form-label">Desa</label>
                                 <input type="text" class="form-control" id="Desa" placeholder="Desa" disabled
-                                    value="{{ $penerima->Desa }}">
+                                    value="{{ $desa->where('id', $penerima->Desa)->first()->subdis_name }}">
                             </div>
                             <div class="mb-3">
                                 <label for="names" class="form-label">Nama P3A/GP3A</label>
@@ -96,7 +96,7 @@
                             <div class="mb-3">
                                 <label for="jarakLangsir" class="form-label">Jarak Langsir</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="jarakLangsir" name="jarakLangsir"
+                                    <input type="number" step="0.01" class="form-control" id="jarakLangsir" name="jarakLangsir"
                                         placeholder="jarak Langsir" value="{{ old('jarakLangsir') }}" required>
                                     <span class="input-group-text">M</sub></span>
                                 </div>
@@ -105,7 +105,7 @@
                             <div class="mb-3">
                                 <label for="BedaLangsir" class="form-label">Beda Tinggi Langsir</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="BedaLangsir" name="bedaLangsir"
+                                    <input type="number" step="0.01" class="form-control" id="BedaLangsir" name="bedaLangsir"
                                         placeholder="Beda Tinggi Langsir" value="{{ old('bedaLangsir') }}" required>
                                     <span class="input-group-text">M</sub></span>
                                 </div>
@@ -248,14 +248,14 @@
                                 <label for="TerlampirAktePendirian">Terlampir Akte Pendirian</label>
                                 <input type="file" class="form-control" id="TerlampirAktePendirian"
                                     name="TerlampirAktePendirian" accept="application/pdf">
-                                <h6>PDF Max 1 MB</h6>
+                                <h6>PDF Max 5 MB</h6>
                             </div>
 
                             <div class="mt-3 mb-3">
                                 <label for="TerlampirNPWP">Terlampir NPWP</label>
                                 <input type="file" class="form-control" id="TerlampirNPWP" name="TerlampirNPWP"
                                     accept="application/pdf">
-                                <div class="form-text">PDF Max 1 MB
+                                <div class="form-text">PDF Max 5 MB
                                 </div>
 
                             </div>
@@ -264,7 +264,7 @@
                                 <label for="TerlampirBukuRekening">Terlampir Buku Rekening</label>
                                 <input type="file" class="form-control " id="TerlampirBukuRekening"
                                     name="TerlampirBukuRekening" accept="application/pdf">
-                                <div class="form-text">PDF Max 1 MB
+                                <div class="form-text">PDF Max 5 MB
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
