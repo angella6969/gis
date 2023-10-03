@@ -58,7 +58,7 @@
                                     </option>
                                     <option value="lainnya" {{ old('TahunPengerjaan') == 'lainnya' ? 'selected' : '' }}>
                                         Pilihan Lainnya</option>
-                                </select>
+                                </select> 
                             </div>
 
                             <div id="inputLainnyaTahunPengerjaan"

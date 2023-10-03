@@ -40,25 +40,25 @@
 
                             <div class="mt-3 mb-3">
                                 <label for="TahunPengerjaan" class="form-label">Tahun Pengerjaan</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $progres->TahunPengerjaan }}">
+                                {{-- <input type="text" class="form-control" disabled
+                                    value="Data Lama : {{ $progres->TahunPengerjaan }}"> --}}
                                 <select class="form-select" id="TahunPengerjaan" name="TahunPengerjaan">
-                                    <option value="">Pilih salah satu opsi</option>
+                                    {{-- <option value="{{ $progres->TahunPengerjaan }}">{{ $progres->TahunPengerjaan }}</option> --}}
                                     <option value="Tahun Petama"
-                                        {{ old('TahunPengerjaan') == 'Tahun Petama' ? 'selected' : '' }}>Tahun Petama
+                                        {{ old('TahunPengerjaan',$progres->TahunPengerjaan) == 'Tahun Petama' ? 'selected' : '' }}>Tahun Petama
                                     </option>
                                     <option value="Tahun Kedua"
-                                        {{ old('TahunPengerjaan') == 'Tahun Kedua' ? 'selected' : '' }}>Tahun Kedua</option>
+                                        {{ old('TahunPengerjaan',$progres->TahunPengerjaan) == 'Tahun Kedua' ? 'selected' : '' }}>Tahun Kedua</option>
                                     <option value="Tahun Ketiga"
-                                        {{ old('TahunPengerjaan') == 'Tahun Ketiga' ? 'selected' : '' }}>Tahun Ketiga
+                                        {{ old('TahunPengerjaan',$progres->TahunPengerjaan) == 'Tahun Ketiga' ? 'selected' : '' }}>Tahun Ketiga
                                     </option>
                                     <option value="Tahun Keempat"
-                                        {{ old('TahunPengerjaan') == 'Tahun Keempat' ? 'selected' : '' }}>Tahun Keempat
+                                        {{ old('TahunPengerjaan',$progres->TahunPengerjaan) == 'Tahun Keempat' ? 'selected' : '' }}>Tahun Keempat
                                     </option>
                                     <option value="Tahun Kelima"
-                                        {{ old('TahunPengerjaan') == 'Tahun Kelima' ? 'selected' : '' }}>Tahun Kelima
+                                        {{ old('TahunPengerjaan',$progres->TahunPengerjaan) == 'Tahun Kelima' ? 'selected' : '' }}>Tahun Kelima
                                     </option>
-                                    <option value="lainnya" {{ old('TahunPengerjaan') == 'lainnya' ? 'selected' : '' }}>
+                                    <option value="lainnya" {{ old('TahunPengerjaan',$progres->TahunPengerjaan) == 'lainnya' ? 'selected' : '' }}>
                                         Pilihan Lainnya</option>
                                 </select>
                             </div>
@@ -72,26 +72,26 @@
 
                             <div class="mt-3 mb-3">
                                 <label for="jenisPekerjaan" class="form-label">Jenis Pekerjaan</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $progres->jenisPekerjaan }}">
+                                {{-- <input type="text" class="form-control" disabled
+                                    value="Data Lama : {{ $progres->jenisPekerjaan }}"> --}}
                                 <select class="form-select" id="jenisPekerjaan" name="jenisPekerjaan">
-                                    <option value="">Pilih salah satu opsi</option>
+                                    {{-- <option value="">Pilih salah satu opsi</option> --}}
                                     <option value="Rehabilitasi"
-                                        {{ old('jenisPekerjaan') == 'Rehabilitasi' ? 'selected' : '' }}>Rehabilitasi
+                                        {{ old('jenisPekerjaan',$progres->jenisPekerjaan) == 'Rehabilitasi' ? 'selected' : '' }}>Rehabilitasi
                                     </option>
                                     <option value="Peningkatan"
-                                        {{ old('jenisPekerjaan') == 'Peningkatan' ? 'selected' : '' }}>Peningkatan</option>
+                                        {{ old('jenisPekerjaan',$progres->jenisPekerjaan) == 'Peningkatan' ? 'selected' : '' }}>Peningkatan</option>
                                     <option value="Pembangunan"
-                                        {{ old('jenisPekerjaan') == 'Pembangunan' ? 'selected' : '' }}>Pembangunan</option>
+                                        {{ old('jenisPekerjaan',$progres->jenisPekerjaan) == 'Pembangunan' ? 'selected' : '' }}>Pembangunan</option>
                                 </select>
                             </div>
 
                             <div class="mt-3 mb-3">
                                 <label for="langsirMaterial" class="form-label">Langsir Material</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $progres->langsirMaterial }}">
+                                {{-- <input type="text" class="form-control" disabled
+                                    value="Data Lama : {{ $progres->langsirMaterial }}"> --}}
                                 <select class="form-select" id="langsirMaterial" name="langsirMaterial">
-                                    <option value="">Pilih salah satu opsi</option>
+                                    {{-- <option value="">Pilih salah satu opsi</option> --}}
                                     <option value="Ada" {{ old('langsirMaterial') == 'Ada' ? 'selected' : '' }}>Ada
                                     </option>
                                     <option value="Tidak Ada"
@@ -100,34 +100,34 @@
                             </div>
                             <div class="mb-3">
                                 <label for="jarakLangsir" class="form-label">Jarak Langsir</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $progres->jarakLangsir }}">
+                                {{-- <input type="text" class="form-control" disabled
+                                    value="Data Lama : {{ $progres->jarakLangsir }}"> --}}
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="jarakLangsir" name="jarakLangsir"
-                                        placeholder="jarak Langsir" value="{{ old('jarakLangsir') }}">
+                                        placeholder="jarak Langsir" value="{{ old('jarakLangsir',$progres->jarakLangsir) }}">
                                     <span class="input-group-text">M</sub></span>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="BedaLangsir" class="form-label">Beda Tinggi Langsir</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $progres->bedaLangsir }}">
+                                {{-- <input type="text" class="form-control" disabled
+                                    value="Data Lama : {{ $progres->bedaLangsir }}"> --}}
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="BedaLangsir" name="bedaLangsir"
-                                        placeholder="Beda Tinggi Langsir" value="{{ old('bedaLangsir') }}">
+                                        placeholder="Beda Tinggi Langsir" value="{{ old('bedaLangsir',$progres->bedaLangsir) }}">
                                     <span class="input-group-text">M</sub></span>
                                 </div>
                             </div>
 
                             <div class="mt-3 mb-3">
                                 <label for="metodeLangsir" class="form-label">Metode Langsir</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $progres->metodeLangsir }}">
+                                {{-- <input type="text" class="form-control" disabled
+                                    value="Data Lama : {{ $progres->metodeLangsir }}"> --}}
                                 <select class="form-select" id="metodeLangsir" name="metodeLangsir">
-                                    <option value="">Pilih salah satu opsi</option>
+                                    {{-- <option value="">Pilih salah satu opsi</option> --}}
                                     <option value="Tenaga Manusia Dengan Ember/Pikulan/Karung"
-                                        {{ old('metodeLangsir') == 'Tenaga Manusia Dengan Ember/Pikulan/Karung' ? 'selected' : '' }}>
+                                        {{ old('metodeLangsir',$progres->metodeLangsir) == 'Tenaga Manusia Dengan Ember/Pikulan/Karung' ? 'selected' : '' }}>
                                         Tenaga Manusia Dengan Ember/Pikulan/Karung
                                     </option>
                                     <option value="Tenaga Manusia Dengan Angkong"
@@ -148,29 +148,29 @@
 
                             <div class="mt-3 mb-3">
                                 <label for="KondisiLokasiPekerjaan" class="form-label">Kondisi Lokasi Pekerjaan</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $progres->KondisiLokasiPekerjaan }}">
+                                {{-- <input type="text" class="form-control" disabled
+                                    value="Data Lama : {{ $progres->KondisiLokasiPekerjaan }}"> --}}
                                 <select class="form-select" id="KondisiLokasiPekerjaan" name="KondisiLokasiPekerjaan">
-                                    <option value="">Pilih salah satu opsi</option>
+                                    {{-- <option value="">Pilih salah satu opsi</option> --}}
                                     <option value="Datar"
-                                        {{ old('KondisiLokasiPekerjaan') == 'Datar' ? 'selected' : '' }}>Datar</option>
+                                        {{ old('KondisiLokasiPekerjaan',$progres->KondisiLokasiPekerjaan) == 'Datar' ? 'selected' : '' }}>Datar</option>
                                     <option value="Sebagian Datar Sebagian Terjal"
-                                        {{ old('KondisiLokasiPekerjaan') == 'Sebagian Datar Sebagian Terjal' ? 'selected' : '' }}>
+                                        {{ old('KondisiLokasiPekerjaan',$progres->KondisiLokasiPekerjaan) == 'Sebagian Datar Sebagian Terjal' ? 'selected' : '' }}>
                                         Sebagian Datar Sebagian Terjal</option>
                                     <option value="Melewati Saluran"
-                                        {{ old('KondisiLokasiPekerjaan') == 'Melewati Saluran' ? 'selected' : '' }}>
+                                        {{ old('KondisiLokasiPekerjaan',$progres->KondisiLokasiPekerjaan) == 'Melewati Saluran' ? 'selected' : '' }}>
                                         Melewati Saluran</option>
                                     <option value="Melewati Jalan"
-                                        {{ old('KondisiLokasiPekerjaan') == 'Melewati Jalan' ? 'selected' : '' }}>Melewati
+                                        {{ old('KondisiLokasiPekerjaan',$progres->KondisiLokasiPekerjaan) == 'Melewati Jalan' ? 'selected' : '' }}>Melewati
                                         Jalan</option>
                                     <option value="Ada Galian Tebing"
-                                        {{ old('KondisiLokasiPekerjaan') == 'Ada Galian Tebing' ? 'selected' : '' }}>Ada
+                                        {{ old('KondisiLokasiPekerjaan',$progres->KondisiLokasiPekerjaan) == 'Ada Galian Tebing' ? 'selected' : '' }}>Ada
                                         Galian Tebing</option>
                                     <option value="Ada Timbunan"
-                                        {{ old('KondisiLokasiPekerjaan') == 'Ada Timbunan' ? 'selected' : '' }}>Ada
+                                        {{ old('KondisiLokasiPekerjaan',$progres->KondisiLokasiPekerjaan) == 'Ada Timbunan' ? 'selected' : '' }}>Ada
                                         Timbunan</option>
                                     <option value="lainnya"
-                                        {{ old('KondisiLokasiPekerjaan') == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                                        {{ old('KondisiLokasiPekerjaan',$progres->KondisiLokasiPekerjaan) == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
                                 </select>
                             </div>
 
@@ -185,25 +185,25 @@
                             <div class="mt-3 mb-3">
                                 <label for="KondisiTanahLokasiPekerjaan" class="form-label">Kondisi Tanah Lokasi
                                     Pekerjaan</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $progres->KondisiTanahLokasiPekerjaan }}">
+                                {{-- <input type="text" class="form-control" disabled
+                                    value="Data Lama : {{ $progres->KondisiTanahLokasiPekerjaan }}"> --}}
                                 <select class="form-select" id="KondisiTanahLokasiPekerjaan"
                                     name="KondisiTanahLokasiPekerjaan">
-                                    <option value="">Pilih salah satu opsi</option>
+                                    {{-- <option value="">Pilih salah satu opsi</option> --}}
                                     <option value="Kering"
-                                        {{ old('KondisiTanahLokasiPekerjaan') == 'Kering' ? 'selected' : '' }}>Kering
+                                        {{ old('KondisiTanahLokasiPekerjaan',$progres->KondisiTanahLokasiPekerjaan) == 'Kering' ? 'selected' : '' }}>Kering
                                     </option>
                                     <option value="Berair"
-                                        {{ old('KondisiTanahLokasiPekerjaan') == 'Berair' ? 'selected' : '' }}>Berair
+                                        {{ old('KondisiTanahLokasiPekerjaan',$progres->KondisiTanahLokasiPekerjaan) == 'Berair' ? 'selected' : '' }}>Berair
                                     </option>
                                     <option value="Daya dukung kuat atau bagus"
-                                        {{ old('KondisiTanahLokasiPekerjaan') == 'Daya dukung kuat atau bagus' ? 'selected' : '' }}>
+                                        {{ old('KondisiTanahLokasiPekerjaan',$progres->KondisiTanahLokasiPekerjaan) == 'Daya dukung kuat atau bagus' ? 'selected' : '' }}>
                                         Daya dukung kuat atau bagus</option>
                                     <option value="Daya dukung rendah (mudah ambles)"
-                                        {{ old('KondisiTanahLokasiPekerjaan') == 'Daya dukung rendah (mudah ambles)' ? 'selected' : '' }}>
+                                        {{ old('KondisiTanahLokasiPekerjaan',$progres->KondisiTanahLokasiPekerjaan) == 'Daya dukung rendah (mudah ambles)' ? 'selected' : '' }}>
                                         Daya dukung rendah (mudah ambles)</option>
                                     <option value="lainnya"
-                                        {{ old('KondisiTanahLokasiPekerjaan') == 'lainnya' ? 'selected' : '' }}>Lainnya
+                                        {{ old('KondisiTanahLokasiPekerjaan',$progres->KondisiTanahLokasiPekerjaan) == 'lainnya' ? 'selected' : '' }}>Lainnya
                                     </option>
                                 </select>
                             </div>
@@ -218,36 +218,36 @@
 
                             <div class="mt-3 mb-3">
                                 <label for="PotensiMasalahSosial" class="form-label">Potensi Masalah Sosial</label>
-                                <input type="text" class="form-control" disabled
-                                    value="Data Lama : {{ $progres->PotensiMasalahSosial }}">
+                                {{-- <input type="text" class="form-control" disabled
+                                    value="Data Lama : {{ $progres->PotensiMasalahSosial }}"> --}}
                                 <select class="form-select" id="PotensiMasalahSosial" name="PotensiMasalahSosial">
-                                    <option value="">Pilih salah satu opsi</option>
+                                    {{-- <option value="">Pilih salah satu opsi</option> --}}
                                     <option value="Tidak Ada"
-                                        {{ old('PotensiMasalahSosial') == 'Tidak Ada' ? 'selected' : '' }}>Tidak Ada
+                                        {{ old('PotensiMasalahSosial',$progres->PotensiMasalahSosial) == 'Tidak Ada' ? 'selected' : '' }}>Tidak Ada
                                     </option>
                                     <option value="Saat Musim Panen tenaga kerja tidak ada"
-                                        {{ old('PotensiMasalahSosial') == 'Saat Musim Panen tenaga kerja tidak ada' ? 'selected' : '' }}>
+                                        {{ old('PotensiMasalahSosial',$progres->PotensiMasalahSosial) == 'Saat Musim Panen tenaga kerja tidak ada' ? 'selected' : '' }}>
                                         Saat Musim Panen tenaga kerja tidak ada</option>
                                     <option value="Tenaga Kerja Upah Tinggi"
-                                        {{ old('PotensiMasalahSosial') == 'Tenaga Kerja Upah Tinggi' ? 'selected' : '' }}>
+                                        {{ old('PotensiMasalahSosial',$progres->PotensiMasalahSosial) == 'Tenaga Kerja Upah Tinggi' ? 'selected' : '' }}>
                                         Tenaga Kerja Upah Tinggi</option>
                                     <option value="Sering libur krn kearifan lokal"
-                                        {{ old('PotensiMasalahSosial') == 'Sering libur krn kearifan lokal' ? 'selected' : '' }}>
+                                        {{ old('PotensiMasalahSosial',$progres->PotensiMasalahSosial) == 'Sering libur krn kearifan lokal' ? 'selected' : '' }}>
                                         Sering libur krn kearifan lokal</option>
                                     <option value="Antara Desa dan P3A kurang harmonis"
-                                        {{ old('PotensiMasalahSosial') == 'Antara Desa dan P3A kurang harmonis' ? 'selected' : '' }}>
+                                        {{ old('PotensiMasalahSosial',$progres->PotensiMasalahSosial) == 'Antara Desa dan P3A kurang harmonis' ? 'selected' : '' }}>
                                         Antara Desa dan P3A kurang harmonis</option>
                                     <option value="Kondisi internal P3A kurang solid"
-                                        {{ old('PotensiMasalahSosial') == 'Kondisi internal P3A kurang solid' ? 'selected' : '' }}>
+                                        {{ old('PotensiMasalahSosial',$progres->PotensiMasalahSosial) == 'Kondisi internal P3A kurang solid' ? 'selected' : '' }}>
                                         Kondisi internal P3A kurang solid</option>
                                     <option value="Kepala Desa sangat dominan"
-                                        {{ old('PotensiMasalahSosial') == 'Kepala Desa sangat dominan' ? 'selected' : '' }}>
+                                        {{ old('PotensiMasalahSosial',$progres->PotensiMasalahSosial) == 'Kepala Desa sangat dominan' ? 'selected' : '' }}>
                                         Kepala Desa sangat dominan</option>
                                     <option value="Ada tokoh masyarakat yang sangat dominan"
-                                        {{ old('PotensiMasalahSosial') == 'Ada tokoh masyarakat yang sangat dominan' ? 'selected' : '' }}>
+                                        {{ old('PotensiMasalahSosial',$progres->PotensiMasalahSosial) == 'Ada tokoh masyarakat yang sangat dominan' ? 'selected' : '' }}>
                                         Ada tokoh masyarakat yang sangat dominan</option>
                                     <option value="lainnya"
-                                        {{ old('PotensiMasalahSosial') == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                                        {{ old('PotensiMasalahSosial',$progres->PotensiMasalahSosial) == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
                                 </select>
                             </div>
 

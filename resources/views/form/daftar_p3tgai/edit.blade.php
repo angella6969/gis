@@ -28,34 +28,29 @@
                                 <label for="Provinsi" class="form-label">Provinsi</label>
                                 <select class="form-control" id="provinsi" name="provinsi" onchange="updateKabupaten()"
                                     required>
-                                    <option value="">Pilih Provinsi</option>
-                                    @foreach ($provinsiList as $DI)
-                                        {{-- @if (old('provinsi', $provinsiList->id) == $DI->Kabupaten) --}}
-                                            {{-- <option value="{{ $DI->id }}" selected>{{ $DI->nama }}</option> --}}
-                                        {{-- @else --}}
-                                            {{-- <option value="{{ $DI->id }}">{{ $DI->nama }}</option> --}}
-                                        {{-- @endif --}}
-                                    @endforeach
+                                    <option value="{{ $provinsiList->first()->id }}">{{ $provinsiList->first()->prov_name }}
+                                    </option>
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="Kabupaten" class="form-label">Kota/Kabupaten</label>
                                 <select class="form-control" id="Kabupaten" name="Kabupaten" onchange="updateKecamatan()"
                                     required>
-                                    <option value="">Pilih Kabupaten/Kota</option>
+                                    <option value="{{ $kabupatenList->first()->id }}">{{ $kabupatenList->first()->city_name }}
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="Kecamatan" class="form-label">Kecamatan</label>
                                 <select class="form-control" id="Kecamatan" name="Kecamatan" onchange="updateDesa()"
                                     required>
-                                    <option value="">Pilih Kecamatan</option>
+                                    <option value="{{ $kecamatanList->first()->id }}">{{ $kecamatanList->first()->dis_name }}
+
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="Desa" class="form-label">Desa</label>
                                 <select class="form-control" id="Desa" name="Desa" required>
-                                    <option value="">Pilih Desa</option>
+                                    <option value="{{ $desaList->first()->id }}">{{ $desaList->first()->subdis_name }}
                                 </select>
                             </div>
 
@@ -317,8 +312,6 @@
                 })
                 .catch(error => console.error('Error:', error));
         }
-        // 
-        // Panggil fungsi fetchProvinsi() saat halaman dimuat
         fetchProvinsi();
     </script>
 @endsection

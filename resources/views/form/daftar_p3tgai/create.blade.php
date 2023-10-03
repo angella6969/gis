@@ -31,7 +31,17 @@
                                             <option value="{{ $DI->id }}">{{ $DI->nama }}</option>
                                         @endif
                                     @endforeach
+                                    <option value="lainnya" {{ old('daerah_irigasi_id') == 'lainnya' ? 'selected' : '' }}>
+                                        Pilihan Lainnya</option>
                                 </select>
+
+                                <div id="inputLainnyadaerah_irigasi_id"
+                                    style="display: {{ old('daerah_irigasi_id') == 'lainnya' ? 'block' : 'none' }}">
+                                    <label for="pilihanLainnyadaerah_irigasi_id">Pilihan Lainnya:</label>
+                                    <input type="text" class="form-control" id="pilihanLainnyadaerah_irigasi_id"
+                                        name="pilihanLainnyadaerah_irigasi_id"
+                                        value="{{ old('pilihanLainnyadaerah_irigasi_id') }}">
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="Provinsi" class="form-label">Provinsi</label>
@@ -60,122 +70,6 @@
                                     <option value="">Pilih Desa</option>
                                 </select>
                             </div>
-                            {{-- <div class="mb-3">
-                                <label for="Desa" class="form-label">Desa</label>
-                                <input type="text" class="form-control" id="Desa" name="Desa"
-                                    value="{{ old('Desa') }}" placeholder="Desa" required>
-                            </div> --}}
-                            {{-- <h1>Pilih Provinsi:</h1>
-                            <select class="form-control" id="provinsi" name="provinsi" onchange="updateKabupaten()"
-                                required>
-                                <option value="">Pilih Provinsi</option>
-                            </select> --}}
-
-                            {{-- <h1>Pilih Kabupaten/Kota:</h1>
-                            <select class="form-control" id="Kabupaten" name="Kabupaten" onchange="updateKecamatan()"
-                                required>
-                                <option value="">Pilih Kabupaten/Kota</option>
-                            </select> --}}
-
-
-                            {{-- <h1>Pilih Kecamatan:</h1>
-                            <select class="form-control" id="Kecamatan" name="Kecamatan" onchange="updateDesa()">
-                                <option value="">Pilih Kecamatan</option>
-                            </select> --}}
-
-                            {{-- 
-                            <h1>Pilih Desa/Kelurahan:</h1>
-                            <select id="desa">
-                                <option value="">Pilih Desa/Kelurahan</option>
-                            </select> --}}
-
-                            {{-- <div class="mb-3">
-                                <label for="Kabupaten" class="form-label">Kota/Kabupaten</label>
-                                <input type="text" class="form-control" id="Kabupaten" name="Kabupaten"
-                                    value="{{ old('Kabupaten') }}" placeholder="Kabupaten" required>
-                            </div> --}}
-                            {{-- <div class="mt-3 mb-3">
-                                <label for="Kabupaten" class="form-label">Daerah Irigasi</label>
-                                <select class="form-select" id="Kabupaten" name="Kabupaten" required>
-                                    <option value="">Pilih salah satu opsi</option>
-                                    <option value="Sleman" {{ old('Kabupaten') == 'Sleman' ? 'selected' : '' }}>Sleman
-                                    </option>
-                                    <option value="Bantul" {{ old('Kabupaten') == 'Bantul' ? 'selected' : '' }}>Bantul
-                                    </option>
-                                    <option value="Gunungkidul" {{ old('Kabupaten') == 'Gunungkidul' ? 'selected' : '' }}>
-                                        Gunungkidul
-                                    </option>
-                                    <option value="Kulon Progo" {{ old('Kabupaten') == 'Kulon Progo' ? 'selected' : '' }}>
-                                        Kulon Progo
-                                    </option>
-                                    <option value="Kota Yogyakarta"
-                                        {{ old('Kabupaten') == 'Kota Yogyakarta' ? 'selected' : '' }}>
-                                        Kota Yogyakarta
-                                    </option>
-                                    <option value="Purbalingga" {{ old('Kabupaten') == 'Purbalingga' ? 'selected' : '' }}>
-                                        Purbalingga
-                                    </option>
-                                    <option value="Kebumen" {{ old('Kabupaten') == 'Kebumen' ? 'selected' : '' }}>Kebumen
-                                    </option>
-                                    <option value="Magelang" {{ old('Kabupaten') == 'Magelang' ? 'selected' : '' }}>
-                                        Magelang
-                                    </option>
-                                    <option value="Cilacap" {{ old('Kabupaten') == 'Cilacap' ? 'selected' : '' }}>Cilacap
-                                    </option>
-                                    <option value="Banjarnegara"
-                                        {{ old('Kabupaten') == 'Banjarnegara' ? 'selected' : '' }}>Banjarnegara
-                                    </option>
-                                    <option value="Banyumas" {{ old('Kabupaten') == 'Banyumas' ? 'selected' : '' }}>
-                                        Banyumas
-                                    </option>
-                                    <option value="Purworejo" {{ old('Kabupaten') == 'Purworejo' ? 'selected' : '' }}>
-                                        Purworejo
-                                    </option>
-                                    <option value="Pemalang" {{ old('Kabupaten') == 'Pemalang' ? 'selected' : '' }}>
-                                        Pemalang
-                                    </option>
-                                    <option value="Temanggung" {{ old('Kabupaten') == 'Temanggung' ? 'selected' : '' }}>
-                                        Temanggung
-                                    </option>
-                                    <option value="Klaten" {{ old('Kabupaten') == 'Klaten' ? 'selected' : '' }}>
-                                        Klaten
-                                    </option>
-                                    <option value="Wonogiri" {{ old('Kabupaten') == 'Wonogiri' ? 'selected' : '' }}>
-                                        Wonogiri
-                                    </option>
-                                    <option value="Semarang" {{ old('Kabupaten') == 'Semarang' ? 'selected' : '' }}>
-                                        Semarang
-                                    </option>
-                                    <option value="Kendal" {{ old('Kabupaten') == 'Kendal' ? 'selected' : '' }}>
-                                        Kendal
-                                    </option>
-                                    <option value="Pekalongan" {{ old('Kabupaten') == 'Pekalongan' ? 'selected' : '' }}>
-                                        Pekalongan
-                                    </option>
-                                    <option value="Boyolali" {{ old('Kabupaten') == 'Boyolali' ? 'selected' : '' }}>
-                                        Boyolali
-                                    </option>
-                                    <option value="Brebes" {{ old('Kabupaten') == 'Brebes' ? 'selected' : '' }}>
-                                        Brebes
-                                    </option>
-                                    <option value="Sukoharjo" {{ old('Kabupaten') == 'Sukoharjo' ? 'selected' : '' }}>
-                                        Sukoharjo
-                                    </option>
-                                    <option value="Batang" {{ old('Kabupaten') == 'Batang' ? 'selected' : '' }}>
-                                        Batang
-                                    </option>
-                                    <option value="Kota Magelang"
-                                        {{ old('Kabupaten') == 'Kota Magelang' ? 'selected' : '' }}>
-                                        Kota Magelang
-                                    </option>
-                                </select>
-                            </div> --}}
-
-                            {{-- <div class="mb-3">
-                                <label for="Kecamatan" class="form-label">Kecamatan</label>
-                                <input type="text" class="form-control" id="Kecamatan" name="Kecamatan"
-                                    value="{{ old('Kecamatan') }}" placeholder="Kecamatan" required>
-                            </div> --}}
 
 
 
@@ -225,8 +119,9 @@
 
                             <div class="mb-3">
                                 <label for="TahunMendapatkan" class="form-label">Tahun Mendapatkan</label>
-                                <input type="number" step="0.01" class="form-control" id="TahunMendapatkan" name="TahunMendapatkan"
-                                    value="{{ old('TahunMendapatkan') }}" placeholder="Tahun Mendapatkan" required>
+                                <input type="number" step="0.01" class="form-control" id="TahunMendapatkan"
+                                    name="TahunMendapatkan" value="{{ old('TahunMendapatkan') }}"
+                                    placeholder="Tahun Mendapatkan" required>
                             </div>
                             <div class="mb-3">
                                 <label for="names" class="form-label">Nama P3A/GP3A</label>
@@ -449,6 +344,19 @@
 
         // Panggil fungsi fetchProvinsi() saat halaman dimuat
         fetchProvinsi();
+    </script>
+    <script>
+        const TahunPengerjaan = document.getElementById('daerah_irigasi_id');
+        const inputLainnyadaerah_irigasi_id = document.getElementById('inputLainnyadaerah_irigasi_id');
+
+        // Tambahkan event listener untuk memantau perubahan pada select
+        daerah_irigasi_id.addEventListener('change', function() {
+            if (daerah_irigasi_id.value === 'lainnya') {
+                inputLainnyadaerah_irigasi_id.style.display = 'block';
+            } else {
+                inputLainnyadaerah_irigasi_id.style.display = 'none';
+            }
+        });
     </script>
 
     {{-- <script>

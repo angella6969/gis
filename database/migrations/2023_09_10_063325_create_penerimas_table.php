@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('daerah_irigasi_id');
             $table->foreignId('map_id')->nullable();
             $table->string('Kabupaten');
+            $table->string('provinsi');
             $table->string('Desa');
             $table->string('Kecamatan');
             $table->string('names'); 

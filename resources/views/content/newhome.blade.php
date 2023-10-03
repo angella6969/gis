@@ -30,7 +30,7 @@
         }
 
         .table-container {
-            max-height: 400px;
+            max-height: 500px;
             /* Atur ketinggian maksimum tabel di sini */
             overflow-y: auto;
             /* Aktifkan scrollbar vertikal jika diperlukan */
@@ -74,14 +74,7 @@
             text-align: center;
         }
     </style>
-    <!--
 
-TemplateMo 569 Edu Meeting
-
-https://templatemo.com/tm-569-edu-meeting
-
-
--->
 </head>
 
 <body>
@@ -107,19 +100,15 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
     </div> --}}
 
-    <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
 
                     <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
                         <a href="/newhome" class="logo">
                             WEBGIS P3-TGAI BBWS Serayu Opak
                         </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="btn"><a href="#top">BERANDA</a></li>
                             <li class="btn"><a href="#meetings">Maps GIS</a></li>
@@ -197,8 +186,8 @@ https://templatemo.com/tm-569-edu-meeting
                 <div class="col-lg-12">
                     <form id="contact" action="" method="post">
                         <div class="row">
-                            <div class="table-responsive align-content-center">
-                                <table class="table table-bordered nowrap">
+                            <div class="table-responsive align-content-center table-container">
+                                <table class="table table-bordered nowrap ">
                                     <thead>
                                         <tr>
                                             <th colspan="11" class="table-active group-header group-penerima">Data

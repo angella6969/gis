@@ -67,6 +67,7 @@ class PenerimaController extends Controller
         $validatedData = $request->validate([
             'daerah_irigasi_id' => ['required'],
             'Kabupaten' => ['required'],
+            'provinsi' => ['required'],
             'Desa' => ['required'],
             'xAx' => ['required'],
             'yAx' => ['required'],
@@ -82,7 +83,13 @@ class PenerimaController extends Controller
             'jaringan_pdf' => ['file', 'max:1024', 'mimes:pdf'],
             'dokumentasi_pdf' => ['file', 'max:1024', 'mimes:pdf'],
         ]);
-
+        if ($request->input('daerah_irigasi_id') === 'lainnya') {
+            $validatedData['daerah_irigasi_id'] = $request->input('pilihanLainnyadaerah_irigasi_id');
+            $daerahIrigasi = DaerahIrigasi::create([
+                'nama' => $validatedData['daerah_irigasi_id'],
+            ]);
+            $validatedData['daerah_irigasi_id'] = $daerahIrigasi->id;
+        }
         if ($request->hasFile('peta_pdf')) {
             $petaPdfPath = $request->file('peta_pdf')->store('public/pdf');
             $validatedData['peta_pdf'] = $petaPdfPath;
@@ -121,21 +128,18 @@ class PenerimaController extends Controller
     public function edit(string $id)
     {
         $penerima = Penerima::findOrFail($id);
-        // dd( $penerima->Kabupaten);
-        $a = Cities::where('id', $penerima->Kabupaten)->get();
-        // dd($a);
+        $provinsi = Province::where('id', $id)->get();
+        $kabupaten = Cities::where('id', $penerima->Kabupaten)->get();
+        $kecamatan = Districts::where('city_id', $kabupaten->first()->id)->get();
+        $desa = Subdistricts::where('dis_id', $kecamatan->first()->id)->get();
 
-        // $b = Cities::all();
-        // $c = Districts::all();
-        // $d = Subdistricts::all();
         return view('form.daftar_p3tgai.edit', [
             "Penerimas" => $penerima,
             "DaerahIrigasi" => DaerahIrigasi::get(),
-            "provinsiList" => Cities::get(),
-            // "provinsiList" => $a,
-            // "provinsiList" => $a,
-            // "provinsiList" => $a,
-
+            "kabupatenList" => $kabupaten,
+            "provinsiList" => $provinsi,
+            "kecamatanList" => $kecamatan,
+            "desaList" => $desa,
         ]);
     }
 
@@ -220,7 +224,7 @@ class PenerimaController extends Controller
         return Response::make(file_get_contents($pdfPath), 200, [
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename=nama-file.pdf',
-        ]); 
+        ]);
     }
     public function getJaringan_pdf(string $id)
     {
