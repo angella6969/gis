@@ -45,6 +45,12 @@
             /* box-shadow: 0 0 5px rgba(230, 138, 38, 1); */
             /* Efek bayangan saat dihover */
         }
+
+        .fancybox-content {
+            z-index: 9999;
+            /* Nilai z-index yang tinggi */
+            /* Gaya lainnya untuk tampilan popup, seperti posisi dan latar belakang */
+        }
     </style>
 
     <div class="container-fluid">
@@ -264,7 +270,14 @@
                                 <a href="{{ url('/tampilkan-rek-pdf/${id}') }}">Unduh PDF</a>
                             </td>
                         </tr>
+                        <tr>
+                            <th>Progres Tahunan</th>
+                            <td>
+                                <a href="{{ url('/tampilkan-img/${id}') }}" download >Unduh Gambar</a>
+                            </td>
+                        </tr>
                     </table>
+                    
                 `);
 
                 // Tampilkan modal
@@ -272,6 +285,8 @@
             });
         });
     </script>
+
+   
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             @if (Session::has('success'))

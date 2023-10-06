@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('TerlampirAktePendirian')->nullable();
             $table->string('TerlampirNPWP')->nullable();
             $table->string('TerlampirBukuRekening')->nullable();
+            $table->string('TerlampirProgres')->nullable();
             
             $table->timestamps();
         });

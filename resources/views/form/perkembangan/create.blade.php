@@ -58,7 +58,7 @@
                                     </option>
                                     <option value="lainnya" {{ old('TahunPengerjaan') == 'lainnya' ? 'selected' : '' }}>
                                         Pilihan Lainnya</option>
-                                </select> 
+                                </select>
                             </div>
 
                             <div id="inputLainnyaTahunPengerjaan"
@@ -96,8 +96,9 @@
                             <div class="mb-3">
                                 <label for="jarakLangsir" class="form-label">Jarak Langsir</label>
                                 <div class="input-group">
-                                    <input type="number" step="0.01" class="form-control" id="jarakLangsir" name="jarakLangsir"
-                                        placeholder="jarak Langsir" value="{{ old('jarakLangsir') }}" required>
+                                    <input type="number" step="0.01" class="form-control" id="jarakLangsir"
+                                        name="jarakLangsir" placeholder="jarak Langsir" value="{{ old('jarakLangsir') }}"
+                                        required>
                                     <span class="input-group-text">M</sub></span>
                                 </div>
                             </div>
@@ -105,8 +106,9 @@
                             <div class="mb-3">
                                 <label for="BedaLangsir" class="form-label">Beda Tinggi Langsir</label>
                                 <div class="input-group">
-                                    <input type="number" step="0.01" class="form-control" id="BedaLangsir" name="bedaLangsir"
-                                        placeholder="Beda Tinggi Langsir" value="{{ old('bedaLangsir') }}" required>
+                                    <input type="number" step="0.01" class="form-control" id="BedaLangsir"
+                                        name="bedaLangsir" placeholder="Beda Tinggi Langsir"
+                                        value="{{ old('bedaLangsir') }}" required>
                                     <span class="input-group-text">M</sub></span>
                                 </div>
                             </div>
@@ -266,6 +268,12 @@
                                     name="TerlampirBukuRekening" accept="application/pdf">
                                 <div class="form-text">PDF Max 5 MB
                                 </div>
+                            </div>
+                            <div class="mt-3 mb-3">
+                                <label for="TerlampirProgres">Progres Tahunan</label>
+                                <input type="file" class="form-control" id="TerlampirProgres" name="TerlampirProgres"
+                                    accept="image/*">
+                                <div class="form-text">Hanya gambar (PNG, JPG, JPEG, MAX:5 MB) yang diterima</div>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

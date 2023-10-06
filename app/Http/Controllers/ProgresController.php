@@ -65,6 +65,7 @@ class ProgresController extends Controller
             'TerlampirAktePendirian' => ['file', 'max:1024', 'mimes:pdf'],
             'TerlampirNPWP' => ['file', 'max:1024', 'mimes:pdf'],
             'TerlampirBukuRekening' => ['file', 'max:1024', 'mimes:pdf'],
+            'TerlampirProgres' => ['file', 'max:5120', 'mimes:png,jpg,jpeg'],
         ]);
 
         if ($request->input('TahunPengerjaan') === 'lainnya') {
@@ -95,6 +96,10 @@ class ProgresController extends Controller
         if ($request->hasFile('TerlampirBukuRekening')) {
             $dokumentasiPdfPath = $request->file('TerlampirBukuRekening')->store('public/pdf');
             $validatedData['TerlampirBukuRekening'] = $dokumentasiPdfPath;
+        }
+        if ($request->hasFile('TerlampirProgres')) {
+            $progresPath = $request->file('TerlampirProgres')->store('public/images');
+            $validatedData['TerlampirProgres'] = $progresPath;
         }
 
         // dd($validatedData);
@@ -149,6 +154,8 @@ class ProgresController extends Controller
             'TerlampirAktePendirian' => ['file', 'max:5120', 'mimes:pdf'],
             'TerlampirNPWP' => ['file', 'max:5120', 'mimes:pdf'],
             'TerlampirBukuRekening' => ['file', 'max:5120', 'mimes:pdf'],
+            'TerlampirProgres' => ['file', 'max:5120', 'mimes:png,jpg,jpeg'],
+
         ]);
 
         if ($request->input('TahunPengerjaan') === 'lainnya') {
@@ -213,7 +220,12 @@ class ProgresController extends Controller
             $validatedData['TerlampirBukuRekening'] = $dokumentasiPdfPath;
         }
 
-        // dd($a);
+        if ($request->hasFile('TerlampirProgres')) {
+            $progresPath = $request->file('TerlampirProgres')->store('public/images');
+            $validatedData['TerlampirProgres'] = $progresPath;
+        }
+
+        dd($validatedData);
         try {
             Progres::where('id', $id)->update($validatedData);
             return redirect("/dashboard/update/perkembangan-daerah-irigasi/$a->penerima_id")->with('success', 'Data berhasil disimpan.');
@@ -271,5 +283,25 @@ class ProgresController extends Controller
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename=nama-file.pdf',
         ]);
+    }
+    public function getImg(string $id)
+    {
+        $Progres = Progres::where('id', $id)->pluck('TerlampirProgres')->first(); // Mengambil nilai pertama
+        if ($Progres === null) {
+            return redirect()->back()->with('fail', 'File tidak tersedia.');
+        }
+        $imgPath = public_path('storage' . substr($Progres, 6)); // Gantilah dengan nama dan path file gambar yang sesuai
+        // return  $imgPath;
+        if (file_exists($imgPath)) {
+            // Tentukan tipe konten gambar (misalnya, 'image/jpeg' atau 'image/png')
+            $contentType = mime_content_type($imgPath);
+            // dd($contentType);
+            return response()->file($imgPath, [
+                'Content-Type' => $contentType,
+                'Content-Disposition' => 'inline; filename=nama-file.jpg', // Ganti nama file sesuai dengan tipe konten gambar
+            ]);
+        } else {
+            return redirect()->back()->with('fail', 'File tidak ditemukan.');
+        }
     }
 }

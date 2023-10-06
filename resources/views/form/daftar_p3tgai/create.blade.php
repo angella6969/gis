@@ -119,7 +119,7 @@
 
                             <div class="mb-3">
                                 <label for="TahunMendapatkan" class="form-label">Tahun Mendapatkan</label>
-                                <input type="number" step="0.01" class="form-control" id="TahunMendapatkan"
+                                <input type="text"  class="form-control" id="TahunMendapatkan"
                                     name="TahunMendapatkan" value="{{ old('TahunMendapatkan') }}"
                                     placeholder="Tahun Mendapatkan" required>
                             </div>
@@ -189,12 +189,12 @@
 
                             <div class="mb-3">
                                 <label for="latitude" class="form-label">latitude</label>
-                                <input type="number" step="0.01" class="form-control" id="xAx" name="xAx"
+                                <input type="number" step="0.0000000001" class="form-control" id="xAx" name="xAx"
                                     value="{{ old('xAx') }}" placeholder="latitude">
                             </div>
                             <div class="mb-3">
                                 <label for="longitude" class="form-label">longitude</label>
-                                <input type="number" step="0.01" class="form-control" id="yAx" name="yAx"
+                                <input type="number" step="0.000000000000000001" class="form-control" id="yAx" name="yAx"
                                     value="{{ old('yAx') }}" placeholder="longitude">
                             </div>
 
